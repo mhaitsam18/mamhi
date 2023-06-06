@@ -1,0 +1,44 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('psikotes', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('member_id')->nullable()
+                ->constrained('member')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
+            $table->timestamp('booked_at');
+
+            $table->date('tanggal_psikotes');
+            $table->string('jenis_psikotes')->nullable();
+            $table->string('kebutuhan')->nullable();
+
+            $table->foreignId('jadwal_id')->nullable()
+                ->constrained('jadwal')
+                ->onUpdate('cascade')
+                ->nullOnDelete();
+            $table->enum('status', ['booking', 'batal', 'selesai'])->nullable();
+            $table->timestamps();
+            $table->softDeletes();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('psikotes');
+    }
+};

@@ -43,12 +43,14 @@ License: For each use you must have a valid license purchased only from above li
     <link rel="stylesheet" href="/assets-nobleui/css/demo1/style.css">
     <!-- End layout styles -->
 
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
     <link rel="shortcut icon" href="/assets-nobleui/images/favicon.png" />
 </head>
 
 <body>
     <div class="main-wrapper">
-        <div class="page-wrapper full-page">
+        <div class="page-wrapper full-page" id="background-auth">
             <div class="page-content d-flex align-items-center justify-content-center">
 
                 <div class="row w-100 mx-0 auth-page">
@@ -57,34 +59,28 @@ License: For each use you must have a valid license purchased only from above li
                             <div class="row">
                                 <div class="ps-md-0">
                                     <div class="auth-form-wrapper px-4 py-5">
-                                        <img src="/assets/img/logos/logo-mamhi.png" class=""
-                                            style="height: 400px;">
-                                        <form class="forms-sample">
-                                            <div class="mb-3">
-                                                <label for="userEmail" class="form-label">Email address</label>
+                                        <div class="text-center">
+                                            <img src="/assets/img/logos/logo-mamhi.png" class="mx-auto d-block m-3 p-2" style="height: 400px;">
+                                        </div>
+                                        <form class="forms-sample text-center">
+                                            <div class="mb-3 mx-auto" style="width: 50%;">
+                                                <label for="userEmail" class="form-label">Email</label>
                                                 <input type="email" class="form-control" id="userEmail"
                                                     placeholder="Email">
                                             </div>
-                                            <div class="mb-3">
+                                            <div class="mb-3 mx-auto" style="width: 50%;">
                                                 <label for="userPassword" class="form-label">Password</label>
                                                 <input type="password" class="form-control" id="userPassword"
                                                     autocomplete="current-password" placeholder="Password">
                                             </div>
-                                            <div class="form-check mb-3">
-                                                <input type="checkbox" class="form-check-input" id="authCheck">
-                                                <label class="form-check-label" for="authCheck">
-                                                    Remember me
-                                                </label>
-                                            </div>
-                                            <div>
-                                                <a href="../../dashboard.html"
-                                                    class="btn btn-primary me-2 mb-2 mb-md-0 text-white">Login</a>
-                                                <button type="button"
+                                            <div class="mx-auto">
+                                                <button type="submit" class="btn btn-primary me-2 mb-2 mb-md-0 text-white">Login</button>
+                                                {{-- <button type="button"
                                                     class="btn btn-outline-primary btn-icon-text mb-2 mb-md-0">
                                                     <i class="btn-icon-prepend" data-feather="twitter"></i>
                                                     Login with twitter
                                                 </button>
-                                            </div>
+                                            </div> --}}
                                             <a href="register.html" class="d-block mt-3 text-muted">Not a user? Sign
                                                 up</a>
                                         </form>
