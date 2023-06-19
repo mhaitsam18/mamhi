@@ -10,7 +10,7 @@
             <span></span>
         </div>
     </div>
-    <div class="sidebar-body" id="background-sidebar">
+    <div class="sidebar-body" id="background-mamhi">
         <ul class="nav">
             <li class="nav-item nav-category">Menu</li>
             <li class="nav-item">
@@ -32,8 +32,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link @if($page == 'index') active @endif>" data-bs-toggle="collapse" href="#datas" role="button"
-                    aria-expanded="false" aria-controls="datas">
+                <a class="nav-link @if($page == 'index') active @endif>" data-bs-toggle="collapse" href="#datas" role="button" aria-expanded="false" aria-controls="datas">
                     <i class="link-icon" data-feather="database"></i>
                     <span class="link-title">Data</span>
                     <i class="link-arrow" data-feather="chevron-down"></i>

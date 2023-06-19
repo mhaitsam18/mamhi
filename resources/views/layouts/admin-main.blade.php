@@ -16,8 +16,7 @@ License: For each use you must have a valid license purchased only from above li
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="Responsive HTML Admin Dashboard Template based on Bootstrap 5">
     <meta name="author" content="NobleUI">
-    <meta name="keywords"
-        content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+    <meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
     <title>{{ $title }}</title>
 
@@ -43,7 +42,7 @@ License: For each use you must have a valid license purchased only from above li
     <!-- Layout styles -->
     <link rel="stylesheet" href="/assets-nobleui/css/demo1/style.css">
     <!-- End layout styles -->
-    
+
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="shortcut icon" href="/assets/img/logos/logo-mamhi.png" />
     @yield('style')
@@ -53,25 +52,22 @@ License: For each use you must have a valid license purchased only from above li
     <div class="main-wrapper">
 
         @include('layouts.admin-sidebar')
-        
-        <div class="page-wrapper" >
-            
-            @include('layouts.admin-topbar')
-            
 
-            <div class="page-content"  style="background-color: #F29F27;" >
+        <div class="page-wrapper">
+
+            @include('layouts.admin-topbar')
+
+
+            <div class="page-content" style="background-color: #F29F27;">
 
                 @yield('content')
 
             </div>
 
             <!-- partial:partials/_footer.html -->
-            <footer
-                class="footer d-flex flex-column flex-md-row align-items-center justify-content-between px-4 py-3 border-top small">
-                <p class="text-muted mb-1 mb-md-0">Copyright © 2023 <a href="https://www.nobleui.com"
-                        target="_blank">MAMHI</a>.</p>
-                <p class="text-muted">Handcrafted By Zitha & Derisa With <i class="mb-1 text-primary ms-1 icon-sm"
-                        data-feather="heart"></i></p>
+            <footer class="footer d-flex flex-column flex-md-row align-items-center justify-content-between px-4 py-3 border-top small">
+                <p class="text-muted mb-1 mb-md-0">Copyright © 2023 <a href="https://www.nobleui.com" target="_blank">MAMHI</a>.</p>
+                <p class="text-muted">Handcrafted By Zitha & Derisa With <i class="mb-1 text-primary ms-1 icon-sm" data-feather="heart"></i></p>
             </footer>
             <!-- partial -->
 
@@ -101,7 +97,7 @@ License: For each use you must have a valid license purchased only from above li
     <!-- End custom js for this page -->
 
     @yield('script')
-    
+
 
 </body>
 

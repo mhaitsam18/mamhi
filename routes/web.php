@@ -43,6 +43,7 @@ Route::middleware('auth')->group(function () {
     Route::middleware('admin')->group(function () {
         Route::prefix('admin')->group(function () {
             Route::get('/', [AdminController::class, 'index'])->name('admin');
+            Route::get('/profile', [AdminController::class, 'profile'])->name('admin.profile');
             Route::get('/index', [AdminController::class, 'index'])->name('admin.index');
             Route::get('/jadwal', [AdminJadwalController::class, 'index'])->name('admin.jadwal');
             Route::get('/jadwal-praktik', [AdminJadwalController::class, 'jadwalPraktik'])->name('admin.jadwal-praktik');
@@ -56,6 +57,7 @@ Route::middleware('auth')->group(function () {
     Route::middleware('member')->group(function () {
         Route::prefix('member')->group(function () {
             Route::get('/', [MemberController::class, 'index'])->name('member.index');
+            Route::get('/profile', [MemberController::class, 'profile'])->name('member.profile');
         });
     });
     Route::middleware('psikolog')->group(function () {

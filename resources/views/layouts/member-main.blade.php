@@ -31,6 +31,7 @@ License: For each use you must have a valid license purchased only from above li
     <!-- endinject -->
 
     <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="/assets-nobleui/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
     <!-- End plugin css for this page -->
 
     <!-- inject:css -->
@@ -39,30 +40,49 @@ License: For each use you must have a valid license purchased only from above li
     <!-- endinject -->
 
     <!-- Layout styles -->
-    <link rel="stylesheet" href="/assets-nobleui/css/demo1/style.css">
+    <link rel="stylesheet" href="/assets-nobleui/css/demo3/style.css">
     <!-- End layout styles -->
-
-    <link rel="stylesheet" href="/assets/css/style.css" />
-
+    
+    <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="shortcut icon" href="/assets/img/logos/logo-mamhi.png" />
-    @yield('style')
 </head>
 
 <body>
     <div class="main-wrapper">
-        <div class="page-wrapper full-page" id="background-mamhi">
-            <div class="page-content d-flex align-items-center justify-content-center">
+
+        <!-- partial:partials/_navbar.html -->
+        @include('layouts.member-navbar')
+
+        <div class="page-wrapper"  id="background-mamhi">
+
+            <div class="page-content">
+
                 @yield('content')
+
             </div>
+
+            <!-- partial:partials/_footer.html -->
+            <footer class="footer border-top">
+                <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between py-3 small">
+                    <p class="text-muted mb-1 mb-md-0">Copyright © 2023 <a href="https://www.nobleui.com" target="_blank">MAMHI</a>.</p>
+                    <p class="text-muted">Handcrafted By Zitha & Derisa With <i class="mb-1 text-primary ms-1 icon-sm" data-feather="heart"></i></p>
+                </div>
+            </footer>
+            <!-- partial -->
+
         </div>
     </div>
-    @yield('modal')
 
     <!-- core:js -->
     <script src="/assets-nobleui/vendors/core/core.js"></script>
     <!-- endinject -->
 
     <!-- Plugin js for this page -->
+    <script src="/assets-nobleui/vendors/chartjs/Chart.min.js"></script>
+    <script src="/assets-nobleui/vendors/jquery.flot/jquery.flot.js"></script>
+    <script src="/assets-nobleui/vendors/jquery.flot/jquery.flot.resize.js"></script>
+    <script src="/assets-nobleui/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <script src="/assets-nobleui/vendors/apexcharts/apexcharts.min.js"></script>
     <!-- End plugin js for this page -->
 
     <!-- inject:js -->
@@ -71,8 +91,9 @@ License: For each use you must have a valid license purchased only from above li
     <!-- endinject -->
 
     <!-- Custom js for this page -->
+    <script src="/assets-nobleui/js/dashboard-light.js"></script>
+    <script src="/assets-nobleui/js/datepicker.js"></script>
     <!-- End custom js for this page -->
-    @yield('script')
 
 </body>
 

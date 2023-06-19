@@ -63,7 +63,7 @@ class AuthController extends Controller
             'password' => 'required|confirmed',
         ]);
         $validatedData['password'] = Hash::make($validatedData['password']);
-        $validatedData['role'] = 'klien';
+        $validatedData['role'] = 'member';
 
         if ($request->file('foto')) {
             $validatedData['foto'] = $request->file('foto')->store('foto-profil');
@@ -71,7 +71,9 @@ class AuthController extends Controller
 
         $user = User::create($validatedData);
 
-        $validatedpsikolog['user_id'] = $user->id;
+        $validatedMember['user_id'] = $user->id;
+
+        Member::create($validatedMember);
 
         return redirect('/login')->with('success', 'Registrasi Berhasil!');
     }
@@ -103,7 +105,7 @@ class AuthController extends Controller
                     $member = Member::where('user_id', auth()->user()->id)->first();
                     $request->session()->put('member', $member);
                     $request->session()->put('member_id', $member->id);
-                    return redirect()->intended('/beranda');
+                    return redirect()->intended('/member');
                     break;
                 default:
                     return back()->with('loginError', 'Akun Anda tidak memiliki otoritas apapun, Hubungi Admin terkait');

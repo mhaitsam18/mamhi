@@ -1,10 +1,6 @@
-#background-auth{
+#background-mamhi{
     background-image: url('../img/app/latar.png');
     background-size: cover;
-}
-#background-sidebar{
-    background-image: url('../img/app/latar.png');
-    /* background-size: cover; */
 }
 
 .button-a{
