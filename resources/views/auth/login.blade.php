@@ -1,4 +1,4 @@
-@extends('layouts.auth-layout')
+@extends('layouts.auth-main')
 
 @section('content')
     <div class="row w-100 mx-0 auth-page">

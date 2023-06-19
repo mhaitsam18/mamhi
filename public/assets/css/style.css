@@ -2,3 +2,15 @@
     background-image: url('../img/app/latar.png');
     background-size: cover;
 }
+#background-sidebar{
+    background-image: url('../img/app/latar.png');
+    /* background-size: cover; */
+}
+
+.button-a{
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;       
+    padding: 0px;       
+}
