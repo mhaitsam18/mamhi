@@ -44,7 +44,7 @@ License: For each use you must have a valid license purchased only from above li
     <!-- End layout styles -->
     
     <link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="shortcut icon" href="/assets/img/logos/logo-mamhi.png" />
+    <link rel="shortcut icon" href="/assets/img/logos/mamhi.png" />
 </head>
 
 <body>

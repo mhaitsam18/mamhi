@@ -10,3 +10,10 @@
     text-decoration: none;       
     padding: 0px;       
 }
+
+.badge-a{
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+}

@@ -40,14 +40,20 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('get.logout');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware('auth')->group(function () {
+
     Route::middleware('admin')->group(function () {
         Route::prefix('admin')->group(function () {
+
+            
+            
             Route::get('/', [AdminController::class, 'index'])->name('admin');
             Route::get('/profile', [AdminController::class, 'profile'])->name('admin.profile');
             Route::get('/index', [AdminController::class, 'index'])->name('admin.index');
             Route::resource('jadwal', AdminJadwalController::class);
             Route::resource('psikolog', AdminPsikologController::class);
             Route::resource('member', AdminMemberController::class);
+            Route::post('/member/tmp-upload', [AdminMemberController::class, 'tmpUpload'])->name('tmp-upload');
+            Route::delete('/member/tmp-delete', [AdminMemberController::class, 'tmpDelete'])->name('tmp-delete');
             // Route::get('/jadwal', [AdminJadwalController::class, 'index'])->name('admin.jadwal');
             // Route::get('/psikolog', [AdminPsikologController::class, 'index'])->name('admin.psikolog');
             // Route::get('/member', [AdminMemberController::class, 'index'])->name('admin.member');
@@ -55,6 +61,8 @@ Route::middleware('auth')->group(function () {
             Route::get('/hasil', [AdminController::class, 'hasil'])->name('admin.hasil');
             Route::get('/konsultasi', [AdminKonsultasiController::class, 'index'])->name('admin.konsultasi');
             Route::get('/psikotes', [AdminPsikotesController::class, 'index'])->name('admin.psikotes');
+
+            
             
         });
     });

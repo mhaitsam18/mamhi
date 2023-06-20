@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Member;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AdminMemberController extends Controller
 {
@@ -12,7 +13,11 @@ class AdminMemberController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.member.index',  [
+            'title' => 'Data Member',
+            'page' => 'member',
+            'data_member' => Member::all(),
+        ]);
     }
 
     /**
@@ -20,7 +25,10 @@ class AdminMemberController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.member.create',  [
+            'title' => 'Tambah Member',
+            'page' => 'member',
+        ]);
     }
 
     /**
@@ -28,7 +36,7 @@ class AdminMemberController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->file('foto'));
     }
 
     /**
@@ -61,5 +69,27 @@ class AdminMemberController extends Controller
     public function destroy(Member $member)
     {
         //
+    }
+
+
+    public function tmpUpload(Request $request)
+    {
+        if ($request->hasFile('foto')) {
+            $image = $request->file('foto');
+            $file_name = $image->getClientOriginalName();
+            $file_name = $request->file('foto')->store('foto-profil');
+            return $file_name;
+        }
+        return '';
+    }
+    public function tmpDelete(Request $request)
+    {
+        if ($request->hasFile('foto')) {
+            $image = $request->file('foto');
+            $file_name = $image->getClientOriginalName();
+            $file_name = $request->file('foto')->store('foto-profil');
+            return $file_name;
+        }
+        return '';
     }
 }
