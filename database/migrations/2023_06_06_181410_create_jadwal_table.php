@@ -13,8 +13,13 @@ return new class extends Migration
     {
         Schema::create('jadwal', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('psikolog_id')->nullable()
+                ->constrained('psikolog')
+                ->onUpdate('cascade')
+                ->nullOnDelete();
             $table->string('hari')->nullable();
-            $table->time('jam')->nullable();
+            $table->time('jam_mulai')->nullable();
+            $table->time('jam_selesai')->nullable();
             $table->timestamps();
             $table->softDeletes();  
         });

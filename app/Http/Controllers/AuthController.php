@@ -22,9 +22,9 @@ class AuthController extends Controller
         if(!auth()->check()){
             return redirect()->route('login');
         } else if(auth()->user()->role == "admin") {
-            return redirect('/admin');
+            return redirect('/admin/index');
         } else if(auth()->user()->role == "member"){
-            return redirect('/member');
+            return redirect('/member/index');
         } else if(auth()->user()->role == "psikolog"){
             return redirect('/psikolog');
         } else{
@@ -93,19 +93,19 @@ class AuthController extends Controller
             $request->session()->regenerate();
             switch (auth()->user()->role) {
                 case 'admin':
-                    return redirect()->intended('/admin');
+                    return redirect()->intended('/admin/index');
                     break;
                 case 'psikolog':
                     $psikolog = Psikolog::where('user_id', auth()->user()->id)->first();
                     $request->session()->put('psikolog_id', $psikolog->id);
                     $request->session()->put('psikolog', $psikolog);
-                    return redirect()->intended('/psikolog');
+                    return redirect()->intended('/psikolog/index');
                     break;
                 case 'member':
                     $member = Member::where('user_id', auth()->user()->id)->first();
                     $request->session()->put('member', $member);
                     $request->session()->put('member_id', $member->id);
-                    return redirect()->intended('/member');
+                    return redirect()->intended('/member/index');
                     break;
                 default:
                     return back()->with('loginError', 'Akun Anda tidak memiliki otoritas apapun, Hubungi Admin terkait');

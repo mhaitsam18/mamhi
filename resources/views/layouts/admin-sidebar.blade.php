@@ -14,7 +14,7 @@
         <ul class="nav">
             <li class="nav-item nav-category">Menu</li>
             <li class="nav-item">
-                <a href="/admin" class="nav-link @if($page == 'index') active @endif">
+                <a href="/admin/index" class="nav-link @if($page == 'index') active @endif">
                     <i class="link-icon" data-feather="box"></i>
                     <span class="link-title">Beranda</span>
                 </a>

@@ -12,7 +12,10 @@ class AdminJadwalController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.jadwal.index', [
+            'title' => 'List Jadwal',
+            'page' => 'jadwal',
+        ]);
     }
 
     /**

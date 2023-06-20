@@ -23,9 +23,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', [AuthController::class, 'index'])->name('index');
 
 Route::middleware('guest')->group(function () {
-    Route::get('/', [AuthController::class, 'index'])->name('index');
     Route::get('/login', [AuthController::class, 'login'])->name('login');
     Route::post('/login', [AuthController::class, 'authenticate'])->name('authenticate');
     Route::get('/register', [AuthController::class, 'register'])->name('register');
@@ -45,18 +45,23 @@ Route::middleware('auth')->group(function () {
             Route::get('/', [AdminController::class, 'index'])->name('admin');
             Route::get('/profile', [AdminController::class, 'profile'])->name('admin.profile');
             Route::get('/index', [AdminController::class, 'index'])->name('admin.index');
-            Route::get('/jadwal', [AdminJadwalController::class, 'index'])->name('admin.jadwal');
+            Route::resource('jadwal', AdminJadwalController::class);
+            Route::resource('psikolog', AdminPsikologController::class);
+            Route::resource('member', AdminMemberController::class);
+            // Route::get('/jadwal', [AdminJadwalController::class, 'index'])->name('admin.jadwal');
+            // Route::get('/psikolog', [AdminPsikologController::class, 'index'])->name('admin.psikolog');
+            // Route::get('/member', [AdminMemberController::class, 'index'])->name('admin.member');
             Route::get('/jadwal-praktik', [AdminJadwalController::class, 'jadwalPraktik'])->name('admin.jadwal-praktik');
             Route::get('/hasil', [AdminController::class, 'hasil'])->name('admin.hasil');
-            Route::get('/psikolog', [AdminPsikologController::class, 'index'])->name('admin.psikolog');
-            Route::get('/member', [AdminMemberController::class, 'index'])->name('admin.member');
             Route::get('/konsultasi', [AdminKonsultasiController::class, 'index'])->name('admin.konsultasi');
             Route::get('/psikotes', [AdminPsikotesController::class, 'index'])->name('admin.psikotes');
+            
         });
     });
     Route::middleware('member')->group(function () {
         Route::prefix('member')->group(function () {
             Route::get('/', [MemberController::class, 'index'])->name('member.index');
+            Route::get('/index', [MemberController::class, 'index'])->name('member.index');
             Route::get('/profile', [MemberController::class, 'profile'])->name('member.profile');
         });
     });
