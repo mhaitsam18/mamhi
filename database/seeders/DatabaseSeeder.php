@@ -174,9 +174,9 @@ class DatabaseSeeder extends Seeder
             'foto' => 'foto-profil/DgGChffO4u3V7dJ79MTakaEBRvKif6WbFljemwnx.png',
         ]);
         User::create([
-            'name' => 'Wulan', //WID
-            'email' => 'wulan1@gmail.com',
-            'username' => 'wulan1',
+            'name' => 'psikolog', //
+            'email' => 'psikolog1@gmail.com',
+            'username' => 'psikolog1',
             'tanggal_lahir' => '2022-02-18',
             'no_hp' => '+62 813-8087-6176',
             'jenis_kelamin' => 'Perempuan',
@@ -186,9 +186,9 @@ class DatabaseSeeder extends Seeder
             'foto' => 'foto-profil/DgGChffO4u3V7dJ79MTakaEBRvKif6WbFljemwnx.png',
         ]);
         User::create([
-            'name' => 'Wulan', //WID
-            'email' => 'wulan2@gmail.com',
-            'username' => 'wulan2',
+            'name' => 'psikolog', //
+            'email' => 'psikolog2@gmail.com',
+            'username' => 'psikolog2',
             'tanggal_lahir' => '2022-02-18',
             'no_hp' => '+62 813-8087-6176',
             'jenis_kelamin' => 'Perempuan',
@@ -198,9 +198,9 @@ class DatabaseSeeder extends Seeder
             'foto' => 'foto-profil/DgGChffO4u3V7dJ79MTakaEBRvKif6WbFljemwnx.png',
         ]);
         User::create([
-            'name' => 'Wulan', //WID
-            'email' => 'wulan3@gmail.com',
-            'username' => 'wulan3',
+            'name' => 'psikolog', //
+            'email' => 'psikolog3@gmail.com',
+            'username' => 'psikolog3',
             'tanggal_lahir' => '2022-02-18',
             'no_hp' => '+62 813-8087-6176',
             'jenis_kelamin' => 'Perempuan',
@@ -210,9 +210,9 @@ class DatabaseSeeder extends Seeder
             'foto' => 'foto-profil/DgGChffO4u3V7dJ79MTakaEBRvKif6WbFljemwnx.png',
         ]);
         User::create([
-            'name' => 'Wulan', //WID
-            'email' => 'wulan4@gmail.com',
-            'username' => 'wulan4',
+            'name' => 'psikolog', //
+            'email' => 'psikolog4@gmail.com',
+            'username' => 'psikolog4',
             'tanggal_lahir' => '2022-02-18',
             'no_hp' => '+62 813-8087-6176',
             'jenis_kelamin' => 'Perempuan',
@@ -273,7 +273,7 @@ class DatabaseSeeder extends Seeder
         ]);
         Psikolog::create([
             'user_id' => 12,
-            'kode_psikolog' => 'WID',
+            'kode_psikolog' => 'WLN',
             'jenis_keahlian' => 'Psikolog',
         ]);
         Psikolog::create([
@@ -283,7 +283,7 @@ class DatabaseSeeder extends Seeder
         ]);
         Psikolog::create([
             'user_id' => 14,
-            'kode_psikolog' => 'WLN',
+            'kode_psikolog' => 'WID',
             'jenis_keahlian' => 'Psikolog',
         ]);
         Psikolog::create([
