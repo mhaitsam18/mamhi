@@ -16,6 +16,11 @@ class Jadwal extends Model
     ];
 
 
+    public function ruangan()
+    {
+        return $this->belongsTo(Ruangan::class)->withTrashed();
+    }
+    
     public function konsultasi()
     {
         return $this->hasMany(Konsultasi::class)->withTrashed();

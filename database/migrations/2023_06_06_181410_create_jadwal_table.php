@@ -17,6 +17,10 @@ return new class extends Migration
                 ->constrained('psikolog')
                 ->onUpdate('cascade')
                 ->nullOnDelete();
+            $table->foreignId('ruangan_id')->nullable()
+                ->constrained('ruangan')
+                ->onUpdate('cascade')
+                ->nullOnDelete();
             $table->string('hari')->nullable();
             $table->time('jam_mulai')->nullable();
             $table->time('jam_selesai')->nullable();

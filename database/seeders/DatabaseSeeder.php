@@ -7,6 +7,7 @@ namespace Database\Seeders;
 use App\Models\Jadwal;
 use App\Models\Member;
 use App\Models\Psikolog;
+use App\Models\Ruangan;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -216,6 +217,19 @@ class DatabaseSeeder extends Seeder
         Psikolog::create([
             'user_id' => 12,
             'jenis_keahlian' => 'Psikolog',
+        ]);
+
+        Ruangan::create([
+            'ruangan' => 'Ruang Fajar'
+        ]);
+        Ruangan::create([
+            'ruangan' => 'Ruang Senja'
+        ]);
+        Ruangan::create([
+            'ruangan' => 'Kelas Matahari'
+        ]);
+        Ruangan::create([
+            'ruangan' => 'Kelas Bulan'
         ]);
         
         Jadwal::create([
