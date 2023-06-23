@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('hari')->nullable();
             $table->time('jam_mulai')->nullable();
             $table->time('jam_selesai')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
             $table->softDeletes();  
         });

@@ -17,7 +17,8 @@ return new class extends Migration
                 ->constrained('users')
                 ->onUpdate('cascade')
                 ->nullOnDelete();
-            $table->string('jenis_keahlian', 100)->nullable()->default('text');
+            $table->string('kode_psikolog')->nullable();
+            $table->string('jenis_keahlian', 100)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
