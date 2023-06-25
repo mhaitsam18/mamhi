@@ -51,8 +51,8 @@ class DatabaseSeeder extends Seeder
             'role' => 'member',
             'foto' => 'foto-profil/DgGChffO4u3V7dJ79MTakaEBRvKif6WbFljemwnx.png',
         ]);
-        
-        
+
+
         User::create([
             'name' => 'Inheke', //
             'email' => 'inheke@gmail.com',
@@ -221,7 +221,7 @@ class DatabaseSeeder extends Seeder
             'role' => 'Psikolog',
             'foto' => 'foto-profil/DgGChffO4u3V7dJ79MTakaEBRvKif6WbFljemwnx.png',
         ]);
-        
+
         Member::create([
             'user_id' => 2,
             'pekerjaan' => 'Mahasiswa',
@@ -412,21 +412,21 @@ class DatabaseSeeder extends Seeder
             'jam_mulai' => '09:30',
             'jam_selesai' => '10:50',
         ]);
-        
+
         Jadwal::create([
             'psikolog_id' => 1,
             'hari' => 'Kamis',
             'jam_mulai' => '13:30',
             'jam_selesai' => '14:50',
         ]);
-        
+
         Jadwal::create([
             'psikolog_id' => 1,
             'hari' => 'Kamis',
             'jam_mulai' => '15:00',
             'jam_selesai' => '14:50',
         ]);
-        
+
         Jadwal::create([
             'psikolog_id' => 1,
             'hari' => 'Sabtu',
@@ -451,7 +451,7 @@ class DatabaseSeeder extends Seeder
             'jam_mulai' => '15:00',
             'jam_selesai' => '16:20',
         ]);
-        
+
         Jadwal::create([
             'psikolog_id' => 2,
             'hari' => 'Rabu',
@@ -464,7 +464,7 @@ class DatabaseSeeder extends Seeder
             'jam_mulai' => '11:00',
             'jam_selesai' => '11:55',
         ]);
-        
+
         Jadwal::create([
             'psikolog_id' => 2,
             'hari' => 'Jumat',
@@ -489,7 +489,7 @@ class DatabaseSeeder extends Seeder
             'jam_mulai' => '15:00',
             'jam_selesai' => '16:20',
         ]);
-        
+
         Jadwal::create([
             'psikolog_id' => 2,
             'hari' => 'Sabtu',
@@ -503,9 +503,9 @@ class DatabaseSeeder extends Seeder
             'jam_selesai' => '11:55',
         ]);
 
-        
-        
-        
+
+
+
         Jadwal::create([
             'psikolog_id' => 3,
             'hari' => 'Kamis',
@@ -545,8 +545,8 @@ class DatabaseSeeder extends Seeder
             'jam_mulai' => '15:00',
             'jam_selesai' => '16:50',
         ]);
-        
-        
+
+
         Jadwal::create([
             'psikolog_id' => 4,
             'hari' => 'Kamis',
@@ -565,7 +565,7 @@ class DatabaseSeeder extends Seeder
             'jam_mulai' => '15:00',
             'jam_selesai' => '16:20',
         ]);
-        
+
         Jadwal::create([
             'psikolog_id' => 4,
             'hari' => 'Jumat',
@@ -598,7 +598,7 @@ class DatabaseSeeder extends Seeder
             'jam_selesai' => '10:50',
         ]);
 
-        
+
         Jadwal::create([
             'psikolog_id' => 5,
             'hari' => 'Rabu',
@@ -633,7 +633,7 @@ class DatabaseSeeder extends Seeder
             'jam_mulai' => '15:00',
             'jam_selesai' => '15:55',
         ]);
-        
+
         Jadwal::create([
             'psikolog_id' => 6,
             'hari' => 'Rabu',
@@ -647,7 +647,7 @@ class DatabaseSeeder extends Seeder
             'jam_mulai' => '09:30',
             'jam_selesai' => '10:50',
         ]);
-        
+
         Jadwal::create([
             'psikolog_id' => 7,
             'hari' => 'Kamis',
@@ -678,8 +678,8 @@ class DatabaseSeeder extends Seeder
             'jam_mulai' => '09:30',
             'jam_selesai' => '10:50',
         ]);
-        
-        
+
+
         Jadwal::create([
             'psikolog_id' => 8,
             'hari' => 'Kamis',
@@ -728,7 +728,7 @@ class DatabaseSeeder extends Seeder
             'jam_mulai' => '14:00',
             'jam_selesai' => '14:55',
         ]);
-        
+
         Jadwal::create([
             'psikolog_id' => 9,
             'hari' => 'Sabtu',
@@ -753,7 +753,7 @@ class DatabaseSeeder extends Seeder
             'jam_mulai' => '15:00',
             'jam_selesai' => '16:20',
         ]);
-        
+
         Jadwal::create([
             'psikolog_id' => 10,
             'hari' => 'Sabtu',
@@ -778,9 +778,5 @@ class DatabaseSeeder extends Seeder
             'jam_mulai' => '15:00',
             'jam_selesai' => '16:20',
         ]);
-
-
-
-        
     }
 }
