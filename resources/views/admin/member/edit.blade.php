@@ -119,10 +119,10 @@
                         </div>
                     </div>
                     <hr>
-                    <div class="row">
+                    <div class="row mb-3">
                         <h3>Dokumen Member</h3>
                     </div>
-                    <h4>Data Konsultasi</h4>
+                    <h4>Riwayat Konsultasi</h4>
                     <div class="table-responsive">
                         <table class="table table-hover mb-0" id="dataTableExample">
                             <thead>
@@ -151,28 +151,32 @@
                             </tbody>
                         </table>
                     </div>
-                    <h4>Data Konsultasi</h4>
+                    <h4>Riwayat Psikotes</h4>
                     <div class="table-responsive">
                         <table class="table table-hover mb-0" id="dataTableExample2">
                             <thead>
                                 <tr>
                                     <th class="pt-0">#</th>
-                                    <th class="pt-0">Nomor Rekam Psikolog</th>
-                                    <th class="pt-0">Tanggal Konsultasi</th>
-                                    <th class="pt-0">Keluhan</th>
+                                    <th class="pt-0">Nomor Peserta</th>
+                                    <th class="pt-0">Penguji / Pengawas</th>
+                                    <th class="pt-0">Tanggal Psikotes</th>
+                                    <th class="pt-0">Jenis Psikotes</th>
+                                    <th class="pt-0">Kebutuhan</th>
                                     <th class="pt-0">Status</th>
-                                    <th class="pt-0">Hasil diagnosis</th>
+                                    <th class="pt-0">Nilai</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($konsultasis as $konsultasi)
+                                @foreach ($psikotess as $psikotes)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $konsultasi->diagnosis->nomor_rekam_psikolog }}</td>
-                                        <td>{{ date('j F Y', strtotime($konsultasi->tanggal_konsultasi)) }}</td>
-                                        <td>{{ $konsultasi->keluhan }}</td>
-                                        <td>{{ $konsultasi->status }}</td>
-                                        <td>{{ $konsultasi->diagnosis->hasil_konsultasi }}</td>
+                                        <td>{{ $psikotes->nomor_peserta }}</td>
+                                        <td>{{ $psikotes->psikolog->user->name }}</td>
+                                        <td>{{ date('j F Y', strtotime($psikotes->tanggal_psikotes)) }}</td>
+                                        <td>{{ $psikotes->jenis_psikotes }}</td>
+                                        <td>{{ $psikotes->kebutuhan }}</td>
+                                        <td>{{ $psikotes->status }}</td>
+                                        <td>{{ $psikotes->nilai_psikotes }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>

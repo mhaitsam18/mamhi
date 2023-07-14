@@ -21,7 +21,8 @@ return new class extends Migration
                 ->constrained('psikolog')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-
+                
+            $table->string('nomor_peserta')->nullable()->unique();
             $table->timestamp('booked_at')->nullable();
 
             $table->date('tanggal_psikotes')->nullable();

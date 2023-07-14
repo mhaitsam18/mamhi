@@ -38,7 +38,7 @@ class Psikotes extends Model
 
     public function nilai_psikotes()
     {
-        return $this->hasMany(NilaiPsikotes::class)->withTrashed();
+        return $this->hasOne(NilaiPsikotes::class)->withTrashed();
     }
     public function nilai_komponen()
     {
