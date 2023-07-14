@@ -14,7 +14,7 @@ class NilaiKomponen extends Model
 
     protected $with = [
         'komponen_nilai',
-        'psikotes'
+        'nilai_psikotes'
     ];
 
     public function komponen_nilai()
@@ -22,8 +22,8 @@ class NilaiKomponen extends Model
         return $this->belongsTo(KomponenNilai::class, 'komponen_nilai_id')->withTrashed();
     }
 
-    public function psikotes()
+    public function nilai_psikotes()
     {
-        return $this->belongsTo(Psikotes::class, 'psikotes_id')->withTrashed();
+        return $this->belongsTo(NilaiPsikotes::class, 'nilai_psikotes_id')->withTrashed();
     }
 }

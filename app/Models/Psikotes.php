@@ -40,10 +40,6 @@ class Psikotes extends Model
     {
         return $this->hasOne(NilaiPsikotes::class)->withTrashed();
     }
-    public function nilai_komponen()
-    {
-        return $this->hasMany(NilaiKomponen::class)->withTrashed();
-    }
     public function pembayaran()
     {
         return $this->hasMany(Pembayaran::class)->withTrashed();

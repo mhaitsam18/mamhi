@@ -19,6 +19,7 @@ return new class extends Migration
                 ->onDelete('cascade');
             $table->string('nomor_rekam_psikolog')->nullable();
             $table->text('hasil_diagnosis')->nullable();
+            $table->string('dokumen')->nullable();
             $table->timestamps();
         });
     }

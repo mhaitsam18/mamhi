@@ -22,6 +22,10 @@ class NilaiPsikotes extends Model
     {
         return $this->belongsTo(Psikotes::class, 'psikotes_id')->withTrashed();
     }
+    public function nilai_komponen()
+    {
+        return $this->hasMany(NilaiKomponen::class)->withTrashed();
+    }
 
 
 }

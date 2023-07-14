@@ -17,6 +17,10 @@ return new class extends Migration
                 ->constrained('psikotes')
                 ->onUpdate('cascade')
                 ->nullOnDelete();
+            $table->string('dokumen_soal')->nullable();
+            $table->string('dokumen_jawaban')->nullable();
+            $table->string('dokumen_hasil')->nullable();
+            $table->string('sertifikat')->nullable();
             $table->double('nilai', 15, 2)->nullable();
             $table->timestamps();
         });

@@ -17,8 +17,8 @@ return new class extends Migration
                 ->constrained('komponen_nilai')
                 ->onUpdate('cascade')
                 ->nullOnDelete();
-            $table->foreignId('psikotes_id')->nullable()
-                ->constrained('psikotes')
+            $table->foreignId('nilai_psikotes_id')->nullable()
+                ->constrained('nilai_psikotes')
                 ->onUpdate('cascade')
                 ->nullOnDelete();
             $table->double('nilai', 15, 2)->nullable();
