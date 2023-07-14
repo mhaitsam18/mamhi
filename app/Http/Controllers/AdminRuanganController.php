@@ -12,7 +12,11 @@ class AdminRuanganController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.ruangan.index', [
+            'title' => 'List Ruangan',
+            'page' => 'ruangan',
+            'ruangans' => Ruangan::all(),
+        ]);
     }
 
     /**
@@ -20,7 +24,11 @@ class AdminRuanganController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.ruangan.create', [
+            'title' => 'Buat ruangan',
+            'page' => 'ruangan',
+            'ruangans' => Ruangan::all(),
+        ]);
     }
 
     /**
@@ -28,7 +36,13 @@ class AdminRuanganController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'ruangan' => 'required'
+        ]);
+
+        Ruangan::create($validateData);
+
+        return redirect('/admin/ruangan')->with('success', 'Data Ruangan ditambahkan');
     }
 
     /**
@@ -36,7 +50,11 @@ class AdminRuanganController extends Controller
      */
     public function show(Ruangan $ruangan)
     {
-        //
+        return view('admin.ruangan.show', [
+            'title' => 'Detail Ruangan',
+            'page' => 'ruangan',
+            'ruangan' => $ruangan,
+        ]);
     }
 
     /**
@@ -44,7 +62,11 @@ class AdminRuanganController extends Controller
      */
     public function edit(Ruangan $ruangan)
     {
-        //
+        return view('admin.ruangan.edit', [
+            'title' => 'Detail Ruangan',
+            'page' => 'ruangan',
+            'ruangan' => $ruangan,
+        ]);
     }
 
     /**
@@ -52,7 +74,11 @@ class AdminRuanganController extends Controller
      */
     public function update(Request $request, Ruangan $ruangan)
     {
-        //
+        $validateData = $request->validate(['ruangan' => 'required']);
+
+        $ruangan->update($validateData);
+
+        return redirect('/admin/ruangan')->with('success', 'Data ruangan diperbarui');
     }
 
     /**
@@ -60,6 +86,7 @@ class AdminRuanganController extends Controller
      */
     public function destroy(Ruangan $ruangan)
     {
-        //
+        $ruangan->delete();
+        return redirect('/admin/ruangan')->with('success', 'Ruangan dihapus');
     }
 }
