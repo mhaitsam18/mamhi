@@ -54,7 +54,7 @@ class DatabaseSeeder extends Seeder
 
 
         User::create([
-            'name' => 'Inheke', //
+            'name' => 'INHEKE SALMAN, S.PSI., M.PSI.', //
             'email' => 'inheke@gmail.com',
             'username' => 'inheke',
             'tanggal_lahir' => '2022-02-18',
@@ -66,7 +66,7 @@ class DatabaseSeeder extends Seeder
             'foto' => 'foto-profil/DgGChffO4u3V7dJ79MTakaEBRvKif6WbFljemwnx.png',
         ]);
         User::create([
-            'name' => 'K Dyka', //FDA
+            'name' => 'FRANDYKA DWIARMA, S.PSI., M.PSI', //FDA
             'email' => 'kdyka@gmail.com',
             'username' => 'kdyka',
             'tanggal_lahir' => '2022-02-18',
@@ -90,7 +90,7 @@ class DatabaseSeeder extends Seeder
             'foto' => 'foto-profil/DgGChffO4u3V7dJ79MTakaEBRvKif6WbFljemwnx.png',
         ]);
         User::create([
-            'name' => 'Yui', //YUI
+            'name' => 'YULIA IRAWATI, S.PSI., M.PSI.', //YUI
             'email' => 'yui@gmail.com',
             'username' => 'yui',
             'tanggal_lahir' => '2022-02-18',
@@ -102,7 +102,7 @@ class DatabaseSeeder extends Seeder
             'foto' => 'foto-profil/DgGChffO4u3V7dJ79MTakaEBRvKif6WbFljemwnx.png',
         ]);
         User::create([
-            'name' => 'Mia', // MIA
+            'name' => 'FAHMI MAHMUDAYATI PRATIWI, S.PSI., M.PSI', // MIA
             'email' => 'mia@gmail.com',
             'username' => 'mia',
             'tanggal_lahir' => '2022-02-18',
@@ -114,7 +114,7 @@ class DatabaseSeeder extends Seeder
             'foto' => 'foto-profil/DgGChffO4u3V7dJ79MTakaEBRvKif6WbFljemwnx.png',
         ]);
         User::create([
-            'name' => 'Prast', //PRS
+            'name' => 'PRASETYO ADI NUGROHO, S.PSI., M.PSI.', //PRS
             'email' => 'prast@gmail.com',
             'username' => 'prast',
             'tanggal_lahir' => '2022-02-18',
@@ -126,7 +126,7 @@ class DatabaseSeeder extends Seeder
             'foto' => 'foto-profil/DgGChffO4u3V7dJ79MTakaEBRvKif6WbFljemwnx.png',
         ]);
         User::create([
-            'name' => 'Linda', //LND
+            'name' => 'ALVIANA NUR LINDASARI, A.MD.KES', //LND
             'email' => 'linda@gmail.com',
             'username' => 'linda',
             'tanggal_lahir' => '2022-02-18',
@@ -138,7 +138,7 @@ class DatabaseSeeder extends Seeder
             'foto' => 'foto-profil/DgGChffO4u3V7dJ79MTakaEBRvKif6WbFljemwnx.png',
         ]);
         User::create([
-            'name' => 'Ica', //ICA
+            'name' => 'LARISSA INARAH, S.PSI., M.PSI.,', //ICA
             'email' => 'ica@gmail.com',
             'username' => 'ica',
             'tanggal_lahir' => '2022-02-18',
@@ -150,9 +150,9 @@ class DatabaseSeeder extends Seeder
             'foto' => 'foto-profil/DgGChffO4u3V7dJ79MTakaEBRvKif6WbFljemwnx.png',
         ]);
         User::create([
-            'name' => 'T Dyah',
-            'email' => 'tdyah@gmail.com',
-            'username' => 'tdyah',
+            'name' => 'IDR',
+            'email' => 'idr@gmail.com',
+            'username' => 'idr',
             'tanggal_lahir' => '2022-02-18',
             'no_hp' => '+62 813-8087-6176',
             'jenis_kelamin' => 'Perempuan',
@@ -162,7 +162,7 @@ class DatabaseSeeder extends Seeder
             'foto' => 'foto-profil/DgGChffO4u3V7dJ79MTakaEBRvKif6WbFljemwnx.png',
         ]);
         User::create([
-            'name' => 'Wulan', //WLN
+            'name' => 'WULAN SUFIANI FAUZIAH, S.PSI.', //WLN
             'email' => 'wulan@gmail.com',
             'username' => 'wulan',
             'tanggal_lahir' => '2022-02-18',
@@ -174,9 +174,9 @@ class DatabaseSeeder extends Seeder
             'foto' => 'foto-profil/DgGChffO4u3V7dJ79MTakaEBRvKif6WbFljemwnx.png',
         ]);
         User::create([
-            'name' => 'psikolog', //
-            'email' => 'psikolog1@gmail.com',
-            'username' => 'psikolog1',
+            'name' => 'NISA MUTMAINNAH UKHFI, S.PSI., M.PSI', //
+            'email' => 'nisa@gmail.com',
+            'username' => 'nisa',
             'tanggal_lahir' => '2022-02-18',
             'no_hp' => '+62 813-8087-6176',
             'jenis_kelamin' => 'Perempuan',
@@ -186,9 +186,9 @@ class DatabaseSeeder extends Seeder
             'foto' => 'foto-profil/DgGChffO4u3V7dJ79MTakaEBRvKif6WbFljemwnx.png',
         ]);
         User::create([
-            'name' => 'psikolog', //
-            'email' => 'psikolog2@gmail.com',
-            'username' => 'psikolog2',
+            'name' => 'WIJAYANTI INDRASWATI D, S.PSI., M.PSI.,', //
+            'email' => 'wijayanti@gmail.com',
+            'username' => 'wijayanti',
             'tanggal_lahir' => '2022-02-18',
             'no_hp' => '+62 813-8087-6176',
             'jenis_kelamin' => 'Perempuan',
@@ -198,9 +198,9 @@ class DatabaseSeeder extends Seeder
             'foto' => 'foto-profil/DgGChffO4u3V7dJ79MTakaEBRvKif6WbFljemwnx.png',
         ]);
         User::create([
-            'name' => 'psikolog', //
-            'email' => 'psikolog3@gmail.com',
-            'username' => 'psikolog3',
+            'name' => 'DYAH RACHMAN K, S.PSI., M.PSI.', //
+            'email' => 'tdyah@gmail.com',
+            'username' => 'tdyah',
             'tanggal_lahir' => '2022-02-18',
             'no_hp' => '+62 813-8087-6176',
             'jenis_kelamin' => 'Perempuan',
@@ -259,7 +259,7 @@ class DatabaseSeeder extends Seeder
         Psikolog::create([
             'user_id' => 9,
             'kode_psikolog' => 'LND',
-            'jenis_keahlian' => 'Psikolog',
+            'jenis_keahlian' => 'Kesehatan',
         ]);
         Psikolog::create([
             'user_id' => 10,

@@ -87,7 +87,7 @@
                             <div class="mb-3 row">
                                 <div class="col">
                                     <label for="password" class="form-label">Kata Sandi</label>
-                                    <input type="text" class="form-control @error('password') is-invalid @enderror" name="password" id="password" value="{{ old('password') }}">
+                                    <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" value="{{ old('password') }}">
                                     @error('password')
                                         <div class="text-danger fs-6">
                                             {{ $message }}
@@ -119,16 +119,24 @@
                                     @enderror
                                 </div>
                                 <div class="col">
-                                    <label for="foto" class="form-label">Foto</label>
-                                    <input type="file" class="form-control filepond @error('foto') is-invalid @enderror" name="foto" id="foto" value="{{ old('foto') }}" multiple  data-allow-reorder="true" data-max-file-size="3MB" data-max-files="3">
-                                    <input type="hidden" name="nama_foto" id="nama_foto" value="">
-                                    <img class="img-preview img-fluid mb-3 col-sm-5">
-                                    @error('foto')
+                                    <label for="pekerjaan" class="form-label">Pekerjaan</label>
+                                    <input type="text" class="form-control @error('pekerjaan') is-invalid @enderror" name="pekerjaan" id="pekerjaan" value="{{ old('pekerjaan') }}">
+                                    @error('pekerjaan')
                                         <div class="text-danger fs-6">
                                             {{ $message }}
                                         </div>
                                     @enderror
                                 </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="foto" class="form-label">Foto</label>
+                                <input type="file" class="form-control filepond @error('foto') is-invalid @enderror" name="foto" id="foto" value="{{ old('foto') }}" multiple  data-allow-reorder="true" data-max-file-size="3MB" data-max-files="3">
+                                <input type="hidden" name="nama_foto" id="nama_foto" value="">
+                                @error('foto')
+                                    <div class="text-danger fs-6">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-lg-12">
@@ -143,23 +151,13 @@
 
 @section('script')
     <script>
-        function previewFoto() {
-            const foto = document.querySelector('#foto');
-            const imgPreview = document.querySelector('.img-preview');
-            imgPreview.style.display = 'block';
-            const oFReader = new FileReader();
-            oFReader.readAsDataURL(foto.files[0]);
 
-            oFReader.onload = function (oFREvent) {
-                imgPreview.src = oFREvent.target.result;
-            }
-        }
 
         FilePond.registerPlugin(
             FilePondPluginImagePreview,
             FilePondPluginImageExifOrientation,
             FilePondPluginFileValidateSize,
-            FilePondPluginImageEdit
+            FilePondPluginImageEdit,
         );
 
         FilePond.create(
@@ -168,18 +166,30 @@
         FilePond.setOptions({
             server: {
                 process: {
-                    url: '/admin/member/tmp-upload',
+                    url: '/file/tmp-upload',
                     method: 'POST',
                     withCredentials: false,
                     onload: (response) => {
                         console.log(response);
                         $('#nama_foto').val(response);
                     },
+                    ondata: (formData) => {
+                        formData.append('folder', 'foto-profil');
+                        return formData;
+                    },
                 },
-                // revert: '/admin/member/tmp-delete',
+                revert: {
+                    url: '/file/tmp-delete',
+                    method: 'DELETE',
+                    onload: (response) => {
+                        console.log(response);
+                        $('#nama_foto').val(response);
+                    },
+                },
                 headers: {
                     'X-CSRF-TOKEN': '{{ csrf_token() }}'
                 },
+
             },
             labelIdle: 'Seret & Lepaskan file Anda atau <span class="filepond--label-action"> Jelajahi </span>'
         });

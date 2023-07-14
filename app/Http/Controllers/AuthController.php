@@ -117,6 +117,14 @@ class AuthController extends Controller
         return back()->with('loginError', 'Username atau Password Salah');
     }
 
+    public function updatePhoto(Request $request, User $user)
+    {
+        $user->update([
+            'foto' => $request->nama_foto
+        ]);
+        return back()->with('success', 'Foto Berhasil diperbarui');
+    }
+
     public function logout(Request $request)
     {
         Auth::logout();

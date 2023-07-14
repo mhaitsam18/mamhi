@@ -53,6 +53,7 @@ License: For each use you must have a valid license purchased only from above li
 
 <body>
     <div class="main-wrapper">
+        <div class="flash-data" data-success="{{ session()->get('success') }}" data-error="{{ session()->get('error') }}" data-warning="{{ session()->get('warning') }}"></div>
 
         @include('layouts.admin-sidebar')
 
@@ -107,6 +108,55 @@ License: For each use you must have a valid license purchased only from above li
     <script src="https://unpkg.com/filepond-plugin-image-edit/dist/filepond-plugin-image-edit.js"></script>
 
     <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        const success = $('.flash-data').data('success');
+        if (success) {
+            //'Data ' + 
+            Swal.fire({
+                title: 'Berhasil',
+                text: success,
+                icon: 'success'
+            });
+        }
+        const error = $('.flash-data').data('error');
+        if (error) {
+            //'Data ' + 
+            Swal.fire({
+                title: 'Gagal',
+                text: error,
+                icon: 'error'
+            });
+        }
+        const warning = $('.flash-data').data('warning');
+        if (warning) {
+            //'Data ' + 
+            Swal.fire({
+                title: 'Perhatian',
+                text: warning,
+                icon: 'warning'
+            });
+        }
+        $('.tombol-hapus').on('click', function(e) {
+            e.preventDefault(); // Mencegah pengiriman formulir secara langsung
+
+            const form = $(this).closest('form'); // Menemukan formulir terdekat
+
+            Swal.fire({
+                title: 'Apakah Anda Yakin?',
+                text: "Data ini akan dihapus!",
+                icon: 'warning',
+                confirmButtonText: 'Hapus',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit(); // Mengirimkan formulir setelah konfirmasi
+                }
+            });
+        });
+    </script>
     
     @yield('script')
 

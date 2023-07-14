@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Psikolog;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class AdminPsikologController extends Controller
 {
@@ -12,15 +14,19 @@ class AdminPsikologController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.psikolog.index', [
+            'title' => 'MAMHI | Data Psikolog',
+            'page' => 'psikolog',
+            'psikologs' => Psikolog::all(),
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('admin.psikolog.create',  [
+            'title' => 'Tambah psikolog',
+            'page' => 'psikolog',
+        ]);
     }
 
     /**
@@ -28,7 +34,38 @@ class AdminPsikologController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email:dns|unique:users',
+            'username' => 'required|unique:users',
+            'tanggal_lahir' => 'required',
+            'no_hp' => 'required',
+            'jenis_kelamin' => 'required',
+            'alamat' => 'required',
+            'jenis_keahlian' => 'required',
+            'kode_psikolog' => 'required|unique:psikolog',
+            'password' => 'required|confirmed',
+        ]);
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'username' => $request->username,
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'no_hp' => $request->no_hp,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'alamat' => $request->alamat,
+            'password' => $request->password,
+            'foto' => $request->nama_foto,
+            'role' => 'psikolog',
+        ]);
+        Psikolog::create([
+            'user_id' => $user->id,
+            'jenis_keahlian' => $request->jenis_keahlian,
+            'kode_psikolog' => $request->kode_psikolog,
+        ]);
+
+        return redirect('/admin/psikolog')->with('success', 'Data psikolog ditambahkan');
     }
 
     /**
@@ -36,7 +73,11 @@ class AdminPsikologController extends Controller
      */
     public function show(Psikolog $psikolog)
     {
-        //
+        return view('admin.psikolog.show',  [
+            'title' => 'Detail psikolog',
+            'page' => 'psikolog',
+            'psikolog' => $psikolog,
+        ]);
     }
 
     /**
@@ -44,7 +85,19 @@ class AdminPsikologController extends Controller
      */
     public function edit(Psikolog $psikolog)
     {
-        //
+        return view('admin.psikolog.edit', [
+            'title' => 'MAMHI | Data Psikolog',
+            'page' => 'psikolog',
+            'psikolog' => $psikolog,
+        ]);
+    }
+
+    public function updatePhoto(Request $request, User $user)
+    {
+        $user->update([
+            'foto' => $request->nama_foto
+        ]);
+        return back()->with('success', 'Foto Berhasil diperbarui');
     }
 
     /**
@@ -52,7 +105,43 @@ class AdminPsikologController extends Controller
      */
     public function update(Request $request, Psikolog $psikolog)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => [
+                'required',
+                'email:dns',
+                Rule::unique('users')->ignore($psikolog->user_id),
+            ],
+            'username' => [
+                'required',
+                Rule::unique('users')->ignore($psikolog->user_id),
+            ],
+            'tanggal_lahir' => 'required',
+            'no_hp' => 'required',
+            'jenis_kelamin' => 'required',
+            'alamat' => 'required',
+            'kode_psikolog' => [
+                'required',
+                Rule::unique('psikolog')->ignore($psikolog->id),
+            ],
+            'jenis_keahlian' => 'required',
+        ]);
+        $psikolog->update([
+            'kode_psikolog' => $request->kode_psikolog,
+            'keahlian' => $request->keahlian,
+        ]);
+
+        $user = User::find($psikolog->user_id);
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'username' => $request->username,
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'no_hp' => $request->no_hp,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'alamat' => $request->alamat,
+        ]);
+        return back()->with('success', 'Data Psikolog diperbarui');
     }
 
     /**
@@ -60,6 +149,7 @@ class AdminPsikologController extends Controller
      */
     public function destroy(Psikolog $psikolog)
     {
-        //
+        $psikolog->delete();
+        return back()->with('success', 'Data psikolog dihapus');
     }
 }

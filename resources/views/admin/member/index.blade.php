@@ -58,7 +58,7 @@
                                                 <form action="/admin/member/{{ $member->id }}" method="post">
                                                     @method('delete')
                                                     @csrf
-                                                    <button type="submit" class="badge bg-danger d-inline-block ms-2 mb-1 badge-a">Hapus</button>
+                                                    <button type="submit" class="badge bg-danger d-inline-block ms-2 mb-1 badge-a tombol-hapus">Hapus</button>
                                                 </form>
                                             </div>
                                         </td>

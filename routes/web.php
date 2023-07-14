@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminMemberController;
 use App\Http\Controllers\AdminPsikologController;
 use App\Http\Controllers\AdminPsikotesController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\PsikologController;
@@ -40,20 +41,23 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('get.logout');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware('auth')->group(function () {
+    Route::post('/file/tmp-upload', [FileController::class, 'tmpUpload'])->name('tmp-upload');
+    Route::delete('/file/tmp-delete', [FileController::class, 'tmpDelete'])->name('tmp-delete');
 
+    Route::put('update-photo/{user}', [AuthController::class, 'updatePhoto'])->name('admin.psikolog-update-foto');
     Route::middleware('admin')->group(function () {
         Route::prefix('admin')->group(function () {
-
-
 
             Route::get('/', [AdminController::class, 'index'])->name('admin');
             Route::get('/profile', [AdminController::class, 'profile'])->name('admin.profile');
             Route::get('/index', [AdminController::class, 'index'])->name('admin.index');
             Route::resource('jadwal', AdminJadwalController::class);
+            Route::put('psikolog/update-photo/{user}', [AdminPsikologController::class, 'updatePhoto'])->name('admin.psikolog-update-foto');
             Route::resource('psikolog', AdminPsikologController::class);
+            Route::post('/member/tmp-upload', [AdminMemberController::class, 'tmpUpload'])->name('mmember-tmp-upload');
+            Route::delete('/member/tmp-delete', [AdminMemberController::class, 'tmpDelete'])->name('member-tmp-delete');
             Route::resource('member', AdminMemberController::class);
-            Route::post('/member/tmp-upload', [AdminMemberController::class, 'tmpUpload'])->name('tmp-upload');
-            Route::delete('/member/tmp-delete', [AdminMemberController::class, 'tmpDelete'])->name('tmp-delete');
+            Route::put('member/update-photo/{user}', [AdminPsikologController::class, 'updatePhoto'])->name('admin.psikolog-update-foto');
             // Route::get('/jadwal', [AdminJadwalController::class, 'index'])->name('admin.jadwal');
             // Route::get('/psikolog', [AdminPsikologController::class, 'index'])->name('admin.psikolog');
             // Route::get('/member', [AdminMemberController::class, 'index'])->name('admin.member');
