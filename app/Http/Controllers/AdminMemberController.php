@@ -8,6 +8,7 @@ use App\Models\Member;
 use App\Models\Psikotes;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 class AdminMemberController extends Controller
@@ -60,7 +61,7 @@ class AdminMemberController extends Controller
             'no_hp' => $request->no_hp,
             'jenis_kelamin' => $request->jenis_kelamin,
             'alamat' => $request->alamat,
-            'password' => $request->password,
+            'password' => Hash::make($request->password),
             'foto' => $request->nama_foto,
             'role' => 'member',
         ]);

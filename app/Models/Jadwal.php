@@ -15,6 +15,16 @@ class Jadwal extends Model
         'id'
     ];
 
+    protected $with = [
+        'psikolog',
+        'ruangan',
+    ];
+
+
+    public function psikolog()
+    {
+        return $this->belongsTo(Psikolog::class)->withTrashed();
+    }
 
     public function ruangan()
     {

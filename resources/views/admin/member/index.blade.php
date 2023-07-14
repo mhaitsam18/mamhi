@@ -46,11 +46,11 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $member->id }}</td>
-                                        <td>{{ $member->user->name }}</td>
-                                        <td>{{ $member->user->tanggal_lahir }}</td>
+                                        <td>{{ $member->user->name ?? '-' }}</td>
+                                        <td>{{ $member->user->tanggal_lahir ?? '-' }}</td>
                                         <td>{{ $member->user->jenis_kelamin }}</td>
-                                        <td>{{ $member->user->no_hp }}</td>
-                                        <td>{{ $member->user->alamat }}</td>
+                                        <td>{{ $member->user->no_hp ?? '-' }}</td>
+                                        <td>{{ $member->user->alamat ?? '-' }}</td>
                                         <td>{{ $member->pekerjaan }}</td>
                                         <td>
                                             <div class="d-flex align-items-center">

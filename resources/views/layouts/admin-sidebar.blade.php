@@ -54,6 +54,12 @@
                         <li class="nav-item">
                             <a href="/admin/jadwal" class="nav-link @if($page == 'jadwal') active @endif">Data Jadwal</a>
                         </li>
+                        {{-- <li class="nav-item">
+                            <a href="/admin/ruangan" class="nav-link @if($page == 'ruangan') active @endif">Data Ruangan</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/admin/komponen-nilai" class="nav-link @if($page == 'komponen-nilai') active @endif">Data Komponen Nilai</a>
+                        </li> --}}
                     </ul>
                 </div>
             </li>

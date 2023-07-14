@@ -140,12 +140,12 @@
                                 @foreach ($konsultasis as $konsultasi)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $konsultasi->diagnosis->nomor_rekam_psikolog }}</td>
-                                        <td>{{ $konsultasi->psikolog->user->name }}</td>
+                                        <td>{{ $konsultasi->diagnosis->nomor_rekam_psikolog ?? '-' }}</td>
+                                        <td>{{ $konsultasi->psikolog->user->name ?? '-' }}</td>
                                         <td>{{ date('j F Y', strtotime($konsultasi->tanggal_konsultasi)) }}</td>
-                                        <td>{{ $konsultasi->keluhan }}</td>
-                                        <td>{{ $konsultasi->status }}</td>
-                                        <td>{{ $konsultasi->diagnosis->hasil_konsultasi }}</td>
+                                        <td>{{ $konsultasi->keluhan ?? '-' }}</td>
+                                        <td>{{ $konsultasi->status ?? '-' }}</td>
+                                        <td>{{ $konsultasi->diagnosis->hasil_konsultasi ?? '-' }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -170,13 +170,13 @@
                                 @foreach ($psikotess as $psikotes)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $psikotes->nomor_peserta }}</td>
-                                        <td>{{ $psikotes->psikolog->user->name }}</td>
+                                        <td>{{ $psikotes->nomor_peserta ?? '-' }}</td>
+                                        <td>{{ $psikotes->psikolog->user->name ?? '-' }}</td>
                                         <td>{{ date('j F Y', strtotime($psikotes->tanggal_psikotes)) }}</td>
-                                        <td>{{ $psikotes->jenis_psikotes }}</td>
-                                        <td>{{ $psikotes->kebutuhan }}</td>
-                                        <td>{{ $psikotes->status }}</td>
-                                        <td>{{ $psikotes->nilai_psikotes }}</td>
+                                        <td>{{ $psikotes->jenis_psikotes ?? '-' }}</td>
+                                        <td>{{ $psikotes->kebutuhan ?? '-' }}</td>
+                                        <td>{{ $psikotes->status ?? '-' }}</td>
+                                        <td>{{ $psikotes->nilai_psikotes ?? '-' }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>

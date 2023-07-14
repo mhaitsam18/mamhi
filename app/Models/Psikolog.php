@@ -23,6 +23,11 @@ class Psikolog extends Model
         return $this->belongsTo(User::class, 'user_id')->withTrashed();
     }
 
+    public function jadwal()
+    {
+        return $this->hasMany(Jadwal::class)->withTrashed();
+    }
+    
     public function konsultasi()
     {
         return $this->hasMany(Konsultasi::class)->withTrashed();

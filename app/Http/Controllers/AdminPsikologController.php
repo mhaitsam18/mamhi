@@ -8,6 +8,7 @@ use App\Models\Psikolog;
 use App\Models\Psikotes;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 
 class AdminPsikologController extends Controller
@@ -58,7 +59,7 @@ class AdminPsikologController extends Controller
             'no_hp' => $request->no_hp,
             'jenis_kelamin' => $request->jenis_kelamin,
             'alamat' => $request->alamat,
-            'password' => $request->password,
+            'password' => Hash::make($request->password),
             'foto' => $request->nama_foto,
             'role' => 'psikolog',
         ]);

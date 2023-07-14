@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminJadwalController;
+use App\Http\Controllers\AdminKomponenNilaiController;
 use App\Http\Controllers\AdminKonsultasiController;
 use App\Http\Controllers\AdminMemberController;
 use App\Http\Controllers\AdminPsikologController;
 use App\Http\Controllers\AdminPsikotesController;
+use App\Http\Controllers\AdminRuanganController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\HomeController;
@@ -65,6 +67,11 @@ Route::middleware('auth')->group(function () {
             Route::get('/hasil', [AdminController::class, 'hasil'])->name('admin.hasil');
             Route::get('/konsultasi', [AdminKonsultasiController::class, 'index'])->name('admin.konsultasi');
             Route::get('/psikotes', [AdminPsikotesController::class, 'index'])->name('admin.psikotes');
+
+
+
+            Route::resource('ruangan', AdminRuanganController::class);
+            Route::resource('komponen-nilai', AdminKomponenNilaiController::class);
         });
     });
     Route::middleware('member')->group(function () {
