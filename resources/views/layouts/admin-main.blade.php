@@ -48,6 +48,11 @@ License: For each use you must have a valid license purchased only from above li
     <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet"/>
     <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
     <link href="https://unpkg.com/filepond-plugin-image-edit/dist/filepond-plugin-image-edit.css" rel="stylesheet"/>
+
+
+	<!-- Plugin css for this page -->
+	<link rel="stylesheet" href="/assets-nobleui/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+	<!-- End plugin css for this page -->
     @yield('style')
 </head>
 
@@ -99,6 +104,16 @@ License: For each use you must have a valid license purchased only from above li
     <script src="/assets-nobleui/js/dashboard-light.js"></script>
     <script src="/assets-nobleui/js/datepicker.js"></script>
 
+    <!-- endinject -->
+
+    <!-- Plugin js for this page -->
+    <script src="/assets-nobleui/vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="/assets-nobleui/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+    <!-- End plugin js for this page -->
+
+    <!-- Custom js for this page -->
+    <script src="/assets-nobleui/js/data-table.js"></script>
+    <!-- End custom js for this page -->
 
     <!-- End custom js for this page -->
     

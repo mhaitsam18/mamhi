@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Diagnosis;
+use App\Models\Konsultasi;
 use App\Models\Member;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -78,6 +80,7 @@ class AdminMemberController extends Controller
             'title' => 'Detail member',
             'page' => 'member',
             'member' => $member,
+            'konsultasis' => Konsultasi::where('member_id', $member->id)->get(),
         ]);
     }
 
@@ -90,6 +93,7 @@ class AdminMemberController extends Controller
             'title' => 'MAMHI | Edit member',
             'page' => 'member',
             'member' => $member,
+            'konsultasis' => Konsultasi::where('member_id', $member->id)->get(),
         ]);
     }
 

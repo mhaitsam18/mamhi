@@ -124,26 +124,28 @@
                     </div>
                     <h4>Data Konsultasi</h4>
                     <div class="table-responsive">
-                        <table class="table table-hover mb-0">
+                        <table class="table table-hover mb-0" id="dataTableExample">
                             <thead>
                                 <tr>
                                     <th class="pt-0">#</th>
                                     <th class="pt-0">Nomor Rekam Psikolog</th>
+                                    <th class="pt-0">Psikolog pemeriksa</th>
                                     <th class="pt-0">Tanggal Konsultasi</th>
                                     <th class="pt-0">Keluhan</th>
                                     <th class="pt-0">Status</th>
-                                    <th class="pt-0">Hasil Diagnosis</th>
+                                    <th class="pt-0">Hasil diagnosis</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($diagnosiss as $diagnosis)
+                                @foreach ($konsultasis as $konsultasi)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $diagnosis->nomor_rekam_psikolog }}</td>
-                                        <td>{{ date('j F Y', strtotime($diagnosis->konsultasi->tanggal_konsultasi)) }}</td>
-                                        <td>{{ $diagnosis->konsultasi->keluhan }}</td>
-                                        <td>{{ $diagnosis->konsultasi->status }}</td>
-                                        <td>{{ $diagnosis->hasil_diagnosis }}</td>
+                                        <td>{{ $konsultasi->diagnosis->nomor_rekam_psikolog }}</td>
+                                        <td>{{ $konsultasi->psikolog->user->name }}</td>
+                                        <td>{{ date('j F Y', strtotime($konsultasi->tanggal_konsultasi)) }}</td>
+                                        <td>{{ $konsultasi->keluhan }}</td>
+                                        <td>{{ $konsultasi->status }}</td>
+                                        <td>{{ $konsultasi->diagnosis->hasil_konsultasi }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -151,7 +153,7 @@
                     </div>
                     <h4>Data Konsultasi</h4>
                     <div class="table-responsive">
-                        <table class="table table-hover mb-0">
+                        <table class="table table-hover mb-0" id="dataTableExample2">
                             <thead>
                                 <tr>
                                     <th class="pt-0">#</th>
@@ -159,18 +161,18 @@
                                     <th class="pt-0">Tanggal Konsultasi</th>
                                     <th class="pt-0">Keluhan</th>
                                     <th class="pt-0">Status</th>
-                                    <th class="pt-0">Hasil Diagnosis</th>
+                                    <th class="pt-0">Hasil diagnosis</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($diagnosiss as $diagnosis)
+                                @foreach ($konsultasis as $konsultasi)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $diagnosis->nomor_rekam_psikolog }}</td>
-                                        <td>{{ date('j F Y', strtotime($diagnosis->konsultasi->tanggal_konsultasi)) }}</td>
-                                        <td>{{ $diagnosis->konsultasi->keluhan }}</td>
-                                        <td>{{ $diagnosis->konsultasi->status }}</td>
-                                        <td>{{ $diagnosis->hasil_diagnosis }}</td>
+                                        <td>{{ $konsultasi->diagnosis->nomor_rekam_psikolog }}</td>
+                                        <td>{{ date('j F Y', strtotime($konsultasi->tanggal_konsultasi)) }}</td>
+                                        <td>{{ $konsultasi->keluhan }}</td>
+                                        <td>{{ $konsultasi->status }}</td>
+                                        <td>{{ $konsultasi->diagnosis->hasil_konsultasi }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>

@@ -47,6 +47,11 @@ License: For each use you must have a valid license purchased only from above li
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="shortcut icon" href="/assets/img/logos/mamhi.png" />
 
+
+	<!-- Plugin css for this page -->
+	<link rel="stylesheet" href="/assets-nobleui/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+	<!-- End plugin css for this page -->
+
     <style>
         .color-mamhi {
             color: #F29F27;
@@ -94,6 +99,14 @@ License: For each use you must have a valid license purchased only from above li
     <script src="/assets-nobleui/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
     <script src="/assets-nobleui/vendors/apexcharts/apexcharts.min.js"></script>
     <!-- End plugin js for this page -->
+    
+    <!-- Plugin js for this page -->
+    <script src="/assets-nobleui/vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="/assets-nobleui/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+    <!-- End plugin js for this page -->
+
+    <!-- Custom js for this page -->
+    <script src="/assets-nobleui/js/data-table.js"></script>
 
     <!-- inject:js -->
     <script src="/assets-nobleui/vendors/feather-icons/feather.min.js"></script>

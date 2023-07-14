@@ -140,7 +140,7 @@
                         </div>
                     </div>
                     <div class="table-responsive">
-                        <table class="table table-hover mb-0">
+                        <table class="table table-hover mb-0" id="dataTableExample">
                             <thead>
                                 <tr>
                                     <th class="pt-0">#</th>
