@@ -16,6 +16,7 @@ class Psikotes extends Model
     ];
 
     protected $with = [
+        'psikolog',
         'member',
         'jadwal'
     ];
