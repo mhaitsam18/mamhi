@@ -18,9 +18,9 @@ return new class extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
-            $table->timestamp('booked_at');
+            $table->timestamp('booked_at')->nullable();
 
-            $table->date('tanggal_psikotes');
+            $table->date('tanggal_psikotes')->nullable();
             $table->string('jenis_psikotes')->nullable();
             $table->string('kebutuhan')->nullable();
 

@@ -222,6 +222,31 @@ class DatabaseSeeder extends Seeder
             'foto' => 'foto-profil/DgGChffO4u3V7dJ79MTakaEBRvKif6WbFljemwnx.png',
         ]);
 
+        User::create([
+            'name' => 'Member Nakal',
+            'email' => 'member_nakal@gmail.com',
+            'username' => 'member_nakal',
+            'tanggal_lahir' => '2022-02-18',
+            'no_hp' => '+62 813-8087-6176',
+            'jenis_kelamin' => 'Perempuan',
+            'alamat' => 'Bandung',
+            'password' => Hash::make('asdasd'),
+            'role' => 'member',
+            'foto' => 'foto-profil/DgGChffO4u3V7dJ79MTakaEBRvKif6WbFljemwnx.png',
+        ]);
+        User::create([
+            'name' => 'Member Baik',
+            'email' => 'member_baik@gmail.com',
+            'username' => 'member_baik',
+            'tanggal_lahir' => '2022-02-18',
+            'no_hp' => '+62 813-8087-6176',
+            'jenis_kelamin' => 'Perempuan',
+            'alamat' => 'Bandung',
+            'password' => Hash::make('asdasd'),
+            'role' => 'member',
+            'foto' => 'foto-profil/DgGChffO4u3V7dJ79MTakaEBRvKif6WbFljemwnx.png',
+        ]);
+
         Member::create([
             'user_id' => 2,
             'pekerjaan' => 'Mahasiswa',
@@ -295,6 +320,16 @@ class DatabaseSeeder extends Seeder
             'user_id' => 16,
             'kode_psikolog' => 'LKL',
             'jenis_keahlian' => 'Psikolog',
+        ]);
+
+        Member::create([
+            'user_id' => 17,
+            'pekerjaan' => 'Mahasiswa',
+        ]);
+
+        Member::create([
+            'user_id' => 18,
+            'pekerjaan' => 'Mahasiswa',
         ]);
 
         Ruangan::create([

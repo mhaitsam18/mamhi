@@ -24,10 +24,10 @@ return new class extends Migration
 
             
 
-            $table->string('keluhan');
-            $table->timestamp('booked_at');
+            $table->string('keluhan')->nullable();
+            $table->timestamp('booked_at')->nullable();
             
-            $table->date('tanggal_konsultasi');
+            $table->date('tanggal_konsultasi')->nullable();
             $table->foreignId('jadwal_id')->nullable()
                 ->constrained('jadwal')
                 ->onUpdate('cascade')

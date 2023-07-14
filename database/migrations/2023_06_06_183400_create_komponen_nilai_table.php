@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('komponen_nilai', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_komponen');
+            $table->string('nama_komponen')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
