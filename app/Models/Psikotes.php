@@ -25,11 +25,15 @@ class Psikotes extends Model
         return $this->belongsTo(Member::class, 'member_id')->withTrashed();
     }
 
+    public function psikolog()
+    {
+        return $this->belongsTo(Psikolog::class, 'psikolog_id')->withTrashed();
+    }
+
     public function jadwal()
     {
         return $this->belongsTo(Jadwal::class, 'jadwal_id')->withTrashed();
     }
-
 
     public function nilai_psikotes()
     {

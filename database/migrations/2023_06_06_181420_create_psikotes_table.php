@@ -17,6 +17,10 @@ return new class extends Migration
                 ->constrained('member')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+            $table->foreignId('psikolog_id')->nullable()
+                ->constrained('psikolog')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
 
             $table->timestamp('booked_at')->nullable();
 

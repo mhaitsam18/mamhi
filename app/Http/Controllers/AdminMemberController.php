@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Diagnosis;
 use App\Models\Konsultasi;
 use App\Models\Member;
+use App\Models\Psikotes;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -81,6 +82,7 @@ class AdminMemberController extends Controller
             'page' => 'member',
             'member' => $member,
             'konsultasis' => Konsultasi::where('member_id', $member->id)->get(),
+            'psikotess' => Psikotes::where('member_id', $member->id)->get(),
         ]);
     }
 
@@ -94,6 +96,7 @@ class AdminMemberController extends Controller
             'page' => 'member',
             'member' => $member,
             'konsultasis' => Konsultasi::where('member_id', $member->id)->get(),
+            'psikotess' => Psikotes::where('member_id', $member->id)->get(),
         ]);
     }
 

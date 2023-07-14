@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Diagnosis;
 use App\Models\Konsultasi;
 use App\Models\Psikolog;
+use App\Models\Psikotes;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -80,6 +81,7 @@ class AdminPsikologController extends Controller
             'page' => 'psikolog',
             'psikolog' => $psikolog,
             'konsultasis' => Konsultasi::where('psikolog_id', $psikolog->id)->get(),
+            'psikotess' => Psikotes::where('psikolog_id', $psikolog->id)->get(),
         ]);
     }
 
@@ -94,6 +96,7 @@ class AdminPsikologController extends Controller
             'page' => 'psikolog',
             'psikolog' => $psikolog,
             'konsultasis' => Konsultasi::where('psikolog_id', $psikolog->id)->get(),
+            'psikotess' => Psikotes::where('psikolog_id', $psikolog->id)->get(),
         ]);
     }
 

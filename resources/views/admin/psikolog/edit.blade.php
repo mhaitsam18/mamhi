@@ -174,14 +174,14 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($konsultasis as $konsultasi)
+                                @foreach ($psikotess as $psikotes)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $konsultasi->diagnosis->nomor_rekam_psikolog }}</td>
-                                        <td>{{ date('j F Y', strtotime($konsultasi->tanggal_konsultasi)) }}</td>
-                                        <td>{{ $konsultasi->keluhan }}</td>
-                                        <td>{{ $konsultasi->diagnosis->status }}</td>
-                                        <td>{{ $konsultasi->diagnosis->hasil_konsultasi }}</td>
+                                        <td>{{ $psikotes->diagnosis->nomor_rekam_psikolog }}</td>
+                                        <td>{{ date('j F Y', strtotime($psikotes->tanggal_psikotes)) }}</td>
+                                        <td>{{ $psikotes->keluhan }}</td>
+                                        <td>{{ $psikotes->diagnosis->status }}</td>
+                                        <td>{{ $psikotes->diagnosis->hasil_psikotes }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>

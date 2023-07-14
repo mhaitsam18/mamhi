@@ -27,4 +27,8 @@ class Psikolog extends Model
     {
         return $this->hasMany(Konsultasi::class)->withTrashed();
     }
+    public function psikotes()
+    {
+        return $this->hasMany(Psikotes::class)->withTrashed();
+    }
 }
