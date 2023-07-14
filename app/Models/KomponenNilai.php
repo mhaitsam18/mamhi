@@ -15,8 +15,8 @@ class KomponenNilai extends Model
         'id'
     ];
 
-    public function nilai_psikotes()
+    public function nilai_komponen()
     {
-        return $this->hasMany(NilaiPsikotes::class)->withTrashed();
+        return $this->hasMany(NilaiKomponen::class)->withTrashed();
     }
 }

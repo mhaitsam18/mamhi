@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Diagnosis;
 use App\Models\Psikolog;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -85,10 +86,12 @@ class AdminPsikologController extends Controller
      */
     public function edit(Psikolog $psikolog)
     {
+
         return view('admin.psikolog.edit', [
             'title' => 'MAMHI | Data Psikolog',
             'page' => 'psikolog',
             'psikolog' => $psikolog,
+            'diagnosiss' => Diagnosis::where('psikolog_id', $psikolog->id)->get(),
         ]);
     }
 
