@@ -37,7 +37,7 @@
                                 @foreach ($ruangans as $ruangan)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $ruangan->ruangan- ?? '-' }}</td>
+                                        <td>{{ $ruangan->ruangan ?? '-' }}</td>
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <a href="#" class="badge bg-success d-inline-block editButton"  data-bs-toggle="modal" data-bs-target="#editModal" 

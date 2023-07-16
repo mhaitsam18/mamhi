@@ -27,10 +27,10 @@ class DatabaseSeeder extends Seeder
         // ]);'
 
         User::create([
-            'name' => 'Zitha',
-            'email' => 'zitha@gmail.com',
-            'username' => 'zitha',
-            'tanggal_lahir' => '2022-02-18',
+            'name' => 'Derisa',
+            'email' => 'derisa@gmail.com',
+            'username' => 'derisa',
+            'tanggal_lahir' => '2002-09-29',
             'no_hp' => '+62 813-8087-6176',
             'jenis_kelamin' => 'Perempuan',
             'alamat' => 'Bandung',
@@ -40,10 +40,10 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::create([
-            'name' => 'Derisa',
-            'email' => 'derisa@gmail.com',
-            'username' => 'derisa',
-            'tanggal_lahir' => '2022-02-18',
+            'name' => 'Zitha',
+            'email' => 'zitha@gmail.com',
+            'username' => 'zitha',
+            'tanggal_lahir' => '2003-06-27',
             'no_hp' => '+62 813-8087-6176',
             'jenis_kelamin' => 'Perempuan',
             'alamat' => 'Bandung',
