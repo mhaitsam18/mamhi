@@ -57,6 +57,7 @@ License: For each use you must have a valid license purchased only from above li
             color: #F29F27;
         }
     </style>
+    @yield('style')
 </head>
 
 <body>
@@ -117,7 +118,7 @@ License: For each use you must have a valid license purchased only from above li
     <script src="/assets-nobleui/js/dashboard-light.js"></script>
     <script src="/assets-nobleui/js/datepicker.js"></script>
     <!-- End custom js for this page -->
-
+    @yield('script')
 </body>
 
 </html>
