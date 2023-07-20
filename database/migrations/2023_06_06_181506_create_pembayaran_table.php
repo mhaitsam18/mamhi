@@ -17,11 +17,11 @@ return new class extends Migration
             $table->foreignId('konsultasi_id')->nullable()
                 ->constrained('konsultasi')
                 ->onUpdate('cascade')
-                ->onDelete('cascade');
+                ->nullOnDelete();
             $table->foreignId('psikotes_id')->nullable()
                 ->constrained('psikotes')
                 ->onUpdate('cascade')
-                ->onDelete('cascade');
+                ->nullOnDelete();
             $table->float('nominal')->nullable();
             $table->string('bukti')->nullable();
             $table->timestamps();

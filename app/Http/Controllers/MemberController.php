@@ -15,4 +15,11 @@ class MemberController extends Controller
             'page' => 'index'
         ]);
     }
+    public function tentangKami()
+    {
+        return view('member.tentang-kami', [
+            'title' => 'Dashboard',
+            'page' => 'index'
+        ]);
+    }
 }

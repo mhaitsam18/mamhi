@@ -16,17 +16,13 @@ return new class extends Migration
             $table->foreignId('member_id')->nullable()
                 ->constrained('member')
                 ->onUpdate('cascade')
-                ->onDelete('cascade');
+                ->nullOnDelete();
             $table->foreignId('psikolog_id')->nullable()
                 ->constrained('psikolog')
                 ->onUpdate('cascade')
                 ->nullOnDelete();
-
-            
-
             $table->string('keluhan')->nullable();
             $table->timestamp('booked_at')->nullable();
-            
             $table->date('tanggal_konsultasi')->nullable();
             $table->foreignId('jadwal_id')->nullable()
                 ->constrained('jadwal')

@@ -11,7 +11,12 @@ use App\Http\Controllers\AdminRuanganController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MemberArtikelController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\MemberKonsultasiController;
+use App\Http\Controllers\MemberPodcastController;
+use App\Http\Controllers\MemberPsikologController;
+use App\Http\Controllers\MemberPsikotesController;
 use App\Http\Controllers\PsikologController;
 use Illuminate\Support\Facades\Route;
 
@@ -79,7 +84,29 @@ Route::middleware('auth')->group(function () {
             Route::get('/', [MemberController::class, 'index'])->name('member.index');
             Route::get('/index', [MemberController::class, 'index'])->name('member.index');
             Route::get('/profile', [MemberController::class, 'profile'])->name('member.profile');
+            Route::get('/tentang-kami', [MemberController::class, 'tentangKami'])->name('member.tentang-kami.index');
+            Route::get('/dokter-kami', [MemberPsikologController::class, 'index'])->name('member.dokter-kami.index');
+            Route::prefix('psikotes')->group(function () {
+                Route::get('/', [MemberPsikotesController::class, 'index'])->name('member.psikotes.index');
+            });
+            Route::prefix('konsultasi')->group(function () {
+                Route::get('/', [MemberKonsultasiController::class, 'index'])->name('member.konsultasi.index');
+            });
+            Route::prefix('podcast')->group(function () {
+                Route::get('/', [MemberPodcastController::class, 'index'])->name('member.podcast.index');
+            });
+            Route::prefix('podcast')->group(function () {
+                Route::get('/', [MemberPodcastController::class, 'index'])->name('member.podcast.index');
+            });
+            Route::prefix('psikolog')->group(function () {
+                Route::get('/', [MemberPsikologController::class, 'index'])->name('member.psikolog.index');
+            });
+            Route::prefix('artikel')->group(function () {
+                Route::get('/', [MemberArtikelController::class, 'index'])->name('member.artikel.index');
+                Route::get('/{artikel}', [MemberArtikelController::class, 'show'])->name('member.artikel.index');
+            });
         });
+        
     });
     Route::middleware('psikolog')->group(function () {
         Route::prefix('psikolog')->group(function () {

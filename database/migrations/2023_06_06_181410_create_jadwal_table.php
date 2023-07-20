@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('psikolog_id')->nullable()
                 ->constrained('psikolog')
                 ->onUpdate('cascade')
-                ->nullOnDelete();
+                ->onDelete('cascade');
             $table->foreignId('ruangan_id')->nullable()
                 ->constrained('ruangan')
                 ->onUpdate('cascade')

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('psikotes_id')->nullable()
                 ->constrained('psikotes')
                 ->onUpdate('cascade')
-                ->nullOnDelete();
+                ->onDelete('cascade');
             $table->string('dokumen_soal')->nullable();
             $table->string('dokumen_jawaban')->nullable();
             $table->string('dokumen_hasil')->nullable();

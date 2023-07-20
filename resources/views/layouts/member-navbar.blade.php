@@ -210,25 +210,25 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/podcast">
+                    <a class="nav-link" href="/member/podcast">
                         <i class="link-icon" data-feather="headphones"></i>
                         <span class="menu-title">Podcast</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/dokter-kami">
+                    <a class="nav-link" href="/member/dokter-kami">
                         <i class="link-icon" data-feather="users"></i>
                         <span class="menu-title">Dokter Kami</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/artikel">
+                    <a class="nav-link" href="/member/artikel">
                         <i class="link-icon" data-feather="book-open"></i>
                         <span class="menu-title">Artikel</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/tentang-kami">
+                    <a class="nav-link" href="/member/tentang-kami">
                         <i class="link-icon" data-feather="info"></i>
                         <span class="menu-title">Tentang Kami</span>
                     </a>

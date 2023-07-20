@@ -4,11 +4,13 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Artikel;
 use App\Models\Jadwal;
 use App\Models\Member;
 use App\Models\Psikolog;
 use App\Models\Ruangan;
 use App\Models\User;
+use App\Models\Podcast;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -812,6 +814,35 @@ class DatabaseSeeder extends Seeder
             'hari' => 'Sabtu',
             'jam_mulai' => '15:00',
             'jam_selesai' => '16:20',
+        ]);
+
+        Podcast::create([
+            'judul' => '“AKU GAK MAU KAYAK PEREMPUAN-PEREMPUAN PADA UMUMNYA !” KUPAS FENOMENA PICK ME GIRL',
+            'link' => 'WGwXEOG-9m4'
+        ]);
+        Podcast::create([
+            'judul' => 'AKU TAK PERLU BAHASA APAPUN, KECUALI BAHASA CINTA UNTUK MEMAHAMIMU',
+            'link' => 'IouNmFMZ65c'
+        ]);
+        Podcast::create([
+            'judul' => 'TAHU GITU AMBIL JURUSAN INI AJA, ATAU MALAH GA USAH KULIAH SEKALIAN!!',
+            'link' => 'RKKcG0VBB3Q'
+        ]);
+        Podcast::create([
+            'judul' => 'PAUD & ACUAN AKADEMIK CALISTUNG ‘ADIL’ KAH UNTUK ANAK??',
+            'link' => 'zNINH0-4ECw'
+        ]);
+        Artikel::create([
+            'judul' => 'Depresi Pada Anak dan Remaja',
+            'kutipan' => 'Depresi pada anak dan remaja dapat timbul dalam bentuk ketidakbahagiaan atau kondisi mudah tersinggung yang berlangsung lama.',
+            'konten' => 'Depresi pada anak dan remaja dapat timbul dalam bentuk ketidakbahagiaan atau kondisi mudah tersinggung yang berlangsung lama. Hal ini cukup umum dialami anak berusia pra-remaja dan remaja, tetapi sering kali tidak dikenali.<br>
+            Bagi sebagian anak, perasaan ini diekspresikan sebagai “tidak bahagia” atau “sedih”. Ada pula yang mengaku ingin melukai diri, bahkan mengakhiri hidupnya. Anak dan remaja yang mengalami depresi lebih berisiko menyakiti diri sendiri, sehingga ujaran-ujaran seperti ini harus selalu ditanggapi dengan serius.<br>
+            Anak yang terlihat sedih belum tentu depresi. Akan tetapi, jika kesedihan itu bertahan atau mengganggu aktivitas sosial, membuat anak kehilangan minat, menghambat prestasi di sekolah, atau mengganggu hubungannya dengan keluarga, bisa jadi ini berarti anak memerlukan dukungan dari tenaga profesional bidang kesehatan mental.<br>
+            Ingat, hanya tenaga kesehatan profesional yang bisa mendiagnosis depresi, jadi jangan ragu untuk meminta nasihat dari dokter Anda jika khawatir tentang kondisi anak.',
+            'slug' => 'depresi-pada-anak-dan-remaja',
+            'author_id' => '1',
+            'thumbnail' => 'artikel/mamhi-artikel.jpg',
+            'views' => '0',
         ]);
     }
 }

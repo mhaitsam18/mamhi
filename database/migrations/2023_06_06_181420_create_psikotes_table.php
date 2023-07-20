@@ -16,19 +16,16 @@ return new class extends Migration
             $table->foreignId('member_id')->nullable()
                 ->constrained('member')
                 ->onUpdate('cascade')
-                ->onDelete('cascade');
+                ->nullOnDelete();
             $table->foreignId('psikolog_id')->nullable()
                 ->constrained('psikolog')
                 ->onUpdate('cascade')
-                ->onDelete('cascade');
-                
+                ->nullOnDelete();
             $table->string('nomor_peserta')->nullable()->unique();
             $table->timestamp('booked_at')->nullable();
-
             $table->date('tanggal_psikotes')->nullable();
             $table->string('jenis_psikotes')->nullable();
             $table->string('kebutuhan')->nullable();
-
             $table->foreignId('jadwal_id')->nullable()
                 ->constrained('jadwal')
                 ->onUpdate('cascade')

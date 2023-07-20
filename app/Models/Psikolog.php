@@ -27,6 +27,10 @@ class Psikolog extends Model
     {
         return $this->hasMany(Jadwal::class)->withTrashed();
     }
+    public function keahlian()
+    {
+        return $this->hasMany(Keahlian::class);
+    }
     
     public function konsultasi()
     {

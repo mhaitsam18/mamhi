@@ -52,6 +52,11 @@ class User extends Authenticatable
         return $this->hasMany(Member::class)->withTrashed();
     }
 
+    public function artikel()
+    {
+        return $this->hasMany(Artikel::class, 'author_id')->withTrashed();
+    }
+
     public function psikolog()
     {
         return $this->hasMany(Psikolog::class)->withTrashed();

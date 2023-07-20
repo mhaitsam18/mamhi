@@ -7,6 +7,7 @@
 	<!-- End plugin css for this page -->
 @endsection
 @section('content')
+<div class="page-content">
     <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin mt-3">
         <div>
             <h4 class="mb-3 mb-md-0 color-mamhi" style="font-style: italic">Your mental health is a priority</h4>
@@ -63,7 +64,13 @@
                             <h5 class="text-warning">CV MAMHI</h5>
                             {{-- <h5 class="text-warning"></h5> --}}
                             <hr>
-                            <p class="text-warning">Yuk kenali lebih jauh 10+ <br>Psikolg Profesional kami</p>
+                            <p class="text-warning mb-3">Yuk kenali lebih jauh 10+ <br>Psikolg Profesional kami</p>
+                            <ul>
+                                <li><a href="https://instagram.com/biro.psikologi_mamhi" class="text-dark"><i class="mb-1 text-dark ms-1 icon-sm" data-feather="instagram"></i> biro.psikologi_mamhi</a></li>
+                                <li><a href="https://www.facebook.com/biropsikologimamhi" class="text-dark"><i class="mb-1 text-dark ms-1 icon-sm" data-feather="facebook"></i> biro psikologi mamhi</a></li>
+                                <li><a href="https://www.tiktok.com/@mamhiofficial" class="text-dark"><svg xmlns="http://www.w3.org/2000/svg" class="mb-1 text-dark ms-1 icon-sm" height="1em" viewBox="0 0 448 512"><path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/></svg> mamhiofficial</a></li>
+                                <li><a href="https://g.co/kgs/ejWm9R" class="text-dark"><i class="mb-1 text-dark ms-1 icon-sm" data-feather="map-pin"></i> Ruko R4 BCV II, Jl. Pasir Impun, Karang Pamulang, Mandalajati, Bandung City, West Java 40195</a></li>
+                            </ul>
                         </div>
                         <div class="col-lg-9">
                             <div class="owl-carousel owl-theme owl-auto-play">
@@ -102,6 +109,7 @@
             </div>
         </div>
     </div>
+</div>
 @endsection
 @section('script')
 	<!-- Plugin js for this page -->
