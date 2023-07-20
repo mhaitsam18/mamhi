@@ -12,7 +12,10 @@ class MemberPsikotesController extends Controller
      */
     public function index()
     {
-        //
+        return view('member.psikotes.index', [
+            'title' => 'MAMHI | Psikotes',
+            'page' => 'psikotes',
+        ]);
     }
 
     /**

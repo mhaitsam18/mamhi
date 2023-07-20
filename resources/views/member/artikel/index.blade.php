@@ -22,7 +22,7 @@
                                 <div class="col-lg-6">
                                     <h3 class="">{{ $artikel->judul }}</h3>
                                     <p class="mb-3" style="text-align: justify;">{{ $artikel->kutipan }}</p>
-                                    <a href="/member/artikel/{{ $artikel->id }}" class="btn btn-primary btn-sm">baca selengkapnya</a>
+                                    <a href="/member/artikel/{{ $artikel->id }}" class="btn btn-warning btn-sm">baca selengkapnya</a>
                                 </div>
                             </div>
                         @endforeach

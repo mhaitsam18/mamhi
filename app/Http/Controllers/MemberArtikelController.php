@@ -15,7 +15,7 @@ class MemberArtikelController extends Controller
         return view('member.artikel.index', [
             'artikels' => Artikel::all(),
             'title' => 'Artikel',
-            'page' => 'index'
+            'page' => 'artikel'
         ]);
     }
 
@@ -43,7 +43,7 @@ class MemberArtikelController extends Controller
         return view('member.artikel.show', [
             'artikel' => $artikel,
             'title' => $artikel->judul,
-            'page' => 'index'
+            'page' => 'artikel'
         ]);
     }
 

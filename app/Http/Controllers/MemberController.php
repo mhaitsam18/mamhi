@@ -19,7 +19,7 @@ class MemberController extends Controller
     {
         return view('member.tentang-kami', [
             'title' => 'Dashboard',
-            'page' => 'index'
+            'page' => 'tentang-kami'
         ]);
     }
 }

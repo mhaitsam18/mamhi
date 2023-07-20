@@ -12,7 +12,10 @@ class MemberKonsultasiController extends Controller
      */
     public function index()
     {
-        //
+        return view('member.konsultasi.index', [
+            'title' => 'MAMHI | konsultasi',
+            'page' => 'konsultasi',
+        ]);
     }
 
     /**

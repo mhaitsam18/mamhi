@@ -15,7 +15,7 @@ class MemberPodcastController extends Controller
         return view('member.podcast.index', [
             'podcasts' => Podcast::all(),
             'title' => 'Podcast',
-            'page' => 'index'
+            'page' => 'podcast'
         ]);
     }
 
