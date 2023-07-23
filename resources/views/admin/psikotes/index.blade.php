@@ -181,7 +181,7 @@
                         <select name="jenis_psikotes_id" class="form-select @error('jenis_psikotes_id') is-invalid @enderror" id="jenis_psikotes_id" value="">
                             <option value="" selected disabled>Pilih Jenis Psikotes</option>
                             @foreach ($jenis_psikotess as $jenis_psikotes)
-                                <option value="{{ $jenis_psikotes->id }}" @selected(old('jenis_psikotes_id') == $jenis_psikotes->id)>{{ $jenis_psikotes->jenis_psikotes }}</option>
+                                <option value="{{ $jenis_psikotes->id }}" @selected({{ old('jenis_psikotes_id') == $jenis_psikotes->id }})>{{ $jenis_psikotes->jenis_psikotes }}</option>
                             @endforeach
                         </select>
                         @error('jenis_psikotes_id')
@@ -300,7 +300,7 @@
                         <select name="jenis_psikotes_id" class="form-select @error('jenis_psikotes_id') is-invalid @enderror" id="jenis_psikotes_id" value="">
                             <option value="" selected disabled>Pilih Jenis Psikotes</option>
                             @foreach ($jenis_psikotess as $jenis_psikotes)
-                                <option value="{{ $jenis_psikotes->id }}" @selected(old('jenis_psikotes_id') == $jenis_psikotes->id)>{{ $jenis_psikotes->jenis_psikotes }}</option>
+                                <option value="{{ $jenis_psikotes->id }}" @selected({{ old('jenis_psikotes_id') == $jenis_psikotes->id }})>{{ $jenis_psikotes->jenis_psikotes }}</option>
                             @endforeach
                         </select>
                         @error('jenis_psikotes_id')

@@ -17,6 +17,6 @@ class KomponenNilai extends Model
 
     public function nilai_komponen()
     {
-        return $this->hasMany(NilaiKomponen::class);
+        return $this->hasMany(NilaiKomponen::class)->withTrashed();
     }
 }

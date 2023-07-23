@@ -49,16 +49,16 @@ class User extends Authenticatable
 
     public function member()
     {
-        return $this->hasOne(Member::class);
+        return $this->hasOne(Member::class)->withTrashed();
     }
 
     public function artikel()
     {
-        return $this->hasMany(Artikel::class, 'author_id');
+        return $this->hasMany(Artikel::class, 'author_id')->withTrashed();
     }
 
     public function psikolog()
     {
-        return $this->hasOne(Psikolog::class);
+        return $this->hasOne(Psikolog::class)->withTrashed();
     }
 }

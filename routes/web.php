@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AdminDiagnosisController;
 use App\Http\Controllers\AdminJadwalController;
 use App\Http\Controllers\AdminKomponenNilaiController;
 use App\Http\Controllers\AdminKonsultasiController;
@@ -54,9 +53,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/file/tmp-upload', [FileController::class, 'tmpUpload'])->name('tmp-upload');
     Route::delete('/file/tmp-delete', [FileController::class, 'tmpDelete'])->name('tmp-delete');
 
-    Route::post('/file/dokumen-upload', [FileController::class, 'dokumenUpload'])->name('dokumen-upload');
-    Route::delete('/file/dokumen-delete', [FileController::class, 'dokumenDelete'])->name('dokumen-delete');
-
     Route::put('update-photo/{user}', [AuthController::class, 'updatePhoto'])->name('admin.psikolog-update-foto');
     Route::middleware('admin')->group(function () {
         Route::prefix('admin')->group(function () {
@@ -77,18 +73,13 @@ Route::middleware('auth')->group(function () {
             // Route::get('/member', [AdminMemberController::class, 'index'])->name('admin.member');
             Route::get('/jadwal-praktik', [AdminJadwalController::class, 'jadwalPraktik'])->name('admin.jadwal-praktik');
             Route::get('/hasil', [AdminController::class, 'hasil'])->name('admin.hasil');
-
-
-            Route::get('/konsultasi/diagnosis/{konsultasi}', [AdminDiagnosisController::class, 'konsultasi'])->name('admin.psikolog-update-foto');
             Route::get('/konsultasi', [AdminKonsultasiController::class, 'index'])->name('admin.konsultasi');
-            Route::resource('konsultasi', AdminKonsultasiController::class);
             Route::get('/psikotes', [AdminPsikotesController::class, 'index'])->name('admin.psikotes');
-            
-            
-            
+
+
+
             Route::resource('ruangan', AdminRuanganController::class);
             Route::resource('komponen-nilai', AdminKomponenNilaiController::class);
-            Route::resource('diagnosis', AdminDiagnosisController::class);
         });
     });
     Route::middleware('member')->group(function () {

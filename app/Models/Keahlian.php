@@ -19,7 +19,7 @@ class Keahlian extends Model
 
     public function psikolog()
     {
-        return $this->belongsTo(Psikolog::class, 'psikolog_id');
+        return $this->belongsTo(Psikolog::class, 'psikolog_id')->withTrashed();
     }
 
 

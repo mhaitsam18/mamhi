@@ -20,11 +20,11 @@ class NilaiPsikotes extends Model
 
     public function psikotes()
     {
-        return $this->belongsTo(Psikotes::class, 'psikotes_id');
+        return $this->belongsTo(Psikotes::class, 'psikotes_id')->withTrashed();
     }
     public function nilai_komponen()
     {
-        return $this->hasMany(NilaiKomponen::class);
+        return $this->hasMany(NilaiKomponen::class)->withTrashed();
     }
 
 
