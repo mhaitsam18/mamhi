@@ -2,6 +2,9 @@
 @extends('layouts.admin-main')
 
 @section('content')
+@php
+    use Carbon\Carbon;
+@endphp
     <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
         <div>
             <h4 class="mb-3 mb-md-0">{{ $title }}</h4>
@@ -46,8 +49,8 @@
                                         <td>{{ $konsultasi->member->user->name }}</td>
                                         <td>{{ $konsultasi->psikolog->user->name }}</td>
                                         <td>{{ $konsultasi->keluhan }}</td>
-                                        <td>{{ date('j F Y H:is', strtotime($konsultasi->booked_at)) }}</td>
-                                        <td>{{ date('j F Y H:is', strtotime($konsultasi->tanggal_konsultasi)) }}</td>
+                                        <td>{{  Carbon::parse($konsultasi->booked_at)->isoFormat('LLL')  }}</td>
+                                        <td>{{ Carbon::parse($konsultasi->tanggal_konsultasi)->isoFormat('LL') }}</td>
                                         <td>{{ substr($konsultasi->jadwal->jam_mulai, 0, 5).' - '.substr($konsultasi->jadwal->jam_selesai, 0, 5) }}</td>
                                         <td>{{ $konsultasi->status }}</td>
                                         <td>
@@ -65,7 +68,7 @@
                                                 <form action="/admin/konsultasi/{{ $konsultasi->id }}" method="post">
                                                     @method('delete')
                                                     @csrf
-                                                    <button type="submit" class="badge bg-danger d-inline-block ms-2 mb-1 badge-a tombol-hapus">Hapus</button>
+                                                    <button type="submit" class="badge bg-success d-inline-block ms-2 mb-1 badge-a tombol-hapus">Hapus</button>
                                                 </form>
                                             </div>
                                         </td>

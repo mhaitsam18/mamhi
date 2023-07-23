@@ -38,7 +38,7 @@
                                     <li>Pelatihan dan Pengembangan</li>
                                 </ul>
                                 <a class="btn btn-sm btn-warning mb-3 me-1" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Konsultasi sekarang</a>
-                                <a href="/member/konsultasi-saya" class="btn btn-sm btn-info  mb-3 me-3">Lihat Konsultasi Saya</a>
+                                <a href="/member/konsultasi/konsultasi-saya" class="btn btn-sm btn-info  mb-3 me-3">Lihat Konsultasi Saya</a>
                                 <div class="row">
                                     <div class="collapse multi-collapse" id="multiCollapseExample1">
                                         <div class="card card-body">

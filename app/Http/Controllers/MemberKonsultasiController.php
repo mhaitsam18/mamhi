@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Konsultasi;
+use App\Models\Pembayaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -16,6 +17,15 @@ class MemberKonsultasiController extends Controller
         return view('member.konsultasi.index', [
             'title' => 'MAMHI | konsultasi',
             'page' => 'konsultasi',
+        ]);
+    }
+    
+    public function list()
+    {
+        return view('member.konsultasi.list', [
+            'title' => 'MAMHI | konsultasi',
+            'page' => 'konsultasi',
+            'konsultasis' => Konsultasi::where('member_id', auth()->user()->member->id)->get(),
         ]);
     }
     
@@ -76,7 +86,12 @@ class MemberKonsultasiController extends Controller
     }
     public function tagihan(Konsultasi $konsultasi)
     {
-        # code...
+        return view('member.konsultasi.tagihan', [
+            'title' => 'MAMHI | Tagihan',
+            'page' => 'konsultasi',
+            'konsultasi' => $konsultasi,
+            'pembayaran' => Pembayaran::where('konsultasi_id', $konsultasi->id)->first(),
+        ]);
     }
 
     /**

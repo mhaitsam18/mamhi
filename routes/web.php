@@ -15,6 +15,7 @@ use App\Http\Controllers\MemberArtikelController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\MemberJadwalController;
 use App\Http\Controllers\MemberKonsultasiController;
+use App\Http\Controllers\MemberPembayaranController;
 use App\Http\Controllers\MemberPodcastController;
 use App\Http\Controllers\MemberPsikologController;
 use App\Http\Controllers\MemberPsikotesController;
@@ -92,18 +93,25 @@ Route::middleware('auth')->group(function () {
             Route::get('/psikolog/{psikolog}', [MemberPsikologController::class, 'show'])->name('member.psikolog.show');
             Route::prefix('psikotes')->group(function () {
                 Route::get('/', [MemberPsikotesController::class, 'index'])->name('member.psikotes.index');
+                Route::get('/psikotes-saya', [MemberPsikotesController::class, 'list'])->name('member.psikotes.psikotes-saya');
                 Route::get('/pilih-tanggal', [MemberPsikotesController::class, 'pilihTanggal'])->name('member.psikotes.pilih-tanggal');
-                Route::post('/', [MemberPsikotesController::class, 'store'])->name('member.psikotes.index');
-            });
-            Route::prefix('jadwal')->group(function () {
-                Route::get('/', [MemberJadwalController::class, 'index'])->name('member.jadwal.index');
-                Route::post('/pilih-jadwal', [MemberJadwalController::class, 'pilihJadwal'])->name('member.jadwal.pilih-jadwal');
+                Route::post('/', [MemberPsikotesController::class, 'store'])->name('member.psikotes.store');
             });
             Route::prefix('konsultasi')->group(function () {
                 Route::get('/', [MemberKonsultasiController::class, 'index'])->name('member.konsultasi.index');
+                Route::get('/konsultasi-saya', [MemberKonsultasiController::class, 'list'])->name('member.konsultasi.konsultasi-saya');
                 Route::get('/pilih-tanggal', [MemberKonsultasiController::class, 'pilihTanggal'])->name('member.konsultasi.pilih-tanggal');
-                Route::post('/', [MemberKonsultasiController::class, 'store'])->name('member.konsultasi.index');
+                Route::post('/', [MemberKonsultasiController::class, 'store'])->name('member.konsultasi.store');
                 Route::get('/tagihan/{konsultasi}', [MemberKonsultasiController::class, 'tagihan'])->name('member.konsultasi.tagihan');
+            });
+            Route::prefix('pembayaran')->group(function () {
+                Route::get('/', [MemberPembayaranController::class, 'index'])->name('member.pembayaran.index');
+                Route::post('/', [MemberPembayaranController::class, 'store'])->name('member.pembayaran.store');
+            });
+            
+            Route::prefix('jadwal')->group(function () {
+                Route::get('/', [MemberJadwalController::class, 'index'])->name('member.jadwal.index');
+                Route::post('/pilih-jadwal', [MemberJadwalController::class, 'pilihJadwal'])->name('member.jadwal.pilih-jadwal');
             });
             Route::prefix('podcast')->group(function () {
                 Route::get('/', [MemberPodcastController::class, 'index'])->name('member.podcast.index');
