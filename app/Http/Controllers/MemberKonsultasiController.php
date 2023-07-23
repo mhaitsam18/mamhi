@@ -17,6 +17,14 @@ class MemberKonsultasiController extends Controller
             'page' => 'konsultasi',
         ]);
     }
+    
+    public function pilihJadwal()
+    {
+        return view('member.konsultasi.pilih-jadwal', [
+            'title' => 'MAMHI | konsultasi',
+            'page' => 'konsultasi',
+        ]);
+    }
 
     /**
      * Show the form for creating a new resource.

@@ -37,7 +37,25 @@
                                     <li>Asesmen</li>
                                     <li>Pelatihan dan Pengembangan</li>
                                 </ul>
-                                <a href="/member/konsultasi/create" class="btn btn-sm btn-warning">Konsultasi sekarang</a>
+                                <a class="btn btn-sm btn-warning" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Konsultasi sekarang</a>
+                                <div class="row">
+                                    <div class="collapse multi-collapse" id="multiCollapseExample1">
+                                        <div class="card card-body">
+                                            <div class="input-group mb-3">
+                                                <input type="date" class="form-control" name="tanggal" id="tanggal" placeholder="Pilih Tanggal" aria-label="Pilih Tanggal" aria-describedby="button-addon2">
+                                                <button class="btn btn-outline-secondary" type="button" id="button-addon2" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Cek Jadwal</button>  
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                                
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="collapse multi-collapse" id="multiCollapseExample2">
+                                <div class="card card-body">
+                                    <h3>Pilih Jadwal Tersedia</h3>
+                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                                </div>
                             </div>
                         </div>
                     </div>

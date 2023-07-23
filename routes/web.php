@@ -94,6 +94,7 @@ Route::middleware('auth')->group(function () {
             });
             Route::prefix('konsultasi')->group(function () {
                 Route::get('/', [MemberKonsultasiController::class, 'index'])->name('member.konsultasi.index');
+                Route::get('/pilih-jadwal', [MemberKonsultasiController::class, 'pilihJadwal'])->name('member.konsultasi.pilih-jadawl');
             });
             Route::prefix('podcast')->group(function () {
                 Route::get('/', [MemberPodcastController::class, 'index'])->name('member.podcast.index');
