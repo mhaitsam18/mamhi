@@ -6,7 +6,7 @@
                     MAM<span>HI</span>
                 </a>
                 <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
+                    {{-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="messageDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i data-feather="mail"></i>
                         </a>
@@ -81,8 +81,8 @@
                                 <a href="javascript:;">View all</a>
                             </div>
                         </div>
-                    </li>
-                    <li class="nav-item dropdown">
+                    </li> --}}
+                    {{-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="notificationDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i data-feather="bell"></i>
                             <div class="indicator">
@@ -145,7 +145,7 @@
                                 <a href="javascript:;">View all</a>
                             </div>
                         </div>
-                    </li>
+                    </li> --}}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img class="wd-30 ht-30 rounded-circle" src="{{ asset("storage/".auth()->user()->foto) }}" alt="profile">
@@ -216,17 +216,17 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/member/dokter-kami">
+                    <a class="nav-link" href="/member/psikolog-kami">
                         <i class="link-icon" data-feather="users"></i>
-                        <span class="menu-title">Dokter Kami</span>
+                        <span class="menu-title">Psikolog Kami</span>
                     </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link" href="/member/artikel">
                         <i class="link-icon" data-feather="book-open"></i>
                         <span class="menu-title">Artikel</span>
                     </a>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <a class="nav-link" href="/member/tentang-kami">
                         <i class="link-icon" data-feather="info"></i>

@@ -19,7 +19,7 @@
                     <span class="link-title">Beranda</span>
                 </a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a href="/admin/jadwal-praktik" class="nav-link @if($page == 'jadwal-praktik') active @endif">
                     <i class="link-icon" data-feather="calendar"></i>
                     <span class="link-title">Jadwal</span>
@@ -30,7 +30,7 @@
                     <i class="link-icon" data-feather="file"></i>
                     <span class="link-title">Hasil</span>
                 </a>
-            </li>
+            </li> --}}
             <li class="nav-item">
                 <a class="nav-link @if($page == 'index') active @endif>" data-bs-toggle="collapse" href="#datas" role="button" aria-expanded="false" aria-controls="datas">
                     <i class="link-icon" data-feather="database"></i>

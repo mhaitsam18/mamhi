@@ -57,6 +57,7 @@ Route::middleware('auth')->group(function () {
 
             Route::get('/', [AdminController::class, 'index'])->name('admin');
             Route::get('/profile', [AdminController::class, 'profile'])->name('admin.profile');
+            Route::put('/profile', [AdminController::class, 'profileUpdate'])->name('admin.profile.update');
             Route::get('/index', [AdminController::class, 'index'])->name('admin.index');
             Route::resource('jadwal', AdminJadwalController::class);
             Route::put('psikolog/update-photo/{user}', [AdminPsikologController::class, 'updatePhoto'])->name('admin.psikolog-update-foto');
@@ -84,8 +85,10 @@ Route::middleware('auth')->group(function () {
             Route::get('/', [MemberController::class, 'index'])->name('member.index');
             Route::get('/index', [MemberController::class, 'index'])->name('member.index');
             Route::get('/profile', [MemberController::class, 'profile'])->name('member.profile');
+            Route::put('/profile', [AdminController::class, 'profileUpdate'])->name('member.profile.update');
             Route::get('/tentang-kami', [MemberController::class, 'tentangKami'])->name('member.tentang-kami.index');
-            Route::get('/dokter-kami', [MemberPsikologController::class, 'index'])->name('member.dokter-kami.index');
+            Route::get('/psikolog-kami', [MemberPsikologController::class, 'index'])->name('member.psikolog-kami.index');
+            Route::get('/psikolog/{psikolog}', [MemberPsikologController::class, 'show'])->name('member.psikolog.show');
             Route::prefix('psikotes')->group(function () {
                 Route::get('/', [MemberPsikotesController::class, 'index'])->name('member.psikotes.index');
             });

@@ -13,7 +13,7 @@ class MemberPsikologController extends Controller
     public function index()
     {
         return view('member.psikolog.index', [
-            'title' => 'MAMHI | Dokter Kami',
+            'title' => 'MAMHI | Psikolog Kami',
             'page' => 'psikolog',
             'psikologs' => Psikolog::all(),
         ]);
@@ -40,7 +40,11 @@ class MemberPsikologController extends Controller
      */
     public function show(Psikolog $psikolog)
     {
-        //
+        return view('member.psikolog.show', [
+            'title' => 'Profile '.$psikolog->user->name,
+            'page' => 'psikolog',
+            'psikolog' => $psikolog,
+        ]);
     }
 
     /**
