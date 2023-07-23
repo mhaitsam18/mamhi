@@ -21,11 +21,11 @@ class Pembayaran extends Model
 
     public function psikotes()
     {
-        return $this->belongsTo(Psikotes::class, 'psikotes_id')->withTrashed();
+        return $this->belongsTo(Psikotes::class, 'psikotes_id');
     }
 
     public function konsultasi()
     {
-        return $this->belongsTo(Konsultasi::class, 'konsultasi_id')->withTrashed();
+        return $this->belongsTo(Konsultasi::class, 'konsultasi_id');
     }
 }

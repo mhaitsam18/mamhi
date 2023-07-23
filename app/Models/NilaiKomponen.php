@@ -19,11 +19,11 @@ class NilaiKomponen extends Model
 
     public function komponen_nilai()
     {
-        return $this->belongsTo(KomponenNilai::class, 'komponen_nilai_id')->withTrashed();
+        return $this->belongsTo(KomponenNilai::class, 'komponen_nilai_id');
     }
 
     public function nilai_psikotes()
     {
-        return $this->belongsTo(NilaiPsikotes::class, 'nilai_psikotes_id')->withTrashed();
+        return $this->belongsTo(NilaiPsikotes::class, 'nilai_psikotes_id');
     }
 }

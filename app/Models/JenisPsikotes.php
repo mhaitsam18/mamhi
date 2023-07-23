@@ -20,6 +20,6 @@ class JenisPsikotes extends Model
 
     public function psikotes()
     {
-        return $this->hasMany(Psikotes::class)->withTrashed();
+        return $this->hasMany(Psikotes::class);
     }
 }

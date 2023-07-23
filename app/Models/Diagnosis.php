@@ -20,7 +20,7 @@ class Diagnosis extends Model
 
     public function konsultasi()
     {
-        return $this->belongsTo(Konsultasi::class, 'konsultasi_id')->withTrashed();
+        return $this->belongsTo(Konsultasi::class, 'konsultasi_id');
     }
     
 }

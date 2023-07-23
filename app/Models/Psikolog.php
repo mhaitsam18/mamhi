@@ -20,12 +20,12 @@ class Psikolog extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id')->withTrashed();
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function jadwal()
     {
-        return $this->hasMany(Jadwal::class)->withTrashed();
+        return $this->hasMany(Jadwal::class);
     }
     public function keahlian()
     {
@@ -34,10 +34,10 @@ class Psikolog extends Model
     
     public function konsultasi()
     {
-        return $this->hasMany(Konsultasi::class)->withTrashed();
+        return $this->hasMany(Konsultasi::class);
     }
     public function psikotes()
     {
-        return $this->hasMany(Psikotes::class)->withTrashed();
+        return $this->hasMany(Psikotes::class);
     }
 }

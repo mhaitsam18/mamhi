@@ -115,6 +115,7 @@ License: For each use you must have a valid license purchased only from above li
 
         </div>
     </div>
+    @yield('modal')
 
     <!-- core:js -->
     <script src="/assets-nobleui/vendors/core/core.js"></script>

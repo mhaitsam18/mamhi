@@ -55,6 +55,8 @@
                                         <td>{{ $konsultasi->status }}</td>
                                         <td>
                                             <div class="d-flex align-items-center">
+                                                <a href="/admin/konsultasi/diagnosis/{{ $konsultasi->id }}" class="badge bg-info me-2 d-inline-block"
+                                                >Diagnosis</a>
                                                 <a href="#" class="badge bg-success d-inline-block editButton"  data-bs-toggle="modal" data-bs-target="#editModal" 
                                                 data-id="{{ $konsultasi->id }}" 
                                                 data-psikolog_id="{{ $konsultasi->psikolog_id }}" 
@@ -68,7 +70,7 @@
                                                 <form action="/admin/konsultasi/{{ $konsultasi->id }}" method="post">
                                                     @method('delete')
                                                     @csrf
-                                                    <button type="submit" class="badge bg-success d-inline-block ms-2 mb-1 badge-a tombol-hapus">Hapus</button>
+                                                    <button type="submit" class="badge bg-danger d-inline-block ms-2 mb-1 badge-a tombol-hapus">Hapus</button>
                                                 </form>
                                             </div>
                                         </td>
