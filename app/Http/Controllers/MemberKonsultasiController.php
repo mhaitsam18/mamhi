@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Konsultasi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class MemberKonsultasiController extends Controller
 {
@@ -18,9 +19,9 @@ class MemberKonsultasiController extends Controller
         ]);
     }
     
-    public function pilihJadwal()
+    public function pilihTanggal()
     {
-        return view('member.konsultasi.pilih-jadwal', [
+        return view('member.konsultasi.pilih-tanggal', [
             'title' => 'MAMHI | konsultasi',
             'page' => 'konsultasi',
         ]);
@@ -39,7 +40,43 @@ class MemberKonsultasiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validasi data input dari form jika diperlukan
+        $validator = Validator::make($request->all(), [
+            'member_id' => 'required',
+            'psikolog_id' => 'required',
+            'jadwal_id' => 'required',
+            'tanggal' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->with('error', 'Terjadi kesalahan.')
+                ->withInput();
+        }
+        $konsultasi = Konsultasi::create([
+            'member_id' => $request->member_id,
+            'psikolog_id' => $request->psikolog_id,
+            'keluhan' => $request->keluhan,
+            'booked_at' => now(),
+            'tanggal_konsultasi' => $request->tanggal,
+            'jadwal_id' => $request->jadwal_id,
+            'status' => 'booking',
+        ]);
+
+        // Lakukan operasi lainnya sesuai kebutuhan
+        // ...
+
+        // Setelah proses berhasil, redirect atau tampilkan pesan sukses
+        if ($konsultasi) {
+            return redirect()->route('member.konsultasi.tagihan', ['konsultasi' => $konsultasi->id])->with('success', 'Booking berhasil.');
+        } else{
+            return redirect()->back()->with('error', 'Terjadi kesalahan.');
+        }
+    }
+    public function tagihan(Konsultasi $konsultasi)
+    {
+        # code...
     }
 
     /**

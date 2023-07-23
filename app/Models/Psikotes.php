@@ -18,12 +18,17 @@ class Psikotes extends Model
     protected $with = [
         'psikolog',
         'member',
-        'jadwal'
+        'jadwal',
+        'jenis_psikotes',
     ];
 
     public function member()
     {
         return $this->belongsTo(Member::class, 'member_id')->withTrashed();
+    }
+    public function jenis_psikotes()
+    {
+        return $this->belongsTo(JenisPsikotes::class, 'jenis_psikotes_id')->withTrashed();
     }
 
     public function psikolog()

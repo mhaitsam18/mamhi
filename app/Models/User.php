@@ -49,7 +49,7 @@ class User extends Authenticatable
 
     public function member()
     {
-        return $this->hasMany(Member::class)->withTrashed();
+        return $this->hasOne(Member::class)->withTrashed();
     }
 
     public function artikel()
@@ -59,6 +59,6 @@ class User extends Authenticatable
 
     public function psikolog()
     {
-        return $this->hasMany(Psikolog::class)->withTrashed();
+        return $this->hasOne(Psikolog::class)->withTrashed();
     }
 }

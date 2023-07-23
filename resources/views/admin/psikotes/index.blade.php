@@ -49,7 +49,7 @@
                                         <td>{{ $psikotes->member->user->name }}</td>
                                         <td>{{ $psikotes->psikolog->user->name }}</td>
                                         <td>{{ $psikotes->kebutuhan }}</td>
-                                        <td>{{ $psikotes->jenis_psikotes }}</td>
+                                        <td>{{ $psikotes->jenis_psikotes->jenis_psikotes }}</td>
                                         <td>{{ date('j F Y H:is', strtotime($psikotes->booked_at)) }}</td>
                                         <td>{{ date('j F Y H:is', strtotime($psikotes->tanggal_psikotes)) }}</td>
                                         <td>{{ substr($psikotes->jadwal->jam_mulai, 0, 5).' - '.substr($psikotes->jadwal->jam_selesai, 0, 5) }}</td>
@@ -64,7 +64,7 @@
                                                 data-kebutuhan="{{ $psikotes->kebutuhan }}" 
                                                 data-booked_at="{{ $psikotes->booked_at }}" 
                                                 data-tanggal_psikotes="{{ $psikotes->tanggal_psikotes }}" 
-                                                data-jenis_psikotes="{{ $psikotes->jenis_psikotes }}" 
+                                                data-jenis_psikotes_id="{{ $psikotes->jenis_psikotes_id }}" 
                                                 data-jadwal_id="{{ $psikotes->jadwal_id }}" 
                                                 data-status="{{ $psikotes->status }}" 
                                                 >Edit</a>
@@ -174,9 +174,14 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="jenis_psikotes" class="form-label">Jenis psikotes</label>
-                        <input type="date" name="jenis_psikotes" class="form-control @error('jenis_psikotes') is-invalid @enderror" id="jenis_psikotes" value="{{ old('jenis_psikotes') }}">
-                        @error('jenis_psikotes')
+                        <label for="jenis_psikotes_id" class="form-label">Jenis psikotes</label>
+                        <select name="jenis_psikotes_id" class="form-select @error('jenis_psikotes_id') is-invalid @enderror" id="jenis_psikotes_id" value="">
+                            <option value="" selected disabled>Pilih Jenis Psikotes</option>
+                            @foreach ($jenis_psikotess as $jenis_psikotes)
+                                <option value="{{ $jenis_psikotes->id }}" @selected({{ old('jenis_psikotes_id') == $jenis_psikotes->id }})>{{ $jenis_psikotes->jenis_psikotes }}</option>
+                            @endforeach
+                        </select>
+                        @error('jenis_psikotes_id')
                             <div class="text-danger fs-6">
                                 {{ $message }}
                             </div>
@@ -288,9 +293,14 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="jenis_psikotes" class="form-label">Jenis psikotes</label>
-                        <input type="date" name="jenis_psikotes" class="form-control @error('jenis_psikotes') is-invalid @enderror" id="jenis_psikotes" value="{{ old('jenis_psikotes') }}">
-                        @error('jenis_psikotes')
+                        <label for="jenis_psikotes_id" class="form-label">Jenis psikotes</label>
+                        <select name="jenis_psikotes_id" class="form-select @error('jenis_psikotes_id') is-invalid @enderror" id="jenis_psikotes_id" value="">
+                            <option value="" selected disabled>Pilih Jenis Psikotes</option>
+                            @foreach ($jenis_psikotess as $jenis_psikotes)
+                                <option value="{{ $jenis_psikotes->id }}" @selected({{ old('jenis_psikotes_id') == $jenis_psikotes->id }})>{{ $jenis_psikotes->jenis_psikotes }}</option>
+                            @endforeach
+                        </select>
+                        @error('jenis_psikotes_id')
                             <div class="text-danger fs-6">
                                 {{ $message }}
                             </div>
@@ -336,8 +346,8 @@
         $(".modal-body  #booked_at").val(booked_at);
         var tanggal_psikotes = $(this).data('tanggal_psikotes');
         $(".modal-body  #tanggal_psikotes").val(tanggal_psikotes);
-        var jenis_psikotes = $(this).data('jenis_psikotes');
-        $(".modal-body  #jenis_psikotes").val(jenis_psikotes);
+        var jenis_psikotes_id = $(this).data('jenis_psikotes_id');
+        $(".modal-body  #jenis_psikotes_id").val(jenis_psikotes_id);
         var jadwal_id = $(this).data('jadwal_id');
         $(".modal-body  #jadwal_id").val(jadwal_id);
         var status = $(this).data('status');

@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('hari')->nullable();
             $table->time('jam_mulai')->nullable();
             $table->time('jam_selesai')->nullable();
-            $table->string('status')->nullable();
+            $table->enum('status', ['Tersedia', 'Tidak Tersedia'])->nullable()->default('Tersedia');
             $table->timestamps();
             $table->softDeletes();  
         });

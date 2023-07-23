@@ -24,8 +24,13 @@ return new class extends Migration
             $table->string('nomor_peserta')->nullable()->unique();
             $table->timestamp('booked_at')->nullable();
             $table->date('tanggal_psikotes')->nullable();
-            $table->string('jenis_psikotes')->nullable();
+            // $table->string('jenis_psikotes')->nullable();
+            $table->foreignId('jenis_psikotes_id')->nullable()
+                ->constrained('jenis_psikotes')
+                ->onUpdate('cascade')
+                ->nullOnDelete();
             $table->string('kebutuhan')->nullable();
+            $table->string('kode_akses')->nullable();
             $table->foreignId('jadwal_id')->nullable()
                 ->constrained('jadwal')
                 ->onUpdate('cascade')

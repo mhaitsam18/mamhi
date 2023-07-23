@@ -37,13 +37,17 @@
                                     <li>Asesmen</li>
                                     <li>Pelatihan dan Pengembangan</li>
                                 </ul>
-                                <a class="btn btn-sm btn-warning" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Konsultasi sekarang</a>
+                                <a class="btn btn-sm btn-warning mb-3 me-1" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Konsultasi sekarang</a>
+                                <a href="/member/konsultasi-saya" class="btn btn-sm btn-info  mb-3 me-3">Lihat Konsultasi Saya</a>
                                 <div class="row">
                                     <div class="collapse multi-collapse" id="multiCollapseExample1">
                                         <div class="card card-body">
+                                            <div class="mb-3">
+                                                <textarea name="keluhan" id="keluhan" cols="30" rows="5" class="form-control" placeholder="Tulis Keluhan Anda"></textarea>
+                                            </div>
                                             <div class="input-group mb-3">
-                                                <input type="date" class="form-control" name="tanggal" id="tanggal" placeholder="Pilih Tanggal" aria-label="Pilih Tanggal" aria-describedby="button-addon2">
-                                                <button class="btn btn-outline-secondary" type="button" id="button-addon2" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Cek Jadwal</button>  
+                                                <input type="date" class="form-control" min="<?= date('Y-m-d') ?>" name="tanggal" id="tanggal" placeholder="Pilih Tanggal" aria-label="Pilih Tanggal" aria-describedby="button-cek-jadwal">
+                                                <button class="btn btn-outline-secondary" type="button" id="button-cek-jadwal" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Cek Jadwal</button>  
                                             </div>
                                         </div>
                                     </div>
@@ -54,7 +58,7 @@
                             <div class="collapse multi-collapse" id="multiCollapseExample2">
                                 <div class="card card-body">
                                     <h3>Pilih Jadwal Tersedia</h3>
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                                    <div id="pilih-jadwal"></div>
                                 </div>
                             </div>
                         </div>
@@ -74,5 +78,37 @@
 	<!-- Custom js for this page -->
     <script src="/assets-nobleui/js/carousel.js"></script>
 	<!-- End custom js for this page -->
+    {{-- <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script> --}}
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#button-cek-jadwal').click(function () {
+                // Ambil data dari input
+                var tanggal = $('#tanggal').val();
+                var keluhan = $('#keluhan').val();
+
+                // Kirimkan data melalui AJAX menggunakan metode POST
+                $.ajax({
+                    url: '{{ route("member.jadwal.pilih-jadwal") }}',
+                    type: 'POST',
+                    data: {
+                        '_token': '{{ csrf_token() }}', // Untuk melindungi dari CSRF
+                        'tanggal': tanggal,
+                        'keluhan': 'keluhan',
+                        'aksi': 'konsultasi',
+                    },
+                    dataType: 'json',
+                    success: function (response) {
+                        // Ganti isi div dengan konten yang diperoleh dari view partial
+                        $('#pilih-jadwal').html(response.content);
+                    },
+                    error: function () {
+                        // Tangani jika terjadi kesalahan ketika melakukan permintaan AJAX
+                        alert('Terjadi kesalahan saat memuat view.');
+                    }
+                });
+            });
+        });
+    </script>
 
 @endsection

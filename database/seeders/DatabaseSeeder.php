@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Artikel;
 use App\Models\Jadwal;
+use App\Models\JenisPsikotes;
 use App\Models\Member;
 use App\Models\Psikolog;
 use App\Models\Ruangan;
@@ -843,6 +844,23 @@ class DatabaseSeeder extends Seeder
             'author_id' => '1',
             'thumbnail' => 'artikel/mamhi-artikel.jpg',
             'views' => '0',
+        ]);
+
+        JenisPsikotes::create([
+            'jenis_psikotes'=> 'Psikotes Potensi atau Intelegensi',
+            'harga' => 500000,
+        ]);
+        JenisPsikotes::create([
+            'jenis_psikotes'=> 'Psikotes Kesiapan Sekolah',
+            'harga' => 500000,
+        ]);
+        JenisPsikotes::create([
+            'jenis_psikotes'=> 'Psikotes Minat Bakat',
+            'harga' => 500000,
+        ]);
+        JenisPsikotes::create([
+            'jenis_psikotes'=> 'Psikotes Seleksi Kerja',
+            'harga' => 500000,
         ]);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Jadwal;
+use App\Models\JenisPsikotes;
 use App\Models\Member;
 use App\Models\Psikolog;
 use App\Models\Psikotes;
@@ -18,6 +19,7 @@ class AdminPsikotesController extends Controller
         return view('admin.psikotes.index', [
             'title' => 'List psikotes',
             'page' => 'psikotes',
+            'jenis_psikotess' => JenisPsikotes::all(),
             'psikotess' => Psikotes::all(),
             'members' => Member::all(),
             'psikologs' => Psikolog::all(),
@@ -34,6 +36,7 @@ class AdminPsikotesController extends Controller
             'title' => 'Buat psikotes',
             'page' => 'psikotes',
             'psikotess' => Psikotes::all(),
+            'jenis_psikotess' => JenisPsikotes::all(),
             'members' => Member::all(),
             'psikologs' => Psikolog::all(),
             'jadwals' => Jadwal::all(),
@@ -50,7 +53,7 @@ class AdminPsikotesController extends Controller
             'psikolog_id' => 'required',
             'nomor_peserta' => 'unique:psikotes',
             'tanggal_psikotes' => 'required',
-            'jenis_psikotes' => 'required',
+            'jenis_psikotes_id' => 'required',
             'kebutuhan' => 'required',
             'jadwal_id' => 'required',
         ]);
@@ -61,7 +64,7 @@ class AdminPsikotesController extends Controller
             'nomor_peserta' => $request->nomor_peserta,
             'booked_at' => date('Y-m-d H:i:s'),
             'tanggal_psikotes' => $request->tanggal_psikotes,
-            'jenis_psikotes' => $request->jenis_psikotes,
+            'jenis_psikotes_id' => $request->jenis_psikotes_id,
             'kebutuhan' => $request->kebutuhan,
             'jadwal_id' => $request->jadwal_id,
             'status' => $request->status
@@ -107,7 +110,7 @@ class AdminPsikotesController extends Controller
             'psikolog_id' => 'required',
             'nomor_peserta' => 'unique:psikotes',
             'tanggal_psikotes' => 'required',
-            'jenis_psikotes' => 'required',
+            'jenis_psikotes_id' => 'required',
             'kebutuhan' => 'required',
             'jadwal_id' => 'required',
             'status' => 'required',
@@ -119,7 +122,7 @@ class AdminPsikotesController extends Controller
             'psikolog_id' => $request->psikolog_id,
             'nomor_peserta' => $request->nomor_peserta,
             'tanggal_psikotes' => $request->tanggal_psikotes,
-            'jenis_psikotes' => $request->jenis_psikotes,
+            'jenis_psikotes_id' => $request->jenis_psikotes_id,
             'kebutuhan' => $request->kebutuhan,
             'jadwal_id' => $request->jadwal_id,
             'status' => $request->status
