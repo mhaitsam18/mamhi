@@ -96,6 +96,7 @@ Route::middleware('auth')->group(function () {
                 Route::get('/psikotes-saya', [MemberPsikotesController::class, 'list'])->name('member.psikotes.psikotes-saya');
                 Route::get('/pilih-tanggal', [MemberPsikotesController::class, 'pilihTanggal'])->name('member.psikotes.pilih-tanggal');
                 Route::post('/', [MemberPsikotesController::class, 'store'])->name('member.psikotes.store');
+                Route::get('/tagihan/{psikotes}', [MemberPsikotesController::class, 'tagihan'])->name('member.psikotes.tagihan');
             });
             Route::prefix('konsultasi')->group(function () {
                 Route::get('/', [MemberKonsultasiController::class, 'index'])->name('member.konsultasi.index');

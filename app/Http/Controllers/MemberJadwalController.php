@@ -39,6 +39,8 @@ class MemberJadwalController extends Controller
             'jadwals' => $jadwal_tersedia,
             'aksi' => $request->aksi,
             'keluhan' => $request->keluhan,
+            'kebutuhan' => $request->kebutuhan,
+            'jenis_psikotes_id' => $request->jenis_psikotes_id,
             'tanggal' => $request->tanggal,
         ])->render();
 

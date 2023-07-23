@@ -2,6 +2,9 @@
 @extends('layouts.admin-main')
 
 @section('content')
+    @php
+        use Carbon\Carbon;
+    @endphp
     <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
         <div>
             <h4 class="mb-3 mb-md-0">{{ $title }}</h4>
@@ -50,8 +53,8 @@
                                         <td>{{ $psikotes->psikolog->user->name }}</td>
                                         <td>{{ $psikotes->kebutuhan }}</td>
                                         <td>{{ $psikotes->jenis_psikotes->jenis_psikotes }}</td>
-                                        <td>{{ date('j F Y H:is', strtotime($psikotes->booked_at)) }}</td>
-                                        <td>{{ date('j F Y H:is', strtotime($psikotes->tanggal_psikotes)) }}</td>
+                                            <td>{{  Carbon::parse($psikotes->booked_at)->isoFormat('LLL')  }}</td>
+                                            <td>{{ Carbon::parse($psikotes->tanggal_psikotes)->isoFormat('LL') }}</td>
                                         <td>{{ substr($psikotes->jadwal->jam_mulai, 0, 5).' - '.substr($psikotes->jadwal->jam_selesai, 0, 5) }}</td>
                                         <td>{{ $psikotes->status }}</td>
                                         <td>

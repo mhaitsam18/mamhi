@@ -1,5 +1,5 @@
 <div class="table-responsive">
-    <table class="table table-hover mb-0">
+    <table class="table table-hover mb-0" id="dataTableExample">
         <thead>
             <tr>
                 <th>No.</th>
@@ -27,6 +27,8 @@
                                 <input type="hidden" name="member_id" value="{{ auth()->user()->member->id }}">
                                 <input type="hidden" name="psikolog_id" value="{{ $jadwal->psikolog->id }}">
                                 <input type="hidden" name="keluhan" value="{{ $keluhan }}">
+                                <input type="hidden" name="kebutuhan" value="{{ $kebutuhan }}">
+                                <input type="hidden" name="jenis_psikotes_id" value="{{ $jenis_psikotes_id }}">
                                 <input type="hidden" name="jadwal_id" value="{{ $jadwal->id }}">
                                 <input type="hidden" name="tanggal" value="{{ $tanggal }}">
                                 <button type="submit" class="btn btn-warning btn-sm">Pilih Jadwal</button>
@@ -41,3 +43,4 @@
             @endif
         </tbody>
     </table>
+</div>

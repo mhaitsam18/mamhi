@@ -7,7 +7,7 @@
     <div class="container">
         <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin mt-3">
             <div>
-                <h2 class="mb-3 mb-md-0" style="font-style: italic">Konsultasi Saya</h2>
+                <h2 class="mb-3 mb-md-0" style="font-style: italic">psikotes Saya</h2>
             </div>
         </div>
         <div class="row">
@@ -15,7 +15,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-baseline mb-2">
-                            <h6 class="card-title mb-0">konsultasi Praktik</h6>
+                            <h6 class="card-title mb-0">Psikotes Praktik</h6>
                             <div class="dropdown mb-2">
                                 <button class="btn p-0" type="button" id="dropdownMenuButton7"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -28,12 +28,20 @@
                         </div>
                         <div class="row">
                             <div class="col-12">
-                                <a class="btn btn-sm btn-warning mb-3 me-1" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Konsultasi sekarang</a>
+                                <a class="btn btn-sm btn-warning mb-3 me-1" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Tes sekarang</a>
                                 <div class="row">
                                     <div class="collapse multi-collapse" id="multiCollapseExample1">
                                         <div class="card card-body">
                                             <div class="mb-3">
-                                                <textarea name="keluhan" id="keluhan" cols="30" rows="5" class="form-control" placeholder="Tulis Keluhan Anda"></textarea>
+                                                <select name="jenis_psikotes_id" id="jenis_psikotes_id" cols="30" rows="5" class="form-select">
+                                                    <option value="" selected disabled>Pilih jenis Psikotes</option>
+                                                    @foreach ($jenis_psikotess as $jenis_psikotes)
+                                                        <option value="{{ $jenis_psikotes->id }}" @selected($jenis_psikotes->id == old('jenis_psikotes_id'))>{{ $jenis_psikotes->jenis_psikotes }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="mb-3">
+                                                <textarea name="kebutuhan" id="kebutuhan" cols="30" rows="5" class="form-control" placeholder="Tulis kebutuhan Anda"></textarea>
                                             </div>
                                             <div class="input-group mb-3">
                                                 <input type="date" class="form-control" min="<?= date('Y-m-d') ?>" name="tanggal" id="tanggal" placeholder="Pilih Tanggal" aria-label="Pilih Tanggal" aria-describedby="button-cek-jadwal">
@@ -55,29 +63,34 @@
                                 <thead>
                                     <tr>
                                         <th class="pt-0">#</th>
+                                        <th class="pt-0">Nomor Peserta</th>
                                         <th class="pt-0">Member</th>
                                         <th class="pt-0">Psikolog</th>
-                                        <th class="pt-0">Keluhan</th>
+                                        <th class="pt-0">Kebutuhan</th>
+                                        <th class="pt-0">Jenis Psikotes</th>
                                         <th class="pt-0">Tanggal Booking</th>
-                                        <th class="pt-0">Tanggal Konsul</th>
+                                        <th class="pt-0">Tanggal Tes</th>
                                         <th class="pt-0">Jadwal</th>
                                         <th class="pt-0">Status</th>
                                         <th class="pt-0">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($konsultasis as $konsultasi)
+                                    @foreach ($psikotess as $psikotes)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $konsultasi->member->user->name }}</td>
-                                            <td>{{ $konsultasi->psikolog->user->name }}</td>
-                                            <td>{{ $konsultasi->keluhan }}</td>
-                                            <td>{{  Carbon::parse($konsultasi->booked_at)->isoFormat('LLL')  }}</td>
-                                            <td>{{ Carbon::parse($konsultasi->tanggal_konsultasi)->isoFormat('LL') }}</td>
-                                            <td>{{ substr($konsultasi->jadwal->jam_mulai, 0, 5).' - '.substr($konsultasi->jadwal->jam_selesai, 0, 5) }}</td>
-                                            <td>{{ $konsultasi->status }}</td>
+                                            <td>{{ $psikotes->nomor_peserta ?? '-' }}</td>
+                                            <td>{{ $psikotes->member->user->name }}</td>
+                                            <td>{{ $psikotes->psikolog->user->name }}</td>
+                                            <td>{{ $psikotes->kebutuhan }}</td>
+                                            <td>{{ $psikotes->jenis_psikotes->jenis_psikotes }}</td>
+                                            <td>{{  Carbon::parse($psikotes->booked_at)->isoFormat('LLL')  }}</td>
+                                            <td>{{ Carbon::parse($psikotes->tanggal_psikotes)->isoFormat('LL') }}</td>
+                                            <td>{{ substr($psikotes->jadwal->jam_mulai, 0, 5).' - '.substr($psikotes->jadwal->jam_selesai, 0, 5) }}</td>
+                                            <td>{{ $psikotes->status }}</td>
                                             <td>
-                                                <a href="/member/konsultasi/tagihan/{{ $konsultasi->id }}" class="badge bg-warning">Lihat Tagihan</a>
+                                            <td>
+                                                <a href="/member/psikotes/tagihan/{{ $psikotes->id }}" class="badge bg-warning">Lihat Tagihan</a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -98,7 +111,8 @@
             $('#button-cek-jadwal').click(function () {
                 // Ambil data dari input
                 var tanggal = $('#tanggal').val();
-                var keluhan = $('#keluhan').val();
+                var kebutuhan = $('#kebutuhan').val();
+                var jenis_psikotes_id = $('#jenis_psikotes_id').val();
 
                 // Kirimkan data melalui AJAX menggunakan metode POST
                 $.ajax({
@@ -107,8 +121,9 @@
                     data: {
                         '_token': '{{ csrf_token() }}', // Untuk melindungi dari CSRF
                         'tanggal': tanggal,
-                        'keluhan': 'keluhan',
-                        'aksi': 'konsultasi',
+                        'kebutuhan': kebutuhan,
+                        'jenis_psikotes_id': jenis_psikotes_id,
+                        'aksi': 'psikotes',
                     },
                     dataType: 'json',
                     success: function (response) {

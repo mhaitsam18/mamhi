@@ -53,7 +53,11 @@ class MemberPembayaranController extends Controller
             'nominal' => $request->nominal,
             'bukti' => $bukti,
         ]);
-        return redirect()->route('member.konsultasi.konsultasi-saya')->with('success', 'Bukti Transfer berhasil dikirim.');
+        if ($request->konsultasi_id) {
+            return redirect()->route('member.konsultasi.konsultasi-saya')->with('success', 'Bukti Transfer berhasil dikirim.');
+        } elseif ($request->psikotes_id) {
+            return redirect()->route('member.psikotes.psikotes-saya')->with('success', 'Bukti Transfer berhasil dikirim.');
+        }
     }
 
     /**

@@ -84,6 +84,7 @@ class MemberKonsultasiController extends Controller
             return redirect()->back()->with('error', 'Terjadi kesalahan.');
         }
     }
+    
     public function tagihan(Konsultasi $konsultasi)
     {
         return view('member.konsultasi.tagihan', [

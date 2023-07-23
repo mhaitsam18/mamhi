@@ -70,15 +70,6 @@
 </div>
 @endsection
 @section('script')
-	<!-- Plugin js for this page -->
-    <script src="/assets-nobleui/vendors/owl.carousel/owl.carousel.min.js"></script>
-    <script src="/assets-nobleui/vendors/jquery-mousewheel/jquery.mousewheel.js"></script>
-	<!-- End plugin js for this page -->
-
-	<!-- Custom js for this page -->
-    <script src="/assets-nobleui/js/carousel.js"></script>
-	<!-- End custom js for this page -->
-    {{-- <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script> --}}
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script>
         $(document).ready(function () {
@@ -94,7 +85,7 @@
                     data: {
                         '_token': '{{ csrf_token() }}', // Untuk melindungi dari CSRF
                         'tanggal': tanggal,
-                        'keluhan': 'keluhan',
+                        'keluhan': keluhan,
                         'aksi': 'konsultasi',
                     },
                     dataType: 'json',

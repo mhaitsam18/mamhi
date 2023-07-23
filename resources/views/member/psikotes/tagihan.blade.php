@@ -19,11 +19,11 @@
                             </div>
                             <div class="col-lg-3 pe-0">
                                 <h4 class="fw-bolder text-uppercase text-end mt-4 mb-2">Tagihan</h4>
-                                <h6 class="text-end mb-5 pb-4"># INV-{{ str_pad($konsultasi->id, 6, '02000', STR_PAD_LEFT) }}</h6>
+                                <h6 class="text-end mb-5 pb-4"># INV-{{ str_pad($psikotes->id, 6, '01000', STR_PAD_LEFT) }}</h6>
                                 <p class="text-end mb-1">Total Tagihan</p>
-                                <h4 class="text-end fw-normal">Rp {{ number_format(300000+(300000*12/100),2,',','.') }}</h4>
-                                <h6 class="mb-0 mt-3 text-end fw-normal mb-2"><span class="text-muted">Waktu Tagihan :</span> {{ Carbon::parse($konsultasi->booked_at)->isoFormat('LLL') }}</h6>
-                                <h6 class="text-end fw-normal"><span class="text-muted">Tenggat Waktu :</span> {{ Carbon::parse($konsultasi->tanggal_konsultasi)->isoFormat('LL') }}</h6>
+                                <h4 class="text-end fw-normal">Rp {{ number_format($psikotes->jenis_psikotes->harga+($psikotes->jenis_psikotes->harga*12/100),2,',','.') }}</h4>
+                                <h6 class="mb-0 mt-3 text-end fw-normal mb-2"><span class="text-muted">Waktu Tagihan :</span> {{ Carbon::parse($psikotes->booked_at)->isoFormat('LLL') }}</h6>
+                                <h6 class="text-end fw-normal"><span class="text-muted">Tenggat Waktu :</span> {{ Carbon::parse($psikotes->tanggal_psikotes)->isoFormat('LL') }}</h6>
 
                             </div>
                         </div>
@@ -42,10 +42,10 @@
                                     <tbody>
                                         <tr class="text-end">
                                             <td class="text-start">1</td>
-                                            <td class="text-start">{{ $konsultasi->keluhan }}</td>
-                                            <td>{{ Carbon::parse($konsultasi->tanggal_konsultasi)->isoFormat('LL') }}</td>
-                                            <td>{{ $konsultasi->psikolog->user->name }}</td>
-                                            <td>Rp 300.000,00</td>
+                                            <td class="text-start">{{ $psikotes->keluhan }}</td>
+                                            <td>{{ Carbon::parse($psikotes->tanggal_psikotes)->isoFormat('LL') }}</td>
+                                            <td>{{ $psikotes->psikolog->user->name }}</td>
+                                            <td>Rp {{ number_format($psikotes->jenis_psikotes->harga,2,',','.') }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -69,15 +69,15 @@
                                             <tbody>
                                                 <tr>
                                                     <td>Sub Total</td>
-                                                    <td class="text-end">Rp 300.000,00</td>
+                                                    <td class="text-end">Rp {{ number_format($psikotes->jenis_psikotes->harga,2,',','.') }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>TAX (12%)</td>
-                                                    <td class="text-end">Rp {{ number_format((300000*12/100),2,',','.') }}</td>
+                                                    <td class="text-end">Rp {{ number_format(($psikotes->jenis_psikotes->harga*12/100),2,',','.') }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="text-bold-800">Total</td>
-                                                    <td class="text-bold-800 text-end">Rp {{ number_format(300000+(300000*12/100),2,',','.') }}</td>
+                                                    <td class="text-bold-800 text-end">Rp {{ number_format($psikotes->jenis_psikotes->harga+($psikotes->jenis_psikotes->harga*12/100),2,',','.') }}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -86,7 +86,7 @@
                             </div>
                         </div>
                         <div class="container-fluid w-100">
-                            <a href="/member/konsultasi/konsultasi-saya" class="btn btn-secondary float-end mt-4 ms-2">Tutup</a>
+                            <a href="/member/psikotes/psikotes-saya" class="btn btn-secondary float-end mt-4 ms-2">Tutup</a>
                             @if (!$pembayaran)
                                 <a href="#" class="btn btn-primary float-end mt-4 ms-2" data-bs-toggle="modal" data-bs-target="#exampleModal"><i data-feather="send" class="me-3 icon-md"></i>Bayar sekarang</a>
                             @else   
@@ -109,8 +109,8 @@
             </div>
             <form action="/member/pembayaran" method="post" enctype="multipart/form-data">
                 @csrf
-                <input type="hidden" name="nominal" value="336000">
-                <input type="hidden" name="konsultasi_id" value="{{ $konsultasi->id }}">
+                <input type="hidden" name="nominal" value="{{ $psikotes->jenis_psikotes->harga+($psikotes->jenis_psikotes->harga*12/100) }}">
+                <input type="hidden" name="psikotes_id" value="{{ $psikotes->id }}">
                 <div class="modal-body">
                     <p>
                         Informasi Pembayaran :
