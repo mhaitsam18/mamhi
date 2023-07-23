@@ -190,7 +190,7 @@
         <div class="container">
             <ul class="nav page-navigation">
                 <li class="nav-item">
-                    <a class="nav-link" href="/member">
+                    <a class="nav-link" href="/member/index">
                         <i class="link-icon" data-feather="box"></i>
                         <span class="menu-title">Beranda</span>
                     </a>
