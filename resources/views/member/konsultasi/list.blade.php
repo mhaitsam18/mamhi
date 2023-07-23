@@ -15,7 +15,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-baseline mb-2">
-                            <h6 class="card-title mb-0">konsultasi Praktik</h6>
+                            <h6 class="card-title mb-0">Riwayat Konsultasi Saya</h6>
                             <div class="dropdown mb-2">
                                 <button class="btn p-0" type="button" id="dropdownMenuButton7"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -77,6 +77,9 @@
                                             <td>{{ substr($konsultasi->jadwal->jam_mulai, 0, 5).' - '.substr($konsultasi->jadwal->jam_selesai, 0, 5) }}</td>
                                             <td>{{ $konsultasi->status }}</td>
                                             <td>
+                                                @if ($konsultasi->diagnosis)
+                                                    <a href="/member/diagnosis/{{ $konsultasi->id }}" class="badge bg-info">Lihat Diagnosis</a>
+                                                @endif
                                                 <a href="/member/konsultasi/tagihan/{{ $konsultasi->id }}" class="badge bg-warning">Lihat Tagihan</a>
                                             </td>
                                         </tr>

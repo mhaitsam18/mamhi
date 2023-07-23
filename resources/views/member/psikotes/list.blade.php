@@ -15,7 +15,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-baseline mb-2">
-                            <h6 class="card-title mb-0">Psikotes Praktik</h6>
+                            <h6 class="card-title mb-0">Riwayat Psikotes Saya</h6>
                             <div class="dropdown mb-2">
                                 <button class="btn p-0" type="button" id="dropdownMenuButton7"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -90,6 +90,9 @@
                                             <td>{{ $psikotes->status }}</td>
                                             <td>
                                             <td>
+                                                @if ($psikotes->nilai_psikotes)
+                                                    <a href="/member/nilai-psikotes/{{ $psikotes->id }}" class="badge bg-info">Lihat Nilai Psikotes</a>
+                                                @endif
                                                 <a href="/member/psikotes/tagihan/{{ $psikotes->id }}" class="badge bg-warning">Lihat Tagihan</a>
                                             </td>
                                         </tr>
