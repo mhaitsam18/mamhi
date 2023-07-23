@@ -24,29 +24,29 @@ class Psikotes extends Model
 
     public function member()
     {
-        return $this->belongsTo(Member::class, 'member_id')->withTrashed();
+        return $this->belongsTo(Member::class, 'member_id');
     }
     public function jenis_psikotes()
     {
-        return $this->belongsTo(JenisPsikotes::class, 'jenis_psikotes_id')->withTrashed();
+        return $this->belongsTo(JenisPsikotes::class, 'jenis_psikotes_id');
     }
 
     public function psikolog()
     {
-        return $this->belongsTo(Psikolog::class, 'psikolog_id')->withTrashed();
+        return $this->belongsTo(Psikolog::class, 'psikolog_id');
     }
 
     public function jadwal()
     {
-        return $this->belongsTo(Jadwal::class, 'jadwal_id')->withTrashed();
+        return $this->belongsTo(Jadwal::class, 'jadwal_id');
     }
 
     public function nilai_psikotes()
     {
-        return $this->hasOne(NilaiPsikotes::class)->withTrashed();
+        return $this->hasOne(NilaiPsikotes::class);
     }
     public function pembayaran()
     {
-        return $this->hasMany(Pembayaran::class)->withTrashed();
+        return $this->hasMany(Pembayaran::class);
     }
 }

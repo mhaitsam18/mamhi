@@ -23,21 +23,21 @@ class Jadwal extends Model
 
     public function psikolog()
     {
-        return $this->belongsTo(Psikolog::class)->withTrashed();
+        return $this->belongsTo(Psikolog::class);
     }
 
     public function ruangan()
     {
-        return $this->belongsTo(Ruangan::class)->withTrashed();
+        return $this->belongsTo(Ruangan::class);
     }
     
     public function konsultasi()
     {
-        return $this->hasMany(Konsultasi::class)->withTrashed();
+        return $this->hasMany(Konsultasi::class);
     }
 
     public function psikotes()
     {
-        return $this->hasMany(Psikotes::class)->withTrashed();
+        return $this->hasMany(Psikotes::class);
     }
 }

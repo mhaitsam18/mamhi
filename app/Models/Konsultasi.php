@@ -22,25 +22,25 @@ class Konsultasi extends Model
 
     public function member()
     {
-        return $this->belongsTo(Member::class, 'member_id')->withTrashed();
+        return $this->belongsTo(Member::class, 'member_id');
     }
     public function psikolog()
     {
-        return $this->belongsTo(Psikolog::class, 'psikolog_id')->withTrashed();
+        return $this->belongsTo(Psikolog::class, 'psikolog_id');
     }
     
     public function jadwal()
     {
-        return $this->belongsTo(Jadwal::class, 'jadwal_id')->withTrashed();
+        return $this->belongsTo(Jadwal::class, 'jadwal_id');
     }
     
     public function diagnosis()
     {
-        return $this->hasOne(Diagnosis::class)->withTrashed();
+        return $this->hasOne(Diagnosis::class);
     }
 
     public function pembayaran()
     {
-        return $this->hasMany(Pembayaran::class)->withTrashed();
+        return $this->hasMany(Pembayaran::class);
     }
 }

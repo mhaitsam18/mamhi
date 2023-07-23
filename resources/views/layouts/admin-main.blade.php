@@ -121,6 +121,9 @@ License: For each use you must have a valid license purchased only from above li
     <script src="https://unpkg.com/filepond-plugin-image-exif-orientation/dist/filepond-plugin-image-exif-orientation.js"></script>
     <script src="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.js"></script>
     <script src="https://unpkg.com/filepond-plugin-image-edit/dist/filepond-plugin-image-edit.js"></script>
+    <!-- Misalnya, jika Anda menggunakan adapter untuk tampilan pratinjau -->
+    <script src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.js"></script>
+
 
     <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
