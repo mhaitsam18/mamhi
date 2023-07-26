@@ -150,8 +150,8 @@
                                 </div>
                                 <div class="p-2 row">
                                     <button type="submit" class="btn btn-primary me-2 mb-2 mb-md-0 text-white">Daftar</button>
+                                    <a href="/login" class="d-block mt-3 text-muted">Sudah punya akun? login</a>
                                 </div> 
-                                <a href="/login" class="d-block mt-3 text-muted">Sudah punya akun? login</a>
                             </form>
                         </div>
                     </div>
