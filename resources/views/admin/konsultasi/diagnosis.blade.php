@@ -74,7 +74,7 @@
                                 <ul>
                                     <li>Nomor Rekam Psikolog : {{ ($diagnosis->nomor_rekam_psikolog ?? '') }}</li>
                                     <li>Hasil Diagnosis : {{ ($diagnosis->hasil_diagnosis ?? '') }}</li>
-                                    <li><a href="{{ asset('storage/' . ($diagnosis->dokumen ?? '')) }}" class="btn btn-sm btn-primary">Download Dokumen</a></li>
+                                    <li><a href="{{ asset('storage/' . ($diagnosis->dokumen ?? '')) }}" target="_blank" class="btn btn-sm btn-primary">Download Dokumen</a></li>
                                 </ul>
                             @endif
                         </div>
