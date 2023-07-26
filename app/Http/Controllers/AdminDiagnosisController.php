@@ -95,6 +95,7 @@ class AdminDiagnosisController extends Controller
      */
     public function update(Request $request, Diagnosis $diagnosis)
     {
+        dd($diagnosis->id);
         // Validasi data input dari form jika diperlukan
         $validator = Validator::make(
             $request->all(),
