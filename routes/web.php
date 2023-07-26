@@ -92,7 +92,7 @@ Route::middleware('auth')->group(function () {
             Route::prefix('diagnosis')->group(function () {
                 Route::get('/', [AdminDiagnosisController::class, 'index'])->name('admin.diagnosis.index');
                 Route::post('/', [AdminDiagnosisController::class, 'store'])->name('admin.diagnosis.store');
-                Route::put('/{diagnosis}', [AdminDiagnosisController::class, 'update'])->name('admin.diagnosis.store');
+                Route::put('/{diagnosis}', [AdminDiagnosisController::class, 'update'])->name('admin.diagnosis.update');
             });
             // Route::resource('diagnosis', AdminDiagnosisController::class);
 
