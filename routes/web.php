@@ -89,10 +89,10 @@ Route::middleware('auth')->group(function () {
             Route::resource('ruangan', AdminRuanganController::class);
             Route::resource('komponen-nilai', AdminKomponenNilaiController::class);
 
-            Route::prefix('pembayaran')->group(function () {
-                Route::get('/', [AdminDiagnosisController::class, 'index'])->name('member.pembayaran.index');
-                Route::post('/', [AdminDiagnosisController::class, 'store'])->name('member.pembayaran.store');
-                Route::put('/{diagnosis}', [AdminDiagnosisController::class, 'update'])->name('member.pembayaran.store');
+            Route::prefix('diagnosis')->group(function () {
+                Route::get('/', [AdminDiagnosisController::class, 'index'])->name('admin.diagnosis.index');
+                Route::post('/', [AdminDiagnosisController::class, 'store'])->name('admin.diagnosis.store');
+                Route::put('/{diagnosis}', [AdminDiagnosisController::class, 'update'])->name('admin.diagnosis.store');
             });
             // Route::resource('diagnosis', AdminDiagnosisController::class);
 
