@@ -95,7 +95,27 @@ class AdminDiagnosisController extends Controller
      */
     public function update(Request $request, Diagnosis $diagnosis)
     {
-        //
+        // Validasi data input dari form jika diperlukan
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'konsultasi_id' => 'required',
+                'nomor_rekam_psikolog' => 'required',
+                'hasil_diagnosis' => 'required',
+                'nama_dokumen' => 'required'
+            ],
+            [
+                'nama_dokumen.required' => 'Dokumen wajib diupload.',
+            ]
+        );
+        Diagnosis::find($diagnosis->id)->update([
+            'konsultasi_id' => $request->konsultasi_id,
+            'nomor_rekam_psikolog' => $request->nomor_rekam_psikolog,
+            'hasil_diagnosis' => $request->hasil_diagnosis,
+            'dokumen' => $request->nama_dokumen,
+        ]);
+
+        return redirect()->back()->with('success', 'Dokumen Rekam Psikolog telah disimpan');
     }
 
     /**
