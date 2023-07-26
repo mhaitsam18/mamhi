@@ -20,12 +20,12 @@
                         <div class="col-6">
                             @if (isset($diagnosis->id))
                                 @php
-                                    $action = '/admin/diagnosis/';
+                                    $diagnosis_id = $diagnosis->id ?? '';
+                                    $action = '/admin/diagnosis/' . $diagnosis_id;
                                 @endphp
                             @else
                                 @php
-                                    $diagnosis_id = $diagnosis->id ?? '';
-                                    $action = '/admin/diagnosis/' . $diagnosis_id;
+                                    $action = '/admin/diagnosis/';
                                 @endphp
                             @endif
                             <form action="{{ $action }}" method="post" enctype="multipart/form-data">
