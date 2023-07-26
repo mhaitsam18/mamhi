@@ -49,7 +49,7 @@
                                         Login with twitter
                                     </button> --}}
                                 </div>
-                                {{-- <a href="/register" class="d-block mt-3 text-muted">Not a user? Sign up</a> --}}
+                                <a href="/register" class="d-block mt-3 text-muted">Belum punya akun? Daftar</a>
                             </form>
                         </div>
                     </div>
