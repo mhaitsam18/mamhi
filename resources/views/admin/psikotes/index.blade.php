@@ -53,7 +53,7 @@
                                         <td>{{ $psikotes->psikolog->user->name }}</td>
                                         <td>{{ $psikotes->kebutuhan }}</td>
                                         <td>{{ $psikotes->jenis_psikotes->jenis_psikotes }}</td>
-                                            <td>{{  Carbon::parse($psikotes->booked_at)->isoFormat('LLL')  }}</td>
+                                            <td>{{ Carbon::parse($psikotes->booked_at)->isoFormat('LLL')  }}</td>
                                             <td>{{ Carbon::parse($psikotes->tanggal_psikotes)->isoFormat('LL') }}</td>
                                         <td>{{ substr($psikotes->jadwal->jam_mulai, 0, 5).' - '.substr($psikotes->jadwal->jam_selesai, 0, 5) }}</td>
                                         <td>{{ $psikotes->status }}</td>

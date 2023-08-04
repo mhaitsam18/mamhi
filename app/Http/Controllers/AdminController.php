@@ -2,18 +2,61 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Konsultasi;
+use App\Models\Psikotes;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+
+use Carbon\Carbon;
 
 class AdminController extends Controller
 {
     public function index()
     {
+        $today = Carbon::today();
+        $startDate = $today->copy()->startOfWeek()->format('Y-m-d');
+        $endDate = $today->copy()->endOfWeek()->format('Y-m-d');
+
+        $konsultasi_minggu_ini = Konsultasi::whereBetween('tanggal_konsultasi', [$startDate, $endDate])->get();
+        $psikotes_minggu_ini = Psikotes::whereBetween('tanggal_psikotes', [$startDate, $endDate])->get();
+        
+        $konsultasi_selesai_minggu_ini = Konsultasi::whereBetween('tanggal_konsultasi', [$startDate, $endDate])->where('status', 'selesai')->get();
+        $psikotes_selesai_minggu_ini = Psikotes::whereBetween('tanggal_psikotes', [$startDate, $endDate])->where('status', 'selesai')->get();
+
         return view('admin.index', [
             'title' => 'Dashboard',
-            'page' => 'index'
+            'page' => 'index',
+            'konsultasi_minggu_ini' => $konsultasi_minggu_ini,
+            'psikotes_minggu_ini' => $psikotes_minggu_ini,
+            'konsultasi_selesai_minggu_ini' => $konsultasi_selesai_minggu_ini,
+            'psikotes_selesai_minggu_ini' => $psikotes_selesai_minggu_ini,
+            'week' => $this->getThisWeekDateRange(),
         ]);
+    }
+
+    function getThisWeekDateRange()
+    {
+        $today = Carbon::today();
+        $startDate = $today->copy()->startOfWeek();
+        $endDate = $today->copy()->endOfWeek();
+
+        // Handle month change
+        if ($startDate->month !== $endDate->month) {
+            $formattedStartDate = $startDate->isoFormat('D MMMM');
+            $formattedEndDate = $endDate->isoFormat('D MMMM Y');
+        } else {
+            $formattedStartDate = $startDate->isoFormat('D');
+            $formattedEndDate = $endDate->isoFormat('D MMMM Y');
+        }
+
+        // Handle year change
+        if ($startDate->year !== $endDate->year) {
+            $formattedStartDate = $startDate->isoFormat('D MMMM Y');
+            $formattedEndDate = $endDate->isoFormat('D MMMM Y');
+        }
+
+        return $formattedStartDate . ' - ' . $formattedEndDate;
     }
     
     public function profile()

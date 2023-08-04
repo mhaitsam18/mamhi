@@ -49,7 +49,7 @@
                                         <td>{{ $konsultasi->member->user->name }}</td>
                                         <td>{{ $konsultasi->psikolog->user->name }}</td>
                                         <td>{{ $konsultasi->keluhan }}</td>
-                                        <td>{{  Carbon::parse($konsultasi->booked_at)->isoFormat('LLL')  }}</td>
+                                        <td>{{ Carbon::parse($konsultasi->booked_at)->isoFormat('LLL')  }}</td>
                                         <td>{{ Carbon::parse($konsultasi->tanggal_konsultasi)->isoFormat('LL') }}</td>
                                         <td>{{ substr($konsultasi->jadwal->jam_mulai, 0, 5).' - '.substr($konsultasi->jadwal->jam_selesai, 0, 5) }}</td>
                                         <td>{{ $konsultasi->status }}</td>
