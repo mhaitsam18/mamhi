@@ -173,7 +173,7 @@
                                         <td>{{ $psikotes->nomor_peserta ?? '-' }}</td>
                                         <td>{{ $psikotes->psikolog->user->name ?? '-' }}</td>
                                         <td>{{ date('j F Y', strtotime($psikotes->tanggal_psikotes)) }}</td>
-                                        <td>{{ $psikotes->jenis_psikotes ?? '-' }}</td>
+                                        <td>{{ $psikotes->jenis_psikotes->jenis_psikotes ?? '-' }}</td>
                                         <td>{{ $psikotes->kebutuhan ?? '-' }}</td>
                                         <td>{{ $psikotes->status ?? '-' }}</td>
                                         <td>{{ $psikotes->nilai_psikotes ?? '-' }}</td>
