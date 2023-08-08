@@ -83,9 +83,9 @@ Route::middleware('auth')->group(function () {
             Route::get('/konsultasi', [AdminKonsultasiController::class, 'index'])->name('admin.konsultasi');
             Route::resource('konsultasi', AdminKonsultasiController::class);
             Route::get('/psikotes', [AdminPsikotesController::class, 'index'])->name('admin.psikotes');
-            
-            
-            
+
+
+
             Route::resource('ruangan', AdminRuanganController::class);
             Route::resource('komponen-nilai', AdminKomponenNilaiController::class);
 
@@ -125,7 +125,7 @@ Route::middleware('auth')->group(function () {
                 Route::get('/', [MemberPembayaranController::class, 'index'])->name('member.pembayaran.index');
                 Route::post('/', [MemberPembayaranController::class, 'store'])->name('member.pembayaran.store');
             });
-            
+
             Route::prefix('jadwal')->group(function () {
                 Route::get('/', [MemberJadwalController::class, 'index'])->name('member.jadwal.index');
                 Route::post('/pilih-jadwal', [MemberJadwalController::class, 'pilihJadwal'])->name('member.jadwal.pilih-jadwal');
@@ -144,7 +144,7 @@ Route::middleware('auth')->group(function () {
                 Route::get('/{artikel}', [MemberArtikelController::class, 'show'])->name('member.artikel.index');
             });
         });
-        
+
     });
     Route::middleware('psikolog')->group(function () {
         Route::prefix('psikolog')->group(function () {

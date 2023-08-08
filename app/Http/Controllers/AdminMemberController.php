@@ -69,7 +69,7 @@ class AdminMemberController extends Controller
             'user_id' => $user->id,
             'pekerjaan' => $request->pekerjaan,
         ]);
-        
+
         return redirect('/admin/member')->with('success', 'Data member ditambahkan');
     }
 

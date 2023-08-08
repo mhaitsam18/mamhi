@@ -57,15 +57,15 @@
                                             <div class="d-flex align-items-center">
                                                 <a href="/admin/konsultasi/diagnosis/{{ $konsultasi->id }}" class="badge bg-info me-2 d-inline-block"
                                                 >Diagnosis</a>
-                                                <a href="#" class="badge bg-success d-inline-block editButton"  data-bs-toggle="modal" data-bs-target="#editModal" 
-                                                data-id="{{ $konsultasi->id }}" 
-                                                data-psikolog_id="{{ $konsultasi->psikolog_id }}" 
-                                                data-member_id="{{ $konsultasi->member_id }}" 
-                                                data-keluhan="{{ $konsultasi->keluhan }}" 
-                                                data-booked_at="{{ $konsultasi->booked_at }}" 
-                                                data-tanggal_konsultasi="{{ $konsultasi->tanggal_konsultasi }}" 
-                                                data-jadwal_id="{{ $konsultasi->jadwal_id }}" 
-                                                data-status="{{ $konsultasi->status }}" 
+                                                <a href="#" class="badge bg-success d-inline-block editButton"  data-bs-toggle="modal" data-bs-target="#editModal"
+                                                data-id="{{ $konsultasi->id }}"
+                                                data-psikolog_id="{{ $konsultasi->psikolog_id }}"
+                                                data-member_id="{{ $konsultasi->member_id }}"
+                                                data-keluhan="{{ $konsultasi->keluhan }}"
+                                                data-booked_at="{{ $konsultasi->booked_at }}"
+                                                data-tanggal_konsultasi="{{ $konsultasi->tanggal_konsultasi }}"
+                                                data-jadwal_id="{{ $konsultasi->jadwal_id }}"
+                                                data-status="{{ $konsultasi->status }}"
                                                 >Edit</a>
                                                 <form action="/admin/konsultasi/{{ $konsultasi->id }}" method="post">
                                                     @method('delete')
