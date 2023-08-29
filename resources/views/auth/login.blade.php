@@ -35,7 +35,7 @@
                                 <div class="mb-3 mx-auto" style="width: 50%;">
                                     <label for="password" class="form-label">Password</label>
                                     <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" autocomplete="current-password" placeholder="Password">
-                                    @error('username')
+                                    @error('password')
                                         <div class="text-danger fs-6">
                                             {{ $message }}
                                         </div>
