@@ -55,11 +55,11 @@
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <a href="/admin/member/{{ $member->id }}/edit" class="badge bg-success d-inline-block">Edit</a>
-                                                <form action="/admin/member/{{ $member->id }}" method="post">
+                                                {{-- <form action="/admin/member/{{ $member->id }}" method="post">
                                                     @method('delete')
                                                     @csrf
                                                     <button type="submit" class="badge bg-danger d-inline-block ms-2 mb-1 badge-a tombol-hapus">Hapus</button>
-                                                </form>
+                                                </form> --}}
                                             </div>
                                         </td>
                                     </tr>
