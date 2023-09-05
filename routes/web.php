@@ -16,6 +16,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\MemberArtikelController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\MemberDiagnosisController;
 use App\Http\Controllers\MemberJadwalController;
 use App\Http\Controllers\MemberKonsultasiController;
 use App\Http\Controllers\MemberPembayaranController;
@@ -149,6 +150,10 @@ Route::middleware('auth')->group(function () {
                 Route::get('/', [MemberPembayaranController::class, 'index'])->name('member.pembayaran.index');
                 Route::post('/', [MemberPembayaranController::class, 'store'])->name('member.pembayaran.store');
             });
+            Route::prefix('diagnosis')->group(function () {
+                Route::get('/', [MemberDiagnosisController::class, 'index'])->name('member.diagnosis.index');
+                Route::get('/{diagnosis}', [MemberDiagnosisController::class, 'show'])->name('member.diagnosis.show');
+            });
 
             Route::prefix('jadwal')->group(function () {
                 Route::get('/', [MemberJadwalController::class, 'index'])->name('member.jadwal.index');
@@ -163,6 +168,7 @@ Route::middleware('auth')->group(function () {
             Route::prefix('psikolog')->group(function () {
                 Route::get('/', [MemberPsikologController::class, 'index'])->name('member.psikolog.index');
             });
+
             Route::prefix('artikel')->group(function () {
                 Route::get('/', [MemberArtikelController::class, 'index'])->name('member.artikel.index');
                 Route::get('/{artikel}', [MemberArtikelController::class, 'show'])->name('member.artikel.index');

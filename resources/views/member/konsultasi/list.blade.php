@@ -37,7 +37,7 @@
                                             </div>
                                             <div class="input-group mb-3">
                                                 <input type="date" class="form-control" min="<?= date('Y-m-d') ?>" name="tanggal" id="tanggal" placeholder="Pilih Tanggal" aria-label="Pilih Tanggal" aria-describedby="button-cek-jadwal">
-                                                <button class="btn btn-outline-secondary" type="button" id="button-cek-jadwal" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Cek Jadwal</button>  
+                                                <button class="btn btn-outline-secondary" type="button" id="button-cek-jadwal" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Cek Jadwal</button>
                                             </div>
                                         </div>
                                     </div>
@@ -78,7 +78,7 @@
                                             <td>{{ $konsultasi->status }}</td>
                                             <td>
                                                 @if ($konsultasi->diagnosis)
-                                                    <a href="/member/diagnosis/{{ $konsultasi->id }}" class="badge bg-info">Lihat Diagnosis</a>
+                                                    <a href="/member/diagnosis/{{ $konsultasi->diagnosis->id }}" class="badge bg-info">Lihat Diagnosis</a>
                                                 @endif
                                                 <a href="/member/konsultasi/tagihan/{{ $konsultasi->id }}" class="badge bg-warning">Lihat Tagihan</a>
                                             </td>
