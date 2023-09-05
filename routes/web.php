@@ -79,10 +79,14 @@ Route::middleware('auth')->group(function () {
             Route::get('/hasil', [AdminController::class, 'hasil'])->name('admin.hasil');
 
 
+            Route::post('/konsultasi/status/{konsultasi}', [AdminKonsultasiController::class, 'updateStatus'])->name('admin.psikolog-update-status');
+            Route::post('/psikotes/status/{psikotes}', [AdminPsikotesController::class, 'updateStatus'])->name('admin.psikotes-update-status');
+
             Route::get('/konsultasi/diagnosis/{konsultasi}', [AdminDiagnosisController::class, 'konsultasi'])->name('admin.psikolog-update-foto');
             Route::get('/konsultasi', [AdminKonsultasiController::class, 'index'])->name('admin.konsultasi');
             Route::resource('konsultasi', AdminKonsultasiController::class);
             Route::get('/psikotes', [AdminPsikotesController::class, 'index'])->name('admin.psikotes');
+            Route::resource('psikotes', AdminPsikotesController::class);
 
 
 
