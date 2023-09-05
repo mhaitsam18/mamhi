@@ -135,6 +135,15 @@ class AdminPsikotesController extends Controller
         return redirect('/admin/psikotes')->with('success', 'Data psikotes diperbarui');
     }
 
+    public function updateStatus(Request $request, Psikotes $psikotes)
+    {
+        $psikotes->update([
+            'status' => $request->status
+        ]);
+
+        return back()->with('success', 'Booking psikotes berhasil dikonfirmasi');
+    }
+
     /**
      * Remove the specified resource from storage.
      */

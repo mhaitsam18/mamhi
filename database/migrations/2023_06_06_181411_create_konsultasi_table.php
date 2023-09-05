@@ -28,7 +28,7 @@ return new class extends Migration
                 ->constrained('jadwal')
                 ->onUpdate('cascade')
                 ->nullOnDelete();
-            $table->enum('status', ['booking','batal', 'selesai'])->nullable();
+            $table->enum('status', ['booking', 'booking diterima', 'batal', 'selesai'])->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -67,6 +67,101 @@
                 <div class="col-md-12 grid-margin stretch-card">
                     <div class="card overflow-hidden">
                         <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12 table-responsive p-3">
+                                    <h4>Data Booking Konsultasi Belum dikonfirmasi</h4>
+                                    <table class="table table-hover mb-0" id="dataTableExample">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Tanggal Booking</th>
+                                                <th>Tanggal Konsultasi</th>
+                                                <th>Jadwal</th>
+                                                <th>Nama Peserta</th>
+                                                <th>Keluhan</th>
+                                                <th>Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($booking_konsultasi as $item)
+                                                <th>{{ $loop->iteration }}</th>
+                                                <td>{{ Carbon::parse($item->booked_at)->isoFormat('LLL')  }}</td>
+                                                <td>{{ Carbon::parse($item->tanggal_konsultasi)->isoFormat('LL') }}</td>
+                                                <td>{{ substr($item->jadwal->jam_mulai, 0, 5).' - '.substr($item->jadwal->jam_selesai, 0, 5) }}</td>
+                                                <td>{{ $item->member->user->name }}</td>
+                                                <td>{{ $item->keluhan }}</td>
+                                                <td>
+                                                    <div class="d-flex">
+                                                        <form action="/admin/konsultasi/status/{{ $item->id }}" method="post">
+                                                            @csrf
+                                                            <input type="hidden" name="status" value="booking diterima">
+                                                            <button type="submit" class="badge bg-success d-inline mx-1 border-0">Terima</button>
+                                                        </form>
+                                                        <form action="/admin/konsultasi/status/{{ $item->id }}" method="post">
+                                                            @csrf
+                                                            <input type="hidden" name="status" value="batal">
+                                                            <button type="submit" class="badge bg-danger d-inline mx-1 border-0">Tolak</button>
+                                                        </form>
+                                                    </div>
+                                                </td>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <hr>
+                                <div class="col-md-12 table-responsive p-3">
+                                    <h4>Data Booking psikotes Belum dikonfirmasi</h4>
+                                    <table class="table table-hover mb-0" id="dataTableExample2">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Tanggal Booking</th>
+                                                <th>Tanggal Psikotes</th>
+                                                <th>Jadwal</th>
+                                                <th>Nama Peserta</th>
+                                                <th>Kebutuhan</th>
+                                                <th>Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($booking_psikotes as $item)
+                                                <th>{{ $loop->iteration }}</th>
+                                                <td>{{ Carbon::parse($item->booked_at)->isoFormat('LLL')  }}</td>
+                                                <td>{{ Carbon::parse($item->tanggal_psikotes)->isoFormat('LL') }}</td>
+                                                <td>{{ substr($item->jadwal->jam_mulai, 0, 5).' - '.substr($item->jadwal->jam_selesai, 0, 5) }}</td>
+                                                <td>{{ $item->member->user->name }}</td>
+                                                <td>{{ $item->kebutuhan }}</td>
+                                                <td>
+                                                    <div class="d-flex">
+                                                        <form action="/admin/psikotes/status/{{ $item->id }}" method="post">
+                                                            @csrf
+                                                            <input type="hidden" name="status" value="booking diterima">
+                                                            <button type="submit" class="badge bg-success d-inline mx-1 border-0">Terima</button>
+                                                        </form>
+                                                        <form action="/admin/psikotes/status/{{ $item->id }}" method="post">
+                                                            @csrf
+                                                            <input type="hidden" name="status" value="batal">
+                                                            <button type="submit" class="badge bg-danger d-inline mx-1 border-0">Tolak</button>
+                                                        </form>
+                                                    </div>
+                                                </td>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- row -->
+    <div class="row">
+        <div class="col-12 col-xl-12 grid-margin stretch-card">
+            <div class="row flex-grow-1">
+                <div class="col-md-12 grid-margin stretch-card">
+                    <div class="card overflow-hidden">
+                        <div class="card-body">
                             <div class="d-flex justify-content-between align-items-baseline mb-4 mb-md-3">
                                 <h6 class="card-title mb-0">{{ $week }}</h6>
                             </div>
@@ -75,7 +170,7 @@
                             <div class="row">
                                 <div class="col-md-6 table-responsive p-3">
                                     <h4>Konsultasi Minggu Ini</h4>
-                                    <table class="table table-hover mb-0" id="dataTableExample">
+                                    <table class="table table-hover mb-0" id="dataTableExample3">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -100,7 +195,7 @@
                                 </div>
                                 <div class="col-md-6 table-responsive p-3">
                                     <h4>Psikotes Minggu Ini</h4>
-                                    <table class="table table-hover mb-0" id="dataTableExample2">
+                                    <table class="table table-hover mb-0" id="dataTableExample4">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -123,9 +218,10 @@
                                         </tbody>
                                     </table>
                                 </div>
+                                <hr>
                                 <div class="col-md-6 table-responsive p-3">
                                     <h4>Konsultasi Selesai Minggu Ini</h4>
-                                    <table class="table table-hover mb-0" id="dataTableExample3">
+                                    <table class="table table-hover mb-0" id="dataTableExample5">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -150,7 +246,7 @@
                                 </div>
                                 <div class="col-md-6 table-responsive p-3">
                                     <h4>Peserta Psikotes Selesai Minggu Ini</h4>
-                                    <table class="table table-hover mb-0" id="dataTableExample4">
+                                    <table class="table table-hover mb-0" id="dataTableExample6">
                                         <thead>
                                             <tr>
                                                 <th>#</th>

@@ -108,7 +108,7 @@ class AdminKonsultasiController extends Controller
             'status' => 'required',
         ]);
 
-        
+
         $konsultasi->update([
             'member_id' => $request->member_id,
             'psikolog_id' => $request->psikolog_id,
@@ -120,6 +120,17 @@ class AdminKonsultasiController extends Controller
 
         return redirect('/admin/konsultasi')->with('success', 'Data konsultasi diperbarui');
     }
+
+    public function updateStatus(Request $request, Konsultasi $konsultasi)
+    {
+        $konsultasi->update([
+            'status' => $request->status
+        ]);
+
+        return back()->with('success', 'Booking Konsultasi berhasil dikonfirmasi');
+    }
+
+
 
     /**
      * Remove the specified resource from storage.

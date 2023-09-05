@@ -20,13 +20,17 @@ class AdminController extends Controller
 
         $konsultasi_minggu_ini = Konsultasi::whereBetween('tanggal_konsultasi', [$startDate, $endDate])->get();
         $psikotes_minggu_ini = Psikotes::whereBetween('tanggal_psikotes', [$startDate, $endDate])->get();
-        
+
         $konsultasi_selesai_minggu_ini = Konsultasi::whereBetween('tanggal_konsultasi', [$startDate, $endDate])->where('status', 'selesai')->get();
         $psikotes_selesai_minggu_ini = Psikotes::whereBetween('tanggal_psikotes', [$startDate, $endDate])->where('status', 'selesai')->get();
+        $booking_konsultasi = Konsultasi::where('status', 'booking')->get();
+        $booking_psikotes = Psikotes::where('status', 'booking')->get();
 
         return view('admin.index', [
             'title' => 'Dashboard',
             'page' => 'index',
+            'booking_konsultasi' => $booking_konsultasi,
+            'booking_psikotes' => $booking_psikotes,
             'konsultasi_minggu_ini' => $konsultasi_minggu_ini,
             'psikotes_minggu_ini' => $psikotes_minggu_ini,
             'konsultasi_selesai_minggu_ini' => $konsultasi_selesai_minggu_ini,
@@ -58,7 +62,7 @@ class AdminController extends Controller
 
         return $formattedStartDate . ' - ' . $formattedEndDate;
     }
-    
+
     public function profile()
     {
         return view('admin.profile', [
@@ -67,7 +71,7 @@ class AdminController extends Controller
             'profile' => User::find(auth()->user()->id)
         ]);
     }
-    
+
     public function profileUpdate(Request $request)
     {
         $validator = Validator::make($request->all(), [

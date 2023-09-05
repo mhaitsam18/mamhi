@@ -16,7 +16,7 @@ class AdminDiagnosisController extends Controller
     {
         //
     }
-    
+
     /**
      * Display a listing of the resource.
      */
@@ -44,7 +44,7 @@ class AdminDiagnosisController extends Controller
     public function store(Request $request)
     {
         // Validasi data input dari form jika diperlukan
-        $validator = Validator::make($request->all(), 
+        $validator = Validator::make($request->all(),
             [
                 'konsultasi_id' => 'required',
                 'nomor_rekam_psikolog' => 'required',
