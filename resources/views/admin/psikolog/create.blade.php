@@ -113,7 +113,8 @@
                                     </div>
                                 @enderror
                                 <div class="mb-3">
-                                    <button type="submit" class="btn btn-sm btn-primary float-end">Simpan</button>
+                                    <button type="submit" class="btn btn-sm btn-primary mx-1 float-end">Simpan</button>
+                                    <a href="/admin/psikolog" class="btn btn-sm btn-secondary mx-1 float-end">Tutup</a>
                                 </div>
                             </form>
                         </div>
