@@ -119,12 +119,25 @@ class AdminPsikotesController extends Controller
             'jadwal_id' => 'required',
             'status' => 'required',
         ]);
+        $kode_psikolog = Psikolog::find($request->psikolog_id)->kode_psikolog;
 
+        $bulan_peserta_daftar = date('m'); // Ambil bulan saat ini
+        $tahun_peserta_daftar = date('Y'); // Ambil tahun saat ini
+
+        $kode_psikolog = Psikolog::find($request->psikolog_id)->kode_psikolog;
+        // Hitung jumlah peserta pada bulan dan tahun tertentu
+        $jumlah_peserta = Psikotes::whereMonth('booked_at', $bulan_peserta_daftar)
+        ->whereYear('booked_at', $tahun_peserta_daftar)
+        ->count();
+
+        $angka_romawi_bulan = $this->angkaRomawi(date('m'));
+
+        $nomor_peserta = sprintf("%02d/%s-%s/%s/%s", $jumlah_peserta + 1, $kode_psikolog, $angka_romawi_bulan, $tahun_peserta_daftar);
 
         $psikotes->update([
             'member_id' => $request->member_id,
             'psikolog_id' => $request->psikolog_id,
-            'nomor_peserta' => $request->nomor_peserta,
+            'nomor_peserta' => $request->nomor_peserta ?? $nomor_peserta,
             'tanggal_psikotes' => $request->tanggal_psikotes,
             'jenis_psikotes_id' => $request->jenis_psikotes_id,
             'kebutuhan' => $request->kebutuhan,
@@ -134,6 +147,13 @@ class AdminPsikotesController extends Controller
 
         return redirect('/admin/psikotes')->with('success', 'Data psikotes diperbarui');
     }
+
+    private function angkaRomawi($angka)
+    {
+        $romawi = array('', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII');
+        return $romawi[$angka];
+    }
+
 
     public function updateStatus(Request $request, Psikotes $psikotes)
     {

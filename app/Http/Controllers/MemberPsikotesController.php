@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\JenisPsikotes;
 use App\Models\Pembayaran;
+use App\Models\Psikolog;
 use App\Models\Psikotes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -21,7 +22,7 @@ class MemberPsikotesController extends Controller
             'jenis_psikotess' => JenisPsikotes::all(),
         ]);
     }
-    
+
     public function list()
     {
         return view('member.psikotes.list', [
@@ -31,7 +32,7 @@ class MemberPsikotesController extends Controller
             'jenis_psikotess' => JenisPsikotes::all(),
         ]);
     }
-    
+
     public function pilihTanggal()
     {
         return view('member.psikotes.pilih-tanggal', [
@@ -53,7 +54,7 @@ class MemberPsikotesController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         // Validasi data input dari form jika diperlukan
         $validator = Validator::make($request->all(), [
             'member_id' => 'required',
@@ -68,8 +69,23 @@ class MemberPsikotesController extends Controller
                 ->with('error', 'Terjadi kesalahan.')
                 ->withInput();
         }
+
+        $bulan_peserta_daftar = date('m'); // Ambil bulan saat ini
+        $tahun_peserta_daftar = date('Y'); // Ambil tahun saat ini
+
+        $kode_psikolog = Psikolog::find($request->psikolog_id)->kode_psikolog;
+        // Hitung jumlah peserta pada bulan dan tahun tertentu
+        $jumlah_peserta = Psikotes::whereMonth('booked_at', $bulan_peserta_daftar)
+        ->whereYear('booked_at', $tahun_peserta_daftar)
+        ->count();
+
+        $angka_romawi_bulan = $this->angkaRomawi(date('m'));
+
+        $nomor_peserta = sprintf("%02d/%s-%s/%s/%s", $jumlah_peserta + 1, $kode_psikolog, $angka_romawi_bulan, $tahun_peserta_daftar);
+
         $psikotes = Psikotes::create([
             'member_id' => $request->member_id,
+            'nomor_peserta' => $nomor_peserta,
             'psikolog_id' => $request->psikolog_id,
             'kebutuhan' => $request->kebutuhan,
             'jenis_psikotes_id' => $request->jenis_psikotes_id,
@@ -88,6 +104,12 @@ class MemberPsikotesController extends Controller
         } else{
             return redirect()->back()->with('error', 'Terjadi kesalahan.');
         }
+    }
+
+    private function angkaRomawi($angka)
+    {
+        $romawi = array('', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII');
+        return $romawi[$angka];
     }
 
     public function tagihan(Psikotes $psikotes)
