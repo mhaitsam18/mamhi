@@ -25,6 +25,15 @@ class AdminPsikologController extends Controller
         ]);
     }
 
+    public function kelola()
+    {
+        return view('admin.psikolog.index-admin', [
+            'title' => 'MAMHI | Data Psikolog',
+            'page' => 'psikolog',
+            'psikologs' => Psikolog::all(),
+        ]);
+    }
+
     public function create()
     {
         return view('admin.psikolog.create',  [

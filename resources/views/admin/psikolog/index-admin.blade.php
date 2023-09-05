@@ -7,28 +7,9 @@
         </div> --}}
 
     </div>
-    <div class="row my-3">
-        <div class="col">
-            <a href="/admin/psikolog/kelola" class="btn btn-outline-primary bg-white float-end">Kelola Data Psikolog</a>
-        </div>
-    </div>
+
     <div class="row">
-        @foreach ($psikologs as $psikolog)
-        <div class="col-sm-3 mb-3">
-            <div class="card">
-                <div class="card-body d-flex flex-column justify-content-between">
-                        <h5 class="card-title text-center">{{ $psikolog->user->name }}</h5>
-                        <div class="text-center m-2">
-                            <img src="{{ asset('storage/'.$psikolog->user->foto) }}" alt="" class="img-thumbnail w-100">
-                        </div>
-                        <div class="text-center d-grid ">
-                            <a href="/admin/psikolog/{{ $psikolog->id }}/edit" class="btn btn-primary btn-block">Lihat Data</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        @endforeach
-        {{-- <div class="row">
+        <div class="row">
             <div class="col-12 col-xl-12 grid-margin stretch-card">
                 <div class="card overflow-hidden">
                     <div class="card-body">
@@ -40,7 +21,7 @@
                                     <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton7">
-                                    <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="plus" class="icon-sm me-2"></i><span class="">Tambah</span></a>
+                                    <a class="dropdown-item d-flex align-items-center" href="/admin/psikolog/create"><i data-feather="plus" class="icon-sm me-2"></i><span class="">Tambah</span></a>
                                 </div>
                             </div>
                         </div>
@@ -72,7 +53,17 @@
                                             <td>{{ $psikolog->user->no_hp }}</td>
                                             <td>{{ $psikolog->user->alamat }}</td>
                                             <td><img src="{{ asset('storage/'.$psikolog->user->foto) }}" alt="" class="img-thumbnail w-100"></td>
-                                            <td></td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <a href="/admin/psikolog/{{ $psikolog->id }}/edit" class="badge bg-success me-2 d-inline-block">ubah</a>
+                                                    <form action="/admin/psikolog/{{ $psikolog->id }}" method="post">
+                                                        @method('delete')
+                                                        @csrf
+                                                        <button type="submit" class="badge bg-danger d-inline-block ms-2 mb-1 badge-a tombol-hapus">Hapus</button>
+                                                    </form>
+                                                </div>
+
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -81,6 +72,6 @@
                     </div>
                 </div>
             </div>
-        </div> <!-- row --> --}}
+        </div> <!-- row -->
     </div>
 @endsection

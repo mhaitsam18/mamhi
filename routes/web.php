@@ -67,6 +67,7 @@ Route::middleware('auth')->group(function () {
             Route::get('/index', [AdminController::class, 'index'])->name('admin.index');
             Route::resource('jadwal', AdminJadwalController::class);
             Route::put('psikolog/update-photo/{user}', [AdminPsikologController::class, 'updatePhoto'])->name('admin.psikolog-update-foto');
+            Route::get('psikolog/kelola', [AdminPsikologController::class, 'kelola'])->name('admin.psikolog.kelola');
             Route::resource('psikolog', AdminPsikologController::class);
             Route::post('/member/tmp-upload', [AdminMemberController::class, 'tmpUpload'])->name('mmember-tmp-upload');
             Route::delete('/member/tmp-delete', [AdminMemberController::class, 'tmpDelete'])->name('member-tmp-delete');
@@ -79,8 +80,8 @@ Route::middleware('auth')->group(function () {
             Route::get('/hasil', [AdminController::class, 'hasil'])->name('admin.hasil');
 
 
-            Route::post('/konsultasi/status/{konsultasi}', [AdminKonsultasiController::class, 'updateStatus'])->name('admin.psikolog-update-status');
-            Route::post('/psikotes/status/{psikotes}', [AdminPsikotesController::class, 'updateStatus'])->name('admin.psikotes-update-status');
+            Route::post('/konsultasi/status/{konsultasi}', [AdminKonsultasiController::class, 'updateStatus'])->name('admin.konsultasi.update-status');
+            Route::post('/psikotes/status/{psikotes}', [AdminPsikotesController::class, 'updateStatus'])->name('admin.psikotes.update-status');
 
             Route::get('/konsultasi/diagnosis/{konsultasi}', [AdminDiagnosisController::class, 'konsultasi'])->name('admin.psikolog-update-foto');
             Route::get('/konsultasi', [AdminKonsultasiController::class, 'index'])->name('admin.konsultasi');
