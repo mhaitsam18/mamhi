@@ -54,7 +54,7 @@
                                         <td>{{ $member->pekerjaan }}</td>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <a href="/admin/member/{{ $member->id }}/edit" class="badge bg-success d-inline-block">Edit</a>
+                                                <a href="/admin/member/{{ $member->id }}/edit" class="badge bg-primary d-inline-block">Detail</a>
                                                 {{-- <form action="/admin/member/{{ $member->id }}" method="post">
                                                     @method('delete')
                                                     @csrf

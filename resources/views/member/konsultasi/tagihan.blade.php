@@ -70,13 +70,17 @@
                                                     <td>Sub Total</td>
                                                     <td class="text-end">Rp 300.000,00</td>
                                                 </tr>
-                                                <tr>
+                                                {{-- <tr>
                                                     <td>TAX (12%)</td>
                                                     <td class="text-end">Rp {{ number_format((300000*12/100),2,',','.') }}</td>
+                                                </tr> --}}
+                                                <tr>
+                                                    <td>TAX & Admin</td>
+                                                    <td class="text-end">Rp {{ number_format(50000,2,',','.') }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="text-bold-800">Total</td>
-                                                    <td class="text-bold-800 text-end">Rp {{ number_format(300000+(300000*12/100),2,',','.') }}</td>
+                                                    <td class="text-bold-800 text-end">Rp {{ number_format(300000+50000,2,',','.') }}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -110,7 +114,7 @@
             </div>
             <form action="/member/pembayaran" method="post" enctype="multipart/form-data">
                 @csrf
-                <input type="hidden" name="nominal" value="336000">
+                <input type="hidden" name="nominal" value="350000">
                 <input type="hidden" name="konsultasi_id" value="{{ $konsultasi->id }}">
                 <div class="modal-body">
                     <p>

@@ -848,19 +848,19 @@ class DatabaseSeeder extends Seeder
 
         JenisPsikotes::create([
             'jenis_psikotes'=> 'Psikotes Potensi atau Intelegensi',
-            'harga' => 500000,
+            'harga' => 400000,
         ]);
         JenisPsikotes::create([
             'jenis_psikotes'=> 'Psikotes Kesiapan Sekolah',
-            'harga' => 500000,
+            'harga' => 400000,
         ]);
         JenisPsikotes::create([
             'jenis_psikotes'=> 'Psikotes Minat Bakat',
-            'harga' => 500000,
+            'harga' => 400000,
         ]);
         JenisPsikotes::create([
             'jenis_psikotes'=> 'Psikotes Seleksi Kerja',
-            'harga' => 500000,
+            'harga' => 400000,
         ]);
     }
 }

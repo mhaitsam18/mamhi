@@ -21,8 +21,8 @@
                                 <ul>
                                     <li>Kode Psikolog : {{ $psikolog->kode_psikolog }}</li>
                                     <li>Nama Lengkap :{{ $psikolog->user->name }}</li>
-                                    <li>Email : {{ $psikolog->user->email }}</li>
-                                    <li>Nomor Telepon : {{ $psikolog->user->no_hp }}</li>
+                                    {{-- <li>Email : {{ $psikolog->user->email }}</li>
+                                    <li>Nomor Telepon : {{ $psikolog->user->no_hp }}</li> --}}
                                     <li>Keahlian : {{ $psikolog->jenis_keahlian }}</li>
                                 </ul>
                             </div>

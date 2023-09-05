@@ -70,13 +70,17 @@
                                                     <td>Sub Total</td>
                                                     <td class="text-end">Rp {{ number_format($psikotes->jenis_psikotes->harga,2,',','.') }}</td>
                                                 </tr>
-                                                <tr>
+                                                {{-- <tr>
                                                     <td>TAX (12%)</td>
                                                     <td class="text-end">Rp {{ number_format(($psikotes->jenis_psikotes->harga*12/100),2,',','.') }}</td>
+                                                </tr> --}}
+                                                <tr>
+                                                    <td>TAX & Admin</td>
+                                                    <td class="text-end">Rp {{ number_format(50000,2,',','.') }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="text-bold-800">Total</td>
-                                                    <td class="text-bold-800 text-end">Rp {{ number_format($psikotes->jenis_psikotes->harga+($psikotes->jenis_psikotes->harga*12/100),2,',','.') }}</td>
+                                                    <td class="text-bold-800 text-end">Rp {{ number_format($psikotes->jenis_psikotes->harga+($psikotes->jenis_psikotes->harga+50000),2,',','.') }}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -110,7 +114,8 @@
             </div>
             <form action="/member/pembayaran" method="post" enctype="multipart/form-data">
                 @csrf
-                <input type="hidden" name="nominal" value="{{ $psikotes->jenis_psikotes->harga+($psikotes->jenis_psikotes->harga*12/100) }}">
+                {{-- <input type="hidden" name="nominal" value="{{ $psikotes->jenis_psikotes->harga+($psikotes->jenis_psikotes->harga*12/100) }}"> --}}
+                <input type="hidden" name="nominal" value="{{ $psikotes->jenis_psikotes->harga+($psikotes->jenis_psikotes->harga+50000) }}">
                 <input type="hidden" name="psikotes_id" value="{{ $psikotes->id }}">
                 <div class="modal-body">
                     <p>
