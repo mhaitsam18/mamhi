@@ -61,7 +61,8 @@ class AdminKonsultasiController extends Controller
             'booked_at' => date('Y-m-d H:i:s'),
             'tanggal_konsultasi' => $request->tanggal_konsultasi,
             'jadwal_id' => $request->jadwal_id,
-            'status' => $request->status
+            'status' => $request->status ?? 'booking diterima',
+            // 'status' => 'booking diterima'
         ]);
 
         return redirect('/admin/konsultasi')->with('success', 'Data konsultasi ditambahkan');

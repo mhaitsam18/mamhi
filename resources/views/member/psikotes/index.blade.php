@@ -14,9 +14,9 @@
                 <h2 class="mb-3 mb-md-0" style="font-style: italic">Psikotes</h2>
             </div>
         </div>
-    
-    
-    
+
+
+
         <div class="row">
             <div class="col-12 col-xl-12 grid-margin stretch-card">
                 <div class="card overflow-hidden">
@@ -43,20 +43,40 @@
                                     <div class="collapse multi-collapse" id="multiCollapseExample1">
                                         <div class="card card-body">
                                             <div class="mb-3">
-                                                <select name="jenis_psikotes_id" id="jenis_psikotes_id" cols="30" rows="5" class="form-select">
+                                                <select name="jenis_psikotes_id" id="jenis_psikotes_id" cols="30" rows="5" class="form-select @error('jenis_psikotes_id') is-invalid @enderror">
                                                     <option value="" selected disabled>Pilih jenis Psikotes</option>
                                                     @foreach ($jenis_psikotess as $jenis_psikotes)
                                                         <option value="{{ $jenis_psikotes->id }}" @selected($jenis_psikotes->id == old('jenis_psikotes_id'))>{{ $jenis_psikotes->jenis_psikotes }}</option>
                                                     @endforeach
                                                 </select>
+                                                @error('jenis_psikotes_id')
+                                                    <div class="text-danger fs-6">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
                                             </div>
                                             <div class="mb-3">
-                                                <textarea name="kebutuhan" id="kebutuhan" cols="30" rows="5" class="form-control" placeholder="Tulis kebutuhan Anda"></textarea>
+                                                <textarea name="kebutuhan" id="kebutuhan" cols="30" rows="5" class="form-control @error('kebutuhan') is-invalid @enderror" placeholder="Tulis kebutuhan Anda"></textarea>
+                                                @error('kebutuhan')
+                                                    <div class="text-danger fs-6">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
                                             </div>
                                             <div class="input-group mb-3">
-                                                <input type="date" class="form-control" min="<?= date('Y-m-d') ?>" name="tanggal" id="tanggal" placeholder="Pilih Tanggal" aria-label="Pilih Tanggal" aria-describedby="button-cek-jadwal">
-                                                <button class="btn btn-outline-secondary" type="button" id="button-cek-jadwal" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Cek Jadwal</button>  
+                                                <input type="date" class="form-control @error('tanggal') is-invalid @enderror" min="<?= date('Y-m-d') ?>" name="tanggal" id="tanggal" placeholder="Pilih Tanggal" aria-label="Pilih Tanggal" aria-describedby="button-cek-jadwal">
+                                                <button class="btn btn-outline-secondary" type="button" id="button-cek-jadwal" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Cek Jadwal</button>
                                             </div>
+                                            @error('tanggal')
+                                                <div class="text-danger fs-6">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                            @error('jadwal_id')
+                                                <div class="text-danger fs-6">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>

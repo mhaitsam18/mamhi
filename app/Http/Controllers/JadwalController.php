@@ -7,8 +7,10 @@ use App\Models\Konsultasi;
 use App\Models\Psikotes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Auth;
 
-class MemberJadwalController extends Controller
+
+class JadwalController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,8 +37,10 @@ class MemberJadwalController extends Controller
         }
 
         // Ambil konten dari view partial_view.blade.php
-        $content = View::make('member.jadwal.pilih-jadwal', [
+        $content = View::make('jadwal.pilih-jadwal', [
             'jadwals' => $jadwal_tersedia,
+            'aktor' => Auth::user()->role,
+            'member_id' => $request->member_id,
             'aksi' => $request->aksi,
             'keluhan' => $request->keluhan,
             'kebutuhan' => $request->kebutuhan,
@@ -82,7 +86,6 @@ class MemberJadwalController extends Controller
                 break;
         }
         return $hariIndonesia;
-
     }
 
     /**

@@ -59,17 +59,17 @@
                                         <td>{{ $psikotes->status }}</td>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <a href="#" class="badge bg-success d-inline-block editButton"  data-bs-toggle="modal" data-bs-target="#editModal" 
-                                                data-id="{{ $psikotes->id }}" 
-                                                data-nomor_peserta="{{ $psikotes->nomor_peserta }}" 
-                                                data-psikolog_id="{{ $psikotes->psikolog_id }}" 
-                                                data-member_id="{{ $psikotes->member_id }}" 
-                                                data-kebutuhan="{{ $psikotes->kebutuhan }}" 
-                                                data-booked_at="{{ $psikotes->booked_at }}" 
-                                                data-tanggal_psikotes="{{ $psikotes->tanggal_psikotes }}" 
-                                                data-jenis_psikotes_id="{{ $psikotes->jenis_psikotes_id }}" 
-                                                data-jadwal_id="{{ $psikotes->jadwal_id }}" 
-                                                data-status="{{ $psikotes->status }}" 
+                                                <a href="#" class="badge bg-success d-inline-block editButton"  data-bs-toggle="modal" data-bs-target="#editModal"
+                                                data-id="{{ $psikotes->id }}"
+                                                data-nomor_peserta="{{ $psikotes->nomor_peserta }}"
+                                                data-psikolog_id="{{ $psikotes->psikolog_id }}"
+                                                data-member_id="{{ $psikotes->member_id }}"
+                                                data-kebutuhan="{{ $psikotes->kebutuhan }}"
+                                                data-booked_at="{{ $psikotes->booked_at }}"
+                                                data-tanggal_psikotes="{{ $psikotes->tanggal_psikotes }}"
+                                                data-jenis_psikotes_id="{{ $psikotes->jenis_psikotes_id }}"
+                                                data-jadwal_id="{{ $psikotes->jadwal_id }}"
+                                                data-status="{{ $psikotes->status }}"
                                                 >Edit</a>
                                                 <form action="/admin/psikotes/{{ $psikotes->id }}" method="post">
                                                     @method('delete')
@@ -158,6 +158,7 @@
                         <select name="status" class="form-select @error('status') is-invalid @enderror" id="status">
                             <option value="" selected disabled>Pilih status</option>
                             <option value="booking" @selected(old('status') == 'booking')>Booking</option>
+                            <option value="booking diterima" @selected(old('status') == 'booking diterima')>Booking diterima</option>
                             <option value="batal" @selected(old('status') == 'batal')>Batal</option>
                             <option value="selesai" @selected(old('status') == 'selesai')>Selesai</option>
                         </select>

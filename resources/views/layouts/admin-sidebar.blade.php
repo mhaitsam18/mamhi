@@ -19,6 +19,12 @@
                     <span class="link-title">Beranda</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="/admin/booking" class="nav-link @if($page == 'booking') active @endif">
+                    <i class="link-icon" data-feather="calendar"></i>
+                    <span class="link-title">Booking Jadwal</span>
+                </a>
+            </li>
             {{-- <li class="nav-item">
                 <a href="/admin/jadwal-praktik" class="nav-link @if($page == 'jadwal-praktik') active @endif">
                     <i class="link-icon" data-feather="calendar"></i>

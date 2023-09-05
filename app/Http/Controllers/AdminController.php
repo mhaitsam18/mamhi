@@ -39,6 +39,13 @@ class AdminController extends Controller
         ]);
     }
 
+    public function booking() {
+        return view('admin.booking', [
+            'title' => 'Booking',
+            'page' => 'booking',
+        ]);
+    }
+
     function getThisWeekDateRange()
     {
         $today = Carbon::today();

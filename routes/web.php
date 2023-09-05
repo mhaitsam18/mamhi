@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminBookingController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminDiagnosisController;
 use App\Http\Controllers\AdminJadwalController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\AdminRuanganController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\MemberArtikelController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\MemberJadwalController;
@@ -58,6 +60,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/file/dokumen-delete', [FileController::class, 'dokumenDelete'])->name('dokumen-delete');
 
     Route::put('update-photo/{user}', [AuthController::class, 'updatePhoto'])->name('admin.psikolog-update-foto');
+
+
+
+    Route::prefix('jadwal')->group(function () {
+        Route::get('/', [JadwalController::class, 'index'])->name('jadwal.index');
+        Route::post('/pilih-jadwal', [JadwalController::class, 'pilihJadwal'])->name('jadwal.pilih-jadwal');
+    });
     Route::middleware('admin')->group(function () {
         Route::prefix('admin')->group(function () {
 
@@ -65,6 +74,16 @@ Route::middleware('auth')->group(function () {
             Route::get('/profile', [AdminController::class, 'profile'])->name('admin.profile');
             Route::put('/profile', [AdminController::class, 'profileUpdate'])->name('admin.profile.update');
             Route::get('/index', [AdminController::class, 'index'])->name('admin.index');
+            Route::get('/booking', [AdminBookingController::class, 'index'])->name('admin.booking.index');
+            Route::get('/booking/konsultasi', [AdminBookingController::class, 'konsultasi'])->name('admin.booking.konsultasi');
+            Route::get('/booking/psikotes', [AdminBookingController::class, 'psikotes'])->name('admin.booking.psikotes');
+
+
+
+            Route::prefix('jadwal')->group(function () {
+                Route::post('/pilih-jadwal', [AdminJadwalController::class, 'pilihJadwal'])->name('admin.jadwal.pilih-jadwal');
+            });
+
             Route::resource('jadwal', AdminJadwalController::class);
             Route::put('psikolog/update-photo/{user}', [AdminPsikologController::class, 'updatePhoto'])->name('admin.psikolog-update-foto');
             Route::get('psikolog/kelola', [AdminPsikologController::class, 'kelola'])->name('admin.psikolog.kelola');

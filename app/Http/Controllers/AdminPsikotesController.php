@@ -68,7 +68,7 @@ class AdminPsikotesController extends Controller
             'jenis_psikotes_id' => $request->jenis_psikotes_id,
             'kebutuhan' => $request->kebutuhan,
             'jadwal_id' => $request->jadwal_id,
-            'status' => $request->status
+            'status' => $request->status ?? 'booking diterima',
         ]);
 
         return redirect('/admin/psikotes')->with('success', 'Data psikotes ditambahkan');
