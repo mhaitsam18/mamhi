@@ -8,6 +8,7 @@ use App\Models\Member;
 use App\Models\Psikolog;
 use App\Models\Psikotes;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class AdminPsikotesController extends Controller
 {
@@ -108,7 +109,10 @@ class AdminPsikotesController extends Controller
         $request->validate([
             'member_id' => 'required',
             'psikolog_id' => 'required',
-            'nomor_peserta' => 'unique:psikotes',
+            'nomor_peserta' => [
+                'nullable', // Memungkinkan nomor_peserta kosong (NULL)
+                Rule::unique('psikotes')->ignore($psikotes->id), // $psikotes->id adalah ID data yang sedang diedit
+            ],
             'tanggal_psikotes' => 'required',
             'jenis_psikotes_id' => 'required',
             'kebutuhan' => 'required',
