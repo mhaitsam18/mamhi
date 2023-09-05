@@ -5,7 +5,7 @@
         <div>
             <h4 class="mb-3 mb-md-0">Detail Psikolog</h4>
         </div>
-        
+
     </div>
 
     <div class="row">
@@ -47,7 +47,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="jenis_keahlian">Keahlian</label>
-                                    <input type="text" class="form-control @error('jenis_keahlian') is-invalid @enderror" name="jenis_keahlian" id="jenis_keahlian" value="{{ old('jenis_keahlian', $psikolog->jenis_keahlian) }}">
+                                    <textarea class="form-control @error('jenis_keahlian') is-invalid @enderror" name="jenis_keahlian" id="jenis_keahlian">{{ old('jenis_keahlian', $psikolog->jenis_keahlian) }}</textarea>
                                     @error('jenis_keahlian')
                                         <div class="text-danger fs-6">
                                             {{ $message }}

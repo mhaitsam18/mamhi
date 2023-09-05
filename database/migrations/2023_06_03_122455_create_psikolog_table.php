@@ -18,7 +18,7 @@ return new class extends Migration
                 ->onUpdate('cascade')
                 ->nullOnDelete();
             $table->string('kode_psikolog')->nullable();
-            $table->string('jenis_keahlian', 100)->nullable();
+            $table->text('jenis_keahlian')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
