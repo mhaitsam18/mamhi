@@ -55,8 +55,7 @@
                                         <td>{{ $konsultasi->status }}</td>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <a href="/admin/konsultasi/diagnosis/{{ $konsultasi->id }}" class="badge bg-info me-2 d-inline-block"
-                                                >Diagnosis</a>
+                                                <a href="/admin/konsultasi/diagnosis/{{ $konsultasi->id }}" class="badge bg-info me-2 d-inline-block @cannot('psikolog') access-denied @endcannot ">Diagnosis</a>
                                                 <a href="#" class="badge bg-success d-inline-block editButton"  data-bs-toggle="modal" data-bs-target="#editModal"
                                                 data-id="{{ $konsultasi->id }}"
                                                 data-psikolog_id="{{ $konsultasi->psikolog_id }}"

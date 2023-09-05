@@ -116,7 +116,7 @@ License: For each use you must have a valid license purchased only from above li
     <!-- End custom js for this page -->
 
     <!-- End custom js for this page -->
-    
+
     <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
     <script src="https://unpkg.com/filepond-plugin-image-exif-orientation/dist/filepond-plugin-image-exif-orientation.js"></script>
     <script src="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.js"></script>
@@ -130,7 +130,7 @@ License: For each use you must have a valid license purchased only from above li
     <script>
         const success = $('.flash-data').data('success');
         if (success) {
-            //'Data ' + 
+            //'Data ' +
             Swal.fire({
                 title: 'Berhasil',
                 text: success,
@@ -139,7 +139,7 @@ License: For each use you must have a valid license purchased only from above li
         }
         const error = $('.flash-data').data('error');
         if (error) {
-            //'Data ' + 
+            //'Data ' +
             Swal.fire({
                 title: 'Gagal',
                 text: error,
@@ -148,13 +148,23 @@ License: For each use you must have a valid license purchased only from above li
         }
         const warning = $('.flash-data').data('warning');
         if (warning) {
-            //'Data ' + 
+            //'Data ' +
             Swal.fire({
                 title: 'Perhatian',
                 text: warning,
                 icon: 'warning'
             });
         }
+        $('.access-denied').on('click', function(e) {
+            e.preventDefault(); // Mencegah pengiriman formulir secara langsung
+
+            //'Data ' +
+            Swal.fire({
+                title: 'Akses ditolak',
+                text: 'Anda tidak memiliki otoritas untuk membuka fitur ini',
+                icon: 'warning'
+            });
+        });
         $('.tombol-hapus').on('click', function(e) {
             e.preventDefault(); // Mencegah pengiriman formulir secara langsung
 
@@ -175,7 +185,7 @@ License: For each use you must have a valid license purchased only from above li
             });
         });
     </script>
-    
+
     @yield('script')
 
 
