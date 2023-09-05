@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Jadwal;
 use App\Models\Konsultasi;
 use App\Models\Member;
+use App\Models\Pembayaran;
 use App\Models\Psikolog;
 use Illuminate\Http\Request;
 
@@ -127,6 +128,9 @@ class AdminKonsultasiController extends Controller
         $konsultasi->update([
             'status' => $request->status
         ]);
+        // if ($request->status == 'batal') {
+        //     Pembayaran::where('konsultasi_id', $konsultasi->id)->delete();
+        // }
 
         return back()->with('success', 'Booking Konsultasi berhasil dikonfirmasi');
     }

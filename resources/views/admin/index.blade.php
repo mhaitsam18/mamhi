@@ -79,6 +79,7 @@
                                                 <th>Jadwal</th>
                                                 <th>Nama Peserta</th>
                                                 <th>Keluhan</th>
+                                                <th>Bukti Pembayaran</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
@@ -91,6 +92,13 @@
                                                 <td>{{ $item->member->user->name }}</td>
                                                 <td>{{ $item->keluhan }}</td>
                                                 <td>
+                                                    @if ($item->pembayaran->bukti ?? null)
+                                                        <a href="{{ asset('storage/' . $item->pembayaran->bukti) }}" class="image-popup">
+                                                            <img src="{{ asset('storage/' . $item->pembayaran->bukti) }}" alt="" class="" data-mfp-src="{{ asset('storage/' . $item->pembayaran->bukti) }}" style="border-radius: 0;"> Lihat Bukti
+                                                        </a>
+                                                    @endif
+                                                </td>
+                                                <td>
                                                     <div class="d-flex">
                                                         <form action="/admin/konsultasi/status/{{ $item->id }}" method="post">
                                                             @csrf
@@ -102,6 +110,12 @@
                                                             <input type="hidden" name="status" value="batal">
                                                             <button type="submit" class="badge bg-danger d-inline mx-1 border-0">Tolak</button>
                                                         </form>
+                                                        <!-- Button trigger modal -->
+                                                        {{-- <button type="button" class="badge bg-info d-inline mx-1 border-0" data-bs-toggle="modal" data-bs-target="#pembayaranKonsultasi{{ $item->id }}Modal">
+                                                            Lihat Bukti Pembayaran
+                                                        </button> --}}
+
+
                                                     </div>
                                                 </td>
                                             @endforeach
@@ -120,6 +134,7 @@
                                                 <th>Jadwal</th>
                                                 <th>Nama Peserta</th>
                                                 <th>Kebutuhan</th>
+                                                <th>Bukti Pembayaran</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
@@ -132,6 +147,13 @@
                                                 <td>{{ $item->member->user->name }}</td>
                                                 <td>{{ $item->kebutuhan }}</td>
                                                 <td>
+                                                    @if ($item->pembayaran->bukti ?? null)
+                                                        <a href="{{ asset('storage/' . $item->pembayaran->bukti) }}" class="image-popup">
+                                                            <img src="{{ asset('storage/' . $item->pembayaran->bukti) }}" alt="" class="" data-mfp-src="{{ asset('storage/' . $item->pembayaran->bukti) }}" style="border-radius: 0;"> Lihat Bukti
+                                                        </a>
+                                                    @endif
+                                                </td>
+                                                <td>
                                                     <div class="d-flex">
                                                         <form action="/admin/psikotes/status/{{ $item->id }}" method="post">
                                                             @csrf
@@ -143,6 +165,10 @@
                                                             <input type="hidden" name="status" value="batal">
                                                             <button type="submit" class="badge bg-danger d-inline mx-1 border-0">Tolak</button>
                                                         </form>
+                                                        <!-- Button trigger modal -->
+                                                        {{-- <button type="button" class="badge bg-info d-inline mx-1 border-0" data-bs-toggle="modal" data-bs-target="#pembayaranPsikotes{{ $item->id }}Modal">
+                                                            Lihat Bukti Pembayaran
+                                                        </button> --}}
                                                     </div>
                                                 </td>
                                             @endforeach
@@ -276,4 +302,98 @@
             </div>
         </div>
     </div> <!-- row -->
+@endsection
+@section('modal')
+    @foreach ($booking_konsultasi as $item)
+        <div class="modal fade" id="pembayaranKonsultasi{{ $item->id }}Modal" tabindex="-1" aria-labelledby="pembayaranKonsultasi{{ $item->id }}ModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="pembayaranKonsultasi{{ $item->id }}ModalLabel">Bukti Pembayaran</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img id="buktiPembayaranKonsultasi{{ $item->id }}" src="{{ asset('storage/' . $item->pembayaran->bukti) }}" alt="" class="img-fluid">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                        <button type="button" class="btn btn-primary zoom-in">Zoom In</button>
+                        <button type="button" class="btn btn-primary zoom-out">Zoom Out</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
+    @foreach ($booking_psikotes as $item)
+        <div class="modal fade" id="pembayaranPsikotes{{ $item->id }}Modal" tabindex="-1" aria-labelledby="pembayaranPsikotes{{ $item->id }}ModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="pembayaranPsikotes{{ $item->id }}ModalLabel">Bukti Pembayaran</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img id="buktiPembayaranPsikotes{{ $item->id }}" src="{{ asset('storage/' . $item->pembayaran->bukti) }}" alt="" class="img-fluid">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                        <button type="button" class="btn btn-primary zoom-in">Zoom In</button>
+                        <button type="button" class="btn btn-primary zoom-out">Zoom Out</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
+@endsection
+@section('script')
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
+<!-- Magnific Popup CSS dan JS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.zoom-in').on('click', function () {
+            var modalId = $(this).closest('.modal').attr('id');
+            var img = $('#' + modalId + ' .modal-body img');
+
+            // Perbesar gambar
+            var newWidth = img.width() * 1.2; // Anda dapat menyesuaikan faktor perbesaran
+            img.width(newWidth);
+        });
+
+        $('.zoom-out').on('click', function () {
+            var modalId = $(this).closest('.modal').attr('id');
+            var img = $('#' + modalId + ' .modal-body img');
+
+            // Kecilkan gambar
+            var newWidth = img.width() / 1.2; // Anda dapat menyesuaikan faktor perkecilan
+            img.width(newWidth);
+        });
+
+        // Event saat modal ditutup
+        $('.modal').on('hidden.bs.modal', function () {
+            var img = $(this).find('.modal-body img');
+
+            // Kembalikan ukuran gambar ke semula saat modal ditutup
+            img.width('auto');
+        });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $('.image-popup').magnificPopup({
+            type: 'image',
+            closeOnContentClick: true,
+            image: {
+                verticalFit: false
+            },
+            zoom: {
+                enabled: true,
+                duration: 300 // Animasi zoom in dan zoom out
+            }
+        });
+    });
+</script>
+
 @endsection

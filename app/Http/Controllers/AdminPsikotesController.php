@@ -141,6 +141,11 @@ class AdminPsikotesController extends Controller
             'status' => $request->status
         ]);
 
+
+        // if ($request->status == 'batal') {
+        //     Pembayaran::where('psikotes_id', $psikotes->id)->delete();
+        // }
+
         return back()->with('success', 'Booking psikotes berhasil dikonfirmasi');
     }
 

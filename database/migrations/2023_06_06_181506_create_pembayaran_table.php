@@ -25,6 +25,7 @@ return new class extends Migration
             $table->float('nominal')->nullable();
             $table->string('bukti')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

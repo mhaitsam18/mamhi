@@ -47,6 +47,6 @@ class Psikotes extends Model
     }
     public function pembayaran()
     {
-        return $this->hasMany(Pembayaran::class);
+        return $this->hasOne(Pembayaran::class);
     }
 }

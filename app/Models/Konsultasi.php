@@ -28,12 +28,12 @@ class Konsultasi extends Model
     {
         return $this->belongsTo(Psikolog::class, 'psikolog_id');
     }
-    
+
     public function jadwal()
     {
         return $this->belongsTo(Jadwal::class, 'jadwal_id');
     }
-    
+
     public function diagnosis()
     {
         return $this->hasOne(Diagnosis::class);
@@ -41,6 +41,6 @@ class Konsultasi extends Model
 
     public function pembayaran()
     {
-        return $this->hasMany(Pembayaran::class);
+        return $this->hasOne(Pembayaran::class);
     }
 }

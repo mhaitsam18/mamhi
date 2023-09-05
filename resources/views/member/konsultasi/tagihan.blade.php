@@ -11,7 +11,7 @@
                     <div class="card-body">
                         <div class="container-fluid d-flex justify-content-between">
                             <div class="col-lg-3 ps-0">
-                                <a href="#" class="noble-ui-logo d-block mt-3"><img src="/assets/img/logos/logo-mamhi.png" class="d-block" style="height: 100px;"></a>                 
+                                <a href="#" class="noble-ui-logo d-block mt-3"><img src="/assets/img/logos/logo-mamhi.png" class="d-block" style="height: 100px;"></a>
                                 <p class="mt-1 mb-1"><b>MamHI Psikologi</b></p>
                                 <p>Ruko R4 BCV II,<br> Jl. Pasir Impun, Karang Pamulang, Mandalajati<br>Kota Bandung, Jawa Barat 40195.</p>
                                 <h5 class="mt-5 mb-2 text-muted">Tagihan untuk :</h5>
@@ -88,8 +88,10 @@
                             <a href="/member/konsultasi/konsultasi-saya" class="btn btn-secondary float-end mt-4 ms-2">Tutup</a>
                             @if (!$pembayaran)
                                 <a href="#" class="btn btn-primary float-end mt-4 ms-2" data-bs-toggle="modal" data-bs-target="#exampleModal"><i data-feather="send" class="me-3 icon-md"></i>Bayar sekarang</a>
-                            @else   
+                            @elseif ($konsultasi->status == 'booking diterima' || $konsultasi->status == 'selesai')
                                 <span class="btn btn-success float-end mt-4 ms-2">Lunas</span>
+                            @else
+                                <span class="btn btn-danger float-end mt-4 ms-2">Batal / Pembayaran ditolak</span>
                             @endif
                         </div>
                     </div>
