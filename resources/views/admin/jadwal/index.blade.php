@@ -156,12 +156,16 @@
                     </div>
                     <div class="mb-3">
                         <label for="status" class="form-label">Status</label>
-                            <input type="text" name="status" class="form-control @error('status') is-invalid @enderror" id="status" value="{{ old('status') }}">
-                            @error('status')
-                                <div class="text-danger fs-6">
-                                    {{ $message }}
-                                </div>
-                            @enderror
+                        <select name="status" class="form-select @error('status') is-invalid @enderror" id="status">
+                            <option value="" selected disabled>Pilih Status</option>
+                            <option value="Tersedia" @selected(old('status') == 'Tersedia')>Tersedia</option>
+                            <option value="Tidak Tersedia" @selected(old('status') == 'Tidak Tersedia')>Tidak Tersedia</option>
+                        </select>
+                        @error('status')
+                            <div class="text-danger fs-6">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -253,12 +257,16 @@
                     </div>
                     <div class="mb-3">
                         <label for="status" class="form-label">Status</label>
-                            <input type="text" name="status" class="form-control @error('status') is-invalid @enderror" id="status" value="{{ old('status') }}">
-                            @error('status')
-                                <div class="text-danger fs-6">
-                                    {{ $message }}
-                                </div>
-                            @enderror
+                        <select name="status" class="form-select @error('status') is-invalid @enderror" id="status">
+                            <option value="" selected disabled>Pilih Status</option>
+                            <option value="Tersedia" @selected(old('status') == 'Tersedia')>Tersedia</option>
+                            <option value="Tidak Tersedia" @selected(old('status') == 'Tidak Tersedia')>Tidak Tersedia</option>
+                        </select>
+                        @error('status')
+                            <div class="text-danger fs-6">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                 </div>
                 <div class="modal-footer">
