@@ -71,7 +71,7 @@
                                         @enderror
                                     </div>
                                     <div class="input-group mb-3">
-                                        <input type="date" class="form-control" min="<?= date('Y-m-d') ?>  @error('tanggal_konsultasi') is-invalid @enderror" name="tanggal" id="tanggal" placeholder="Pilih Tanggal" aria-label="Pilih Tanggal" aria-describedby="button-cek-jadwal">
+                                        <input type="date" class="form-control  @error('tanggal_konsultasi') is-invalid @enderror" min="<?= date('Y-m-d', strtotime('+2 days')) ?>" name="tanggal" id="tanggal" placeholder="Pilih Tanggal" aria-label="Pilih Tanggal" aria-describedby="button-cek-jadwal">
                                         <button class="btn btn-outline-secondary" type="button" id="button-cek-jadwal" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Cek Jadwal</button>
                                     </div>
                                     @error('tanggal_konsultasi')
