@@ -58,7 +58,8 @@ License: For each use you must have a valid license purchased only from above li
 
 <body>
     <div class="main-wrapper">
-        <div class="flash-data" data-success="{{ session()->get('success') }}" data-error="{{ session()->get('error') }}" data-warning="{{ session()->get('warning') }}"></div>
+
+        <div class="flash-data" data-success="{{ session()->get('success') }}" data-error="@if ($errors->any()) Terjadi kesalahan, periksa kembali data yang Anda masukkan! @else {{ session()->get('error') }} @endif" data-warning="{{ session()->get('warning') }}"></div>
 
         @include('layouts.admin-sidebar')
 

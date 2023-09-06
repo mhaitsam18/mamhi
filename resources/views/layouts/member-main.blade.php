@@ -62,7 +62,7 @@ License: For each use you must have a valid license purchased only from above li
 
 <body>
     <div class="main-wrapper">
-        <div class="flash-data" data-success="{{ session()->get('success') }}" data-error="{{ session()->get('error') }}" data-warning="{{ session()->get('warning') }}"></div>
+        <div class="flash-data" data-success="{{ session()->get('success') }}" data-error="@if ($errors->any()) Terjadi kesalahan, periksa kembali data yang Anda masukkan! @else {{ session()->get('error') }} @endif" data-warning="{{ session()->get('warning') }}"></div>
 
         <!-- partial:partials/_navbar.html -->
         @include('layouts.member-navbar')
@@ -128,7 +128,7 @@ License: For each use you must have a valid license purchased only from above li
     <script src="/assets-nobleui/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
     <script src="/assets-nobleui/vendors/apexcharts/apexcharts.min.js"></script>
     <!-- End plugin js for this page -->
-    
+
     <!-- Plugin js for this page -->
     <script src="/assets-nobleui/vendors/datatables.net/jquery.dataTables.js"></script>
     <script src="/assets-nobleui/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
@@ -149,7 +149,7 @@ License: For each use you must have a valid license purchased only from above li
     <script>
         const success = $('.flash-data').data('success');
         if (success) {
-            //'Data ' + 
+            //'Data ' +
             Swal.fire({
                 title: 'Berhasil',
                 text: success,
@@ -158,7 +158,7 @@ License: For each use you must have a valid license purchased only from above li
         }
         const error = $('.flash-data').data('error');
         if (error) {
-            //'Data ' + 
+            //'Data ' +
             Swal.fire({
                 title: 'Gagal',
                 text: error,
@@ -167,7 +167,7 @@ License: For each use you must have a valid license purchased only from above li
         }
         const warning = $('.flash-data').data('warning');
         if (warning) {
-            //'Data ' + 
+            //'Data ' +
             Swal.fire({
                 title: 'Perhatian',
                 text: warning,
