@@ -62,7 +62,7 @@ License: For each use you must have a valid license purchased only from above li
 
 <body>
     <div class="main-wrapper">
-        <div class="flash-data" data-success="{{ session()->get('success') }}" data-error="@if ($errors->any()) Terjadi kesalahan, periksa kembali data yang Anda masukkan! @else {{ session()->get('error') }} @endif" data-warning="{{ session()->get('warning') }}"></div>
+        <div class="flash-data" data-success="{{ session()->get('success') }}" data-error="@if ($errors->any()) Terjadi kesalahan, periksa kembali data yang Anda masukkan! @else{{ session()->get('error') }}@endif" data-warning="{{ session()->get('warning') }}"></div>
 
         <!-- partial:partials/_navbar.html -->
         @include('layouts.member-navbar')
