@@ -81,7 +81,15 @@ class MemberPsikotesController extends Controller
 
         $angka_romawi_bulan = $this->angkaRomawi(date('m'));
 
-        $nomor_peserta = sprintf("%02d/%s-%s/%s/%s", $jumlah_peserta + 1, $kode_psikolog, $angka_romawi_bulan, $tahun_peserta_daftar);
+        $nomor_peserta = sprintf(
+            "%02d/%s-MAMHI/%s/%s/%s",
+            $jumlah_peserta + 1,
+            $kode_psikolog,
+            $angka_romawi_bulan,
+            $tahun_peserta_daftar,
+            // Argumen keenam diisi dengan nilai kosong ('')
+            ''
+        );
 
         $psikotes = Psikotes::create([
             'member_id' => $request->member_id,
@@ -109,6 +117,9 @@ class MemberPsikotesController extends Controller
     private function angkaRomawi($angka)
     {
         $romawi = array('', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII');
+        if (substr($angka, 0, 1) === '0') {
+            $angka = substr($angka, 1);
+        }
         return $romawi[$angka];
     }
 
