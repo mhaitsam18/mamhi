@@ -85,39 +85,41 @@
                                         </thead>
                                         <tbody>
                                             @foreach ($booking_konsultasi as $item)
-                                                <th>{{ $loop->iteration }}</th>
-                                                <td>{{ Carbon::parse($item->booked_at)->isoFormat('LLL')  }}</td>
-                                                <td>{{ Carbon::parse($item->tanggal_konsultasi)->isoFormat('LL') }}</td>
-                                                <td>{{ substr($item->jadwal->jam_mulai, 0, 5).' - '.substr($item->jadwal->jam_selesai, 0, 5) }}</td>
-                                                <td>{{ $item->member->user->name }}</td>
-                                                <td>{{ $item->keluhan }}</td>
-                                                <td>
-                                                    @if ($item->pembayaran->bukti ?? null)
-                                                        <a href="{{ asset('storage/' . $item->pembayaran->bukti) }}" class="image-popup">
-                                                            <img src="{{ asset('storage/' . $item->pembayaran->bukti) }}" alt="" class="" data-mfp-src="{{ asset('storage/' . $item->pembayaran->bukti) }}" style="border-radius: 0;"> Lihat Bukti
-                                                        </a>
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    <div class="d-flex">
-                                                        <form action="/admin/konsultasi/status/{{ $item->id }}" method="post">
-                                                            @csrf
-                                                            <input type="hidden" name="status" value="booking diterima">
-                                                            <button type="submit" class="badge bg-success d-inline mx-1 border-0">Terima</button>
-                                                        </form>
-                                                        <form action="/admin/konsultasi/status/{{ $item->id }}" method="post">
-                                                            @csrf
-                                                            <input type="hidden" name="status" value="batal">
-                                                            <button type="submit" class="badge bg-danger d-inline mx-1 border-0">Tolak</button>
-                                                        </form>
-                                                        <!-- Button trigger modal -->
-                                                        {{-- <button type="button" class="badge bg-info d-inline mx-1 border-0" data-bs-toggle="modal" data-bs-target="#pembayaranKonsultasi{{ $item->id }}Modal">
-                                                            Lihat Bukti Pembayaran
-                                                        </button> --}}
+                                                <tr>
+                                                    <th>{{ $loop->iteration }}</th>
+                                                    <td>{{ Carbon::parse($item->booked_at)->isoFormat('LLL')  }}</td>
+                                                    <td>{{ Carbon::parse($item->tanggal_konsultasi)->isoFormat('LL') }}</td>
+                                                    <td>{{ substr($item->jadwal->jam_mulai, 0, 5).' - '.substr($item->jadwal->jam_selesai, 0, 5) }}</td>
+                                                    <td>{{ $item->member->user->name }}</td>
+                                                    <td>{{ $item->keluhan }}</td>
+                                                    <td>
+                                                        @if ($item->pembayaran->bukti ?? null)
+                                                            <a href="{{ asset('storage/' . $item->pembayaran->bukti) }}" class="image-popup">
+                                                                <img src="{{ asset('storage/' . $item->pembayaran->bukti) }}" alt="" class="" data-mfp-src="{{ asset('storage/' . $item->pembayaran->bukti) }}" style="border-radius: 0;"> Lihat Bukti
+                                                            </a>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        <div class="d-flex">
+                                                            <form action="/admin/konsultasi/status/{{ $item->id }}" method="post">
+                                                                @csrf
+                                                                <input type="hidden" name="status" value="booking diterima">
+                                                                <button type="submit" class="badge bg-success d-inline mx-1 border-0">Terima</button>
+                                                            </form>
+                                                            <form action="/admin/konsultasi/status/{{ $item->id }}" method="post">
+                                                                @csrf
+                                                                <input type="hidden" name="status" value="batal">
+                                                                <button type="submit" class="badge bg-danger d-inline mx-1 border-0">Tolak</button>
+                                                            </form>
+                                                            <!-- Button trigger modal -->
+                                                            {{-- <button type="button" class="badge bg-info d-inline mx-1 border-0" data-bs-toggle="modal" data-bs-target="#pembayaranKonsultasi{{ $item->id }}Modal">
+                                                                Lihat Bukti Pembayaran
+                                                            </button> --}}
 
 
-                                                    </div>
-                                                </td>
+                                                        </div>
+                                                    </td>
+                                                </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
@@ -140,37 +142,39 @@
                                         </thead>
                                         <tbody>
                                             @foreach ($booking_psikotes as $item)
-                                                <th>{{ $loop->iteration }}</th>
-                                                <td>{{ Carbon::parse($item->booked_at)->isoFormat('LLL')  }}</td>
-                                                <td>{{ Carbon::parse($item->tanggal_psikotes)->isoFormat('LL') }}</td>
-                                                <td>{{ substr($item->jadwal->jam_mulai, 0, 5).' - '.substr($item->jadwal->jam_selesai, 0, 5) }}</td>
-                                                <td>{{ $item->member->user->name }}</td>
-                                                <td>{{ $item->kebutuhan }}</td>
-                                                <td>
-                                                    @if ($item->pembayaran->bukti ?? null)
-                                                        <a href="{{ asset('storage/' . $item->pembayaran->bukti) }}" class="image-popup">
-                                                            <img src="{{ asset('storage/' . $item->pembayaran->bukti) }}" alt="" class="" data-mfp-src="{{ asset('storage/' . $item->pembayaran->bukti) }}" style="border-radius: 0;"> Lihat Bukti
-                                                        </a>
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    <div class="d-flex">
-                                                        <form action="/admin/psikotes/status/{{ $item->id }}" method="post">
-                                                            @csrf
-                                                            <input type="hidden" name="status" value="booking diterima">
-                                                            <button type="submit" class="badge bg-success d-inline mx-1 border-0">Terima</button>
-                                                        </form>
-                                                        <form action="/admin/psikotes/status/{{ $item->id }}" method="post">
-                                                            @csrf
-                                                            <input type="hidden" name="status" value="batal">
-                                                            <button type="submit" class="badge bg-danger d-inline mx-1 border-0">Tolak</button>
-                                                        </form>
-                                                        <!-- Button trigger modal -->
-                                                        {{-- <button type="button" class="badge bg-info d-inline mx-1 border-0" data-bs-toggle="modal" data-bs-target="#pembayaranPsikotes{{ $item->id }}Modal">
-                                                            Lihat Bukti Pembayaran
-                                                        </button> --}}
-                                                    </div>
-                                                </td>
+                                                <tr>
+                                                    <th>{{ $loop->iteration }}</th>
+                                                    <td>{{ Carbon::parse($item->booked_at)->isoFormat('LLL')  }}</td>
+                                                    <td>{{ Carbon::parse($item->tanggal_psikotes)->isoFormat('LL') }}</td>
+                                                    <td>{{ substr($item->jadwal->jam_mulai, 0, 5).' - '.substr($item->jadwal->jam_selesai, 0, 5) }}</td>
+                                                    <td>{{ $item->member->user->name }}</td>
+                                                    <td>{{ $item->kebutuhan }}</td>
+                                                    <td>
+                                                        @if ($item->pembayaran->bukti ?? null)
+                                                            <a href="{{ asset('storage/' . $item->pembayaran->bukti) }}" class="image-popup">
+                                                                <img src="{{ asset('storage/' . $item->pembayaran->bukti) }}" alt="" class="" data-mfp-src="{{ asset('storage/' . $item->pembayaran->bukti) }}" style="border-radius: 0;"> Lihat Bukti
+                                                            </a>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        <div class="d-flex">
+                                                            <form action="/admin/psikotes/status/{{ $item->id }}" method="post">
+                                                                @csrf
+                                                                <input type="hidden" name="status" value="booking diterima">
+                                                                <button type="submit" class="badge bg-success d-inline mx-1 border-0">Terima</button>
+                                                            </form>
+                                                            <form action="/admin/psikotes/status/{{ $item->id }}" method="post">
+                                                                @csrf
+                                                                <input type="hidden" name="status" value="batal">
+                                                                <button type="submit" class="badge bg-danger d-inline mx-1 border-0">Tolak</button>
+                                                            </form>
+                                                            <!-- Button trigger modal -->
+                                                            {{-- <button type="button" class="badge bg-info d-inline mx-1 border-0" data-bs-toggle="modal" data-bs-target="#pembayaranPsikotes{{ $item->id }}Modal">
+                                                                Lihat Bukti Pembayaran
+                                                            </button> --}}
+                                                        </div>
+                                                    </td>
+                                                </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
@@ -209,12 +213,14 @@
                                         </thead>
                                         <tbody>
                                             @foreach ($konsultasi_minggu_ini as $item)
-                                                <th>{{ $loop->iteration }}</th>
-                                                <td>{{ Carbon::parse($item->booked_at)->isoFormat('LLL')  }}</td>
-                                                <td>{{ Carbon::parse($item->tanggal_konsultasi)->isoFormat('LL') }}</td>
-                                                <td>{{ substr($item->jadwal->jam_mulai, 0, 5).' - '.substr($item->jadwal->jam_selesai, 0, 5) }}</td>
-                                                <td>{{ $item->member->user->name }}</td>
-                                                <td>{{ $item->keluhan }}</td>
+                                                <tr>
+                                                    <th>{{ $loop->iteration }}</th>
+                                                    <td>{{ Carbon::parse($item->booked_at)->isoFormat('LLL')  }}</td>
+                                                    <td>{{ Carbon::parse($item->tanggal_konsultasi)->isoFormat('LL') }}</td>
+                                                    <td>{{ substr($item->jadwal->jam_mulai, 0, 5).' - '.substr($item->jadwal->jam_selesai, 0, 5) }}</td>
+                                                    <td>{{ $item->member->user->name }}</td>
+                                                    <td>{{ $item->keluhan }}</td>
+                                                </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
@@ -234,12 +240,14 @@
                                         </thead>
                                         <tbody>
                                             @foreach ($psikotes_minggu_ini as $item)
-                                                <th>{{ $loop->iteration }}</th>
-                                                <td>{{ Carbon::parse($item->booked_at)->isoFormat('LLL')  }}</td>
-                                                <td>{{ Carbon::parse($item->tanggal_psikotes)->isoFormat('LL') }}</td>
-                                                <td>{{ substr($item->jadwal->jam_mulai, 0, 5).' - '.substr($item->jadwal->jam_selesai, 0, 5) }}</td>
-                                                <td>{{ $item->member->user->name }}</td>
-                                                <td>{{ $item->kebutuhan }}</td>
+                                                <tr>
+                                                    <th>{{ $loop->iteration }}</th>
+                                                    <td>{{ Carbon::parse($item->booked_at)->isoFormat('LLL')  }}</td>
+                                                    <td>{{ Carbon::parse($item->tanggal_psikotes)->isoFormat('LL') }}</td>
+                                                    <td>{{ substr($item->jadwal->jam_mulai, 0, 5).' - '.substr($item->jadwal->jam_selesai, 0, 5) }}</td>
+                                                    <td>{{ $item->member->user->name }}</td>
+                                                    <td>{{ $item->kebutuhan }}</td>
+                                                </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
@@ -260,12 +268,14 @@
                                         </thead>
                                         <tbody>
                                             @foreach ($konsultasi_selesai_minggu_ini as $item)
-                                                <th>{{ $loop->iteration }}</th>
-                                                <td>{{ Carbon::parse($item->booked_at)->isoFormat('LLL')  }}</td>
-                                                <td>{{ Carbon::parse($item->tanggal_konsultasi)->isoFormat('LL') }}</td>
-                                                <td>{{ substr($item->jadwal->jam_mulai, 0, 5).' - '.substr($item->jadwal->jam_selesai, 0, 5) }}</td>
-                                                <td>{{ $item->member->user->name }}</td>
-                                                <td>{{ $item->keluhan }}</td>
+                                                <tr>
+                                                    <th>{{ $loop->iteration }}</th>
+                                                    <td>{{ Carbon::parse($item->booked_at)->isoFormat('LLL')  }}</td>
+                                                    <td>{{ Carbon::parse($item->tanggal_konsultasi)->isoFormat('LL') }}</td>
+                                                    <td>{{ substr($item->jadwal->jam_mulai, 0, 5).' - '.substr($item->jadwal->jam_selesai, 0, 5) }}</td>
+                                                    <td>{{ $item->member->user->name }}</td>
+                                                    <td>{{ $item->keluhan }}</td>
+                                                </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
@@ -285,12 +295,14 @@
                                         </thead>
                                         <tbody>
                                             @foreach ($psikotes_selesai_minggu_ini as $item)
-                                                <th>{{ $loop->iteration }}</th>
-                                                <td>{{ Carbon::parse($item->booked_at)->isoFormat('LLL')  }}</td>
-                                                <td>{{ Carbon::parse($item->tanggal_psikotes)->isoFormat('LL') }}</td>
-                                                <td>{{ substr($item->jadwal->jam_mulai, 0, 5).' - '.substr($item->jadwal->jam_selesai, 0, 5) }}</td>
-                                                <td>{{ $item->member->user->name }}</td>
-                                                <td>{{ $item->kebutuhan }}</td>
+                                                <tr>
+                                                    <th>{{ $loop->iteration }}</th>
+                                                    <td>{{ Carbon::parse($item->booked_at)->isoFormat('LLL')  }}</td>
+                                                    <td>{{ Carbon::parse($item->tanggal_psikotes)->isoFormat('LL') }}</td>
+                                                    <td>{{ substr($item->jadwal->jam_mulai, 0, 5).' - '.substr($item->jadwal->jam_selesai, 0, 5) }}</td>
+                                                    <td>{{ $item->member->user->name }}</td>
+                                                    <td>{{ $item->kebutuhan }}</td>
+                                                </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
