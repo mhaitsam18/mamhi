@@ -21,7 +21,7 @@
                                 <h4 class="fw-bolder text-uppercase text-end mt-4 mb-2">Tagihan</h4>
                                 <h6 class="text-end mb-5 pb-4"># INV-{{ str_pad($psikotes->id, 6, '01000', STR_PAD_LEFT) }}</h6>
                                 <p class="text-end mb-1">Total Tagihan</p>
-                                <h4 class="text-end fw-normal">Rp {{ number_format($psikotes->jenis_psikotes->harga+($psikotes->jenis_psikotes->harga*12/100),2,',','.') }}</h4>
+                                <h4 class="text-end fw-normal">Rp {{ number_format($psikotes->jenis_psikotes->harga+50000,2,',','.') }}</h4>
                                 <h6 class="mb-0 mt-3 text-end fw-normal mb-2"><span class="text-muted">Waktu Tagihan :</span> {{ Carbon::parse($psikotes->booked_at)->isoFormat('LLL') }}</h6>
                                 <h6 class="text-end fw-normal"><span class="text-muted">Tenggat Waktu :</span> {{ Carbon::parse($psikotes->tanggal_psikotes)->isoFormat('LL') }}</h6>
 
@@ -80,7 +80,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td class="text-bold-800">Total</td>
-                                                    <td class="text-bold-800 text-end">Rp {{ number_format($psikotes->jenis_psikotes->harga+($psikotes->jenis_psikotes->harga+50000),2,',','.') }}</td>
+                                                    <td class="text-bold-800 text-end">Rp {{ number_format($psikotes->jenis_psikotes->harga+50000,2,',','.') }}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -115,7 +115,7 @@
             <form action="/member/pembayaran" method="post" enctype="multipart/form-data">
                 @csrf
                 {{-- <input type="hidden" name="nominal" value="{{ $psikotes->jenis_psikotes->harga+($psikotes->jenis_psikotes->harga*12/100) }}"> --}}
-                <input type="hidden" name="nominal" value="{{ $psikotes->jenis_psikotes->harga+($psikotes->jenis_psikotes->harga+50000) }}">
+                <input type="hidden" name="nominal" value="{{ $psikotes->jenis_psikotes->harga+50000 }}">
                 <input type="hidden" name="psikotes_id" value="{{ $psikotes->id }}">
                 <div class="modal-body">
                     <p>
