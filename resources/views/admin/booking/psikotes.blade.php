@@ -75,14 +75,14 @@
                                             </div>
                                         @enderror
                                     </div>
-                                    <div class="mb-3">
+                                    {{-- <div class="mb-3">
                                         <textarea name="kebutuhan" id="kebutuhan" cols="30" rows="5" class="form-control @error('kebutuhan') is-invalid @enderror" placeholder="Tulis kebutuhan Anda"></textarea>
                                         @error('kebutuhan')
                                             <div class="text-danger fs-6">
                                                 {{ $message }}
                                             </div>
                                         @enderror
-                                    </div>
+                                    </div> --}}
                                     <div class="input-group mb-3">
                                         <input type="date" class="form-control @error('tanggal_psikotes') is-invalid @enderror" min="<?= date('Y-m-d', strtotime('+2 days')) ?>" name="tanggal" id="tanggal" placeholder="Pilih Tanggal" aria-label="Pilih Tanggal" aria-describedby="button-cek-jadwal">
                                         <button class="btn btn-outline-secondary" type="button" id="button-cek-jadwal" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Cek Jadwal</button>
