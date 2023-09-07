@@ -33,7 +33,7 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Keluhan</th>
+                                            <th>Kebutuhan</th>
                                             <th class="text-end">Tanggal Praktik</th>
                                             <th class="text-end">Psikolog</th>
                                             <th class="text-end">Total</th>
@@ -42,7 +42,7 @@
                                     <tbody>
                                         <tr class="text-end">
                                             <td class="text-start">1</td>
-                                            <td class="text-start">{{ $psikotes->keluhan }}</td>
+                                            <td class="text-start">{{ $psikotes->jenis_psikotes->jenis_psikotes }}</td>
                                             <td>{{ Carbon::parse($psikotes->tanggal_psikotes)->isoFormat('LL') }}</td>
                                             <td>{{ $psikotes->psikolog->user->name }}</td>
                                             <td>Rp {{ number_format($psikotes->jenis_psikotes->harga,2,',','.') }}</td>
