@@ -38,6 +38,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [AuthController::class, 'index'])->name('index');
+// Route::get('/index', [AuthController::class, 'index'])->name('index');
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'login'])->name('login');
@@ -72,6 +73,7 @@ Route::middleware('auth')->group(function () {
         Route::prefix('admin')->group(function () {
 
             Route::get('/', [AdminController::class, 'index'])->name('admin');
+            Route::get('/index', [AdminController::class, 'index'])->name('admin.index');
             Route::get('/profile', [AdminController::class, 'profile'])->name('admin.profile');
             Route::put('/profile', [AdminController::class, 'profileUpdate'])->name('admin.profile.update');
             Route::get('/index', [AdminController::class, 'index'])->name('admin.index');
@@ -125,7 +127,7 @@ Route::middleware('auth')->group(function () {
     });
     Route::middleware('member')->group(function () {
         Route::prefix('member')->group(function () {
-            Route::get('/', [MemberController::class, 'index'])->name('member.index');
+            Route::get('/', [MemberController::class, 'index'])->name('member');
             Route::get('/index', [MemberController::class, 'index'])->name('member.index');
             Route::get('/profile', [MemberController::class, 'profile'])->name('member.profile');
             Route::put('/profile', [AdminController::class, 'profileUpdate'])->name('member.profile.update');
