@@ -18,7 +18,7 @@ class IsPsikolog
         if(auth()->user()->role != 'psikolog') {
             // abort(401);
             return response()->view('errors.index', [
-                'title' => '401 | Akses ditolak',
+                'title' => 'Akses ditolak',
                 'message' => 'Anda tidak berwenang mengakses halaman ini',
                 'code' => '401',
             ], 401);

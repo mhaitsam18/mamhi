@@ -34,7 +34,7 @@ class Handler extends ExceptionHandler
     {
         if ($exception instanceof NotFoundHttpException) {
             return response()->view('errors.index', [
-                'title' => '404 | Halaman Tidak ditemukan',
+                'title' => 'Halaman Tidak ditemukan',
                 'message' => 'Maaf, halaman yang Anda cari tidak dapat ditemukan.',
                 'code' => '404',
             ], 404);
