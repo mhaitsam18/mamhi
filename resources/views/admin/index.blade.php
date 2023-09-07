@@ -313,7 +313,9 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <img id="buktiPembayaranKonsultasi{{ $item->id }}" src="{{ asset('storage/' . $item->pembayaran->bukti) }}" alt="" class="img-fluid">
+                        @if ($item->pembayaran->bukti ?? null)
+                            <img id="buktiPembayaranKonsultasi{{ $item->id }}" src="{{ asset('storage/' . $item->pembayaran->bukti) }}" alt="" class="img-fluid">
+                        @endif
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
@@ -333,7 +335,9 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <img id="buktiPembayaranPsikotes{{ $item->id }}" src="{{ asset('storage/' . $item->pembayaran->bukti) }}" alt="" class="img-fluid">
+                        @if ($item->pembayaran->bukti ?? null)
+                            <img id="buktiPembayaranPsikotes{{ $item->id }}" src="{{ asset('storage/' . $item->pembayaran->bukti) }}" alt="" class="img-fluid">
+                        @endif
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
