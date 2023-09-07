@@ -16,12 +16,12 @@ class IsAdmin
     public function handle(Request $request, Closure $next): Response
     {
         if (auth()->user()->role != 'admin') {
-            // abort(404);
+            // abort(403);
             return response()->view('errors.index', [
                 'title' => 'Akses ditolak',
-                'message' => 'Anda tidak berwenang mengakses halaman ini',
-                'code' => '401',
-            ], 401);
+                'message' => 'Anda dilarang mengakses halaman ini',
+                'code' => '403',
+            ], 403);
         }
         return $next($request);
     }
