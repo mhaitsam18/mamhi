@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Jadwal;
+use App\Models\JenisPsikotes;
 use App\Models\Konsultasi;
 use App\Models\Psikotes;
 use Illuminate\Http\Request;
@@ -41,6 +42,7 @@ class MemberJadwalController extends Controller
             'keluhan' => $request->keluhan,
             'kebutuhan' => $request->kebutuhan,
             'jenis_psikotes_id' => $request->jenis_psikotes_id,
+            'jenis_psikotes' => JenisPsikotes::find($request->jenis_psikotes_id),
             'tanggal' => $request->tanggal,
         ])->render();
 

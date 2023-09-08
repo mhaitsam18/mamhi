@@ -38,6 +38,29 @@
                                 <input type="hidden" name="tanggal_{{ $aksi }}" value="{{ $tanggal }}">
                                 {{-- <input type="hidden" name="status" value="booking"> --}}
                                 <button type="submit" class="btn btn-warning btn-sm">Pilih Jadwal</button>
+                                <!-- Button trigger modal -->
+                                {{-- <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                    Pilih Jadwal
+                                </button> --}}
+                                <!-- Modal -->
+                                {{-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Apakah Anda Yakin?</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <h4>anda telah booking jadwal dengan {{ $jadwal->psikolog->user->name }}</h4>
+                                                <h4>Jumlah Biaya yang harus dibayarkan adalah Rp.350.000,00</h4>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+                                                <button type="button" class="btn btn-primary">Lanjut</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> --}}
                             </form>
                         </td>
                     </tr>
