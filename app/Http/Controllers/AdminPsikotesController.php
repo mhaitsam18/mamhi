@@ -134,7 +134,6 @@ class AdminPsikotesController extends Controller
                 'nullable',
                 Rule::unique('psikotes')->ignore($psikotes->id),
             ],
-
             'tanggal_psikotes' => 'required',
             'jenis_psikotes_id' => 'required',
             'kebutuhan' => 'required',
