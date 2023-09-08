@@ -20,7 +20,7 @@ class AdminJadwalController extends Controller
         return view('admin.jadwal.index', [
             'title' => 'List Jadwal',
             'page' => 'jadwal',
-            'jadwals' => Jadwal::all(),
+            'jadwals' => Jadwal::orderBy('updated_at', 'desc')->get(),
             'ruangans' => Ruangan::all(),
             'psikologs' => Psikolog::all(),
         ]);

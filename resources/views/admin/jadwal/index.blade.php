@@ -34,6 +34,7 @@
                                     <th class="pt-0">Psikolog</th>
                                     <th class="pt-0">Ruangan</th>
                                     <th class="pt-0">Status</th>
+                                    <th class="pt-0">Terkahir diubah</th>
                                     <th class="pt-0">Aksi</th>
                                 </tr>
                             </thead>
@@ -43,19 +44,20 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $jadwal->hari }}</td>
                                         <td>{{ substr($jadwal->jam_mulai, 0, 5).' - '.substr($jadwal->jam_selesai, 0, 5) }}</td>
-                                        <td>{{ $jadwal->psikolog->kode_psikolog ?? '-' }}</td>
+                                        <td>{{ $jadwal->psikolog->kode_psikolog ?? '-' }} | {{ $jadwal->psikolog->user->name }}</td>
                                         <td>{{ $jadwal->ruangan->ruangan ?? '-' }}</td>
                                         <td>{{ $jadwal->status }}</td>
+                                        <td>{{ $jadwal->updated_at }}</td>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <a href="#" class="badge bg-success d-inline-block editButton"  data-bs-toggle="modal" data-bs-target="#editModal" 
-                                                data-id="{{ $jadwal->id }}" 
-                                                data-psikolog_id="{{ $jadwal->psikolog_id }}" 
-                                                data-ruangan_id="{{ $jadwal->ruangan_id }}" 
-                                                data-hari="{{ $jadwal->hari }}" 
-                                                data-jam_mulai="{{ $jadwal->jam_mulai }}" 
-                                                data-jam_selesai="{{ $jadwal->jam_selesai }}" 
-                                                data-status="{{ $jadwal->status }}" 
+                                                <a href="#" class="badge bg-success d-inline-block editButton"  data-bs-toggle="modal" data-bs-target="#editModal"
+                                                data-id="{{ $jadwal->id }}"
+                                                data-psikolog_id="{{ $jadwal->psikolog_id }}"
+                                                data-ruangan_id="{{ $jadwal->ruangan_id }}"
+                                                data-hari="{{ $jadwal->hari }}"
+                                                data-jam_mulai="{{ $jadwal->jam_mulai }}"
+                                                data-jam_selesai="{{ $jadwal->jam_selesai }}"
+                                                data-status="{{ $jadwal->status }}"
                                                 >Edit</a>
                                                 <form action="/admin/jadwal/{{ $jadwal->id }}" method="post">
                                                     @method('delete')
