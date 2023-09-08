@@ -278,6 +278,7 @@
                         <select name="status" class="form-select @error('status') is-invalid @enderror" id="status">
                             <option value="" selected disabled>Pilih status</option>
                             <option value="booking" @selected(old('status') == 'booking')>Booking</option>
+                            <option value="booking diterima" @selected(old('status') == 'booking diterima')>Booking diterima</option>
                             <option value="batal" @selected(old('status') == 'batal')>Batal</option>
                             <option value="selesai" @selected(old('status') == 'selesai')>Selesai</option>
                         </select>

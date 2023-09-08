@@ -59,10 +59,31 @@ class AdminPsikotesController extends Controller
             'jadwal_id' => 'required',
         ]);
 
-        psikotes::create([
+        $bulan_peserta_daftar = date('m'); // Ambil bulan saat ini
+        $tahun_peserta_daftar = date('Y'); // Ambil tahun saat ini
+
+        $kode_psikolog = Psikolog::find($request->psikolog_id)->kode_psikolog;
+        // Hitung jumlah peserta pada bulan dan tahun tertentu
+        $jumlah_peserta = Psikotes::whereMonth('booked_at', $bulan_peserta_daftar)
+        ->whereYear('booked_at', $tahun_peserta_daftar)
+        ->count();
+
+        $angka_romawi_bulan = $this->angkaRomawi(date('m'));
+
+        $nomor_peserta = sprintf(
+            "%02d/%s-MAMHI/%s/%s/%s",
+            $jumlah_peserta + 1,
+            $kode_psikolog,
+            $angka_romawi_bulan,
+            $tahun_peserta_daftar,
+            // Argumen keenam diisi dengan nilai kosong ('')
+            ''
+        );
+
+        Psikotes::create([
             'member_id' => $request->member_id,
             'psikolog_id' => $request->psikolog_id,
-            'nomor_peserta' => $request->nomor_peserta,
+            'nomor_peserta' => $request->nomor_peserta ?? $nomor_peserta,
             'booked_at' => date('Y-m-d H:i:s'),
             'tanggal_psikotes' => $request->tanggal_psikotes,
             'jenis_psikotes_id' => $request->jenis_psikotes_id,
@@ -77,7 +98,7 @@ class AdminPsikotesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(psikotes $psikotes)
+    public function show(Psikotes $psikotes)
     {
         return view('admin.psikotes.show', [
             'title' => 'Detail psikotes',
@@ -89,7 +110,7 @@ class AdminPsikotesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(psikotes $psikotes)
+    public function edit(Psikotes $psikotes)
     {
         return view('admin.psikotes.edit', [
             'title' => 'Detail psikotes',
@@ -104,45 +125,49 @@ class AdminPsikotesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, psikotes $psikotes)
+    public function update(Request $request, Psikotes $psikotes)
     {
         $request->validate([
             'member_id' => 'required',
             'psikolog_id' => 'required',
             'nomor_peserta' => [
-                'nullable', // Memungkinkan nomor_peserta kosong (NULL)
-                Rule::unique('psikotes')->ignore($psikotes->id), // $psikotes->id adalah ID data yang sedang diedit
+                'nullable',
+                Rule::unique('psikotes')->ignore($psikotes->id)->where(function ($query) use ($psikotes) {
+                    return $query->where('nomor_peserta', $psikotes->nomor_peserta);
+                }),
             ],
+
             'tanggal_psikotes' => 'required',
             'jenis_psikotes_id' => 'required',
             'kebutuhan' => 'required',
             'jadwal_id' => 'required',
             'status' => 'required',
         ]);
-        $kode_psikolog = Psikolog::find($request->psikolog_id)->kode_psikolog;
+        if(!$psikotes->nomor_peserta || !$request->nomor_peserta){
+            $kode_psikolog = Psikolog::find($request->psikolog_id)->kode_psikolog;
 
-        $bulan_peserta_daftar = date('m'); // Ambil bulan saat ini
-        $tahun_peserta_daftar = date('Y'); // Ambil tahun saat ini
+            $bulan_peserta_daftar = date('m'); // Ambil bulan saat ini
+            $tahun_peserta_daftar = date('Y'); // Ambil tahun saat ini
 
-        $kode_psikolog = Psikolog::find($request->psikolog_id)->kode_psikolog;
-        // Hitung jumlah peserta pada bulan dan tahun tertentu
-        $jumlah_peserta = Psikotes::whereMonth('booked_at', $bulan_peserta_daftar)
-        ->whereYear('booked_at', $tahun_peserta_daftar)
-        ->count();
+            $kode_psikolog = Psikolog::find($request->psikolog_id)->kode_psikolog;
+            // Hitung jumlah peserta pada bulan dan tahun tertentu
+            $jumlah_peserta = Psikotes::whereMonth('booked_at', $bulan_peserta_daftar)
+            ->whereYear('booked_at', $tahun_peserta_daftar)
+            ->count();
 
-        $angka_romawi_bulan = $this->angkaRomawi(date('m'));
+            $angka_romawi_bulan = $this->angkaRomawi(date('m'));
 
 
-        $nomor_peserta = sprintf(
-            "%02d/%s-MAMHI/%s/%s/%s",
-            $jumlah_peserta + 1,
-            $kode_psikolog,
-            $angka_romawi_bulan,
-            $tahun_peserta_daftar,
-            // Argumen keenam diisi dengan nilai kosong ('')
-            ''
-        );
-
+            $nomor_peserta = sprintf(
+                "%02d/%s-MAMHI/%s/%s/%s",
+                $jumlah_peserta + 1,
+                $kode_psikolog,
+                $angka_romawi_bulan,
+                $tahun_peserta_daftar,
+                // Argumen keenam diisi dengan nilai kosong ('')
+                ''
+            );
+        }
         $psikotes->update([
             'member_id' => $request->member_id,
             'psikolog_id' => $request->psikolog_id,
@@ -184,7 +209,7 @@ class AdminPsikotesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(psikotes $psikotes)
+    public function destroy(Psikotes $psikotes)
     {
         $psikotes->delete();
         return redirect('/admin/psikotes')->with('success', 'Data psikotes dihapus');

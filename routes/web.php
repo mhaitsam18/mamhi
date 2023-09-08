@@ -109,7 +109,10 @@ Route::middleware('auth')->group(function () {
             Route::get('/konsultasi', [AdminKonsultasiController::class, 'index'])->name('admin.konsultasi');
             Route::resource('konsultasi', AdminKonsultasiController::class);
             Route::get('/psikotes', [AdminPsikotesController::class, 'index'])->name('admin.psikotes');
-            Route::resource('psikotes', AdminPsikotesController::class);
+            // Route::resource('psikotes', AdminPsikotesController::class);
+            Route::resource('psikotes', AdminPsikotesController::class)->parameters([
+                'psikotes' => 'psikotes'
+            ]);
 
 
 
