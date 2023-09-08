@@ -23,7 +23,7 @@
                                     <li>Nama Lengkap :{{ $psikolog->user->name }}</li>
                                     {{-- <li>Email : {{ $psikolog->user->email }}</li>
                                     <li>Nomor Telepon : {{ $psikolog->user->no_hp }}</li> --}}
-                                    <li>Keahlian : {{ $psikolog->jenis_keahlian }}</li>
+                                    <li>Bidang Keahlian : {{ $psikolog->jenis_keahlian }}</li>
                                 </ul>
                             </div>
                         </div>
