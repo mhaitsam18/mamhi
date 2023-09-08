@@ -46,7 +46,7 @@
                                     @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label for="jenis_keahlian">Keahlian</label>
+                                    <label for="jenis_keahlian">Bidang Keahlian</label>
                                     <textarea class="form-control @error('jenis_keahlian') is-invalid @enderror" name="jenis_keahlian" id="jenis_keahlian">{{ old('jenis_keahlian', $psikolog->jenis_keahlian) }}</textarea>
                                     @error('jenis_keahlian')
                                         <div class="text-danger fs-6">
