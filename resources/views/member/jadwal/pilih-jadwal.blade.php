@@ -59,8 +59,10 @@
                     <input type="hidden" name="jadwal_id" value="{{ $jadwal->id }}">
                     <input type="hidden" name="tanggal" value="{{ $tanggal }}">
                     <div class="modal-body">
-                        <p class="fs-3">
-                            Hari ini pada tanggal {{ Carbon::parse(now())->isoFormat('LLL') }} Anda akan membooking jadwal dengan ketentuan sebagai berikut:
+                        <p class="fs-5">
+                            <strong>
+                                Hari ini pada tanggal {{ Carbon::parse(now())->isoFormat('LLL') }} Anda akan membooking jadwal dengan ketentuan sebagai berikut:
+                            </strong>
                             <ul>
                                 <li>Nama Pasien: {{ auth()->user()->name }}</li>
                                 <li>Psikolog: {{ $jadwal->psikolog->user->name }}</li>
