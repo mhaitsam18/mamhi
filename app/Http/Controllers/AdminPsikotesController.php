@@ -55,7 +55,7 @@ class AdminPsikotesController extends Controller
             'nomor_peserta' => 'unique:psikotes',
             'tanggal_psikotes' => 'required',
             'jenis_psikotes_id' => 'required',
-            'kebutuhan' => 'required',
+            'kebutuhan' => 'nullable',
             'jadwal_id' => 'required',
         ]);
 
