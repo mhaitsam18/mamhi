@@ -59,13 +59,14 @@ class Handler extends ExceptionHandler
         }
 
         // Penanganan pengecualian lainnya
-        // if ($exception instanceof \Exception) {
-        //     return response()->view('errors.index', [
-        //         'title' => 'Terjadi Kesalahan',
-        //         'message' => 'Terjadi kesalahan dalam sistem',
-        //         'code' => '500',
-        //     ], 500);
-        // }
+        if ($exception instanceof \Exception && !($exception instanceof \Illuminate\Validation\ValidationException)) {
+            return response()->view('errors.index', [
+                'title' => 'Terjadi Kesalahan',
+                'message' => 'Terjadi kesalahan dalam sistem',
+                'code' => '500',
+            ], 500);
+        }
+
 
         return parent::render($request, $exception);
     }
