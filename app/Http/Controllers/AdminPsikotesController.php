@@ -132,9 +132,7 @@ class AdminPsikotesController extends Controller
             'psikolog_id' => 'required',
             'nomor_peserta' => [
                 'nullable',
-                Rule::unique('psikotes')->ignore($psikotes->id)->where(function ($query) use ($psikotes) {
-                    return $query->where('nomor_peserta', $psikotes->nomor_peserta);
-                }),
+                Rule::unique('psikotes')->ignore($psikotes->id),
             ],
 
             'tanggal_psikotes' => 'required',
