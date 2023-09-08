@@ -23,7 +23,7 @@
     <div class="col-12 col-xl-12 stretch-card">
         <div class="card">
             <div class="card-body">
-                <h1>Anda mau booking apa?</h1>
+                <h1>Pilihan Layanan</h1>
                 <div class="container">
                     <div class="row p-4">
                         <div class="col-md-6">

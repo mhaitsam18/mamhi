@@ -19,6 +19,9 @@
 </style>
 @endsection
 @section('content')
+@php
+    use Carbon\Carbon;
+@endphp
 <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
     <div>
         <h4 class="mb-3 mb-md-0">{{ $title }}</h4>
@@ -53,7 +56,10 @@
                                         <select name="member_id" id="member_id" class="form-select @error('member_id') is-invalid @enderror">
                                             <option value="" selected disabled>Pilih Member</option>
                                             @foreach ($members as $member)
-                                                <option value="{{ $member->id }}">{{ $member->user->name }}</option>
+                                            <option value="{{ $member->id }}">
+                                                {{ $member->user->name }} | {{ Carbon::parse($member->user->tanggal_lahir)->isoFormat('LL') }}
+                                            </option>
+
                                             @endforeach
                                         </select>
                                         @error('member_id')

@@ -53,7 +53,9 @@
                                         <select name="member_id" id="member_id" class="form-select @error('member_id') is-invalid @enderror">
                                             <option value="" selected disabled>Pilih Member</option>
                                             @foreach ($members as $member)
-                                                <option value="{{ $member->id }}">{{ $member->user->name }}</option>
+                                                <option value="{{ $member->id }}">
+                                                    {{ $member->user->name }} | {{ Carbon::parse($member->user->tanggal_lahir)->isoFormat('LL') }}
+                                                </option>
                                             @endforeach
                                         </select>
                                         @error('member_id')
