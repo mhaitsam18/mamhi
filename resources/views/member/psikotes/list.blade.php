@@ -45,7 +45,7 @@
                                             </div>
                                             <div class="input-group mb-3">
                                                 <input type="date" class="form-control" min="<?= date('Y-m-d') ?>" name="tanggal" id="tanggal" placeholder="Pilih Tanggal" aria-label="Pilih Tanggal" aria-describedby="button-cek-jadwal">
-                                                <button class="btn btn-outline-secondary" type="button" id="button-cek-jadwal" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Cek Jadwal</button>  
+                                                <button class="btn btn-outline-secondary" type="button" id="button-cek-jadwal" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Cek Jadwal</button>
                                             </div>
                                         </div>
                                     </div>
@@ -66,7 +66,7 @@
                                         <th class="pt-0">Nomor Peserta</th>
                                         <th class="pt-0">Member</th>
                                         <th class="pt-0">Psikolog</th>
-                                        <th class="pt-0">Kebutuhan</th>
+                                        {{-- <th class="pt-0">Kebutuhan</th> --}}
                                         <th class="pt-0">Jenis Psikotes</th>
                                         <th class="pt-0">Tanggal Booking</th>
                                         <th class="pt-0">Tanggal Tes</th>
@@ -82,7 +82,7 @@
                                             <td>{{ $psikotes->nomor_peserta ?? '-' }}</td>
                                             <td>{{ $psikotes->member->user->name }}</td>
                                             <td>{{ $psikotes->psikolog->user->name }}</td>
-                                            <td>{{ $psikotes->kebutuhan }}</td>
+                                            {{-- <td>{{ $psikotes->kebutuhan }}</td> --}}
                                             <td>{{ $psikotes->jenis_psikotes->jenis_psikotes }}</td>
                                             <td>{{  Carbon::parse($psikotes->booked_at)->isoFormat('LLL')  }}</td>
                                             <td>{{ Carbon::parse($psikotes->tanggal_psikotes)->isoFormat('LL') }}</td>

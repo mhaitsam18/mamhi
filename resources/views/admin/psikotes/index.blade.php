@@ -35,7 +35,7 @@
                                     <th class="pt-0">Nomor Peserta</th>
                                     <th class="pt-0">Member</th>
                                     <th class="pt-0">Psikolog</th>
-                                    <th class="pt-0">Kebutuhan</th>
+                                    {{-- <th class="pt-0">Kebutuhan</th> --}}
                                     <th class="pt-0">Jenis Psikotes</th>
                                     <th class="pt-0">Tanggal Booking</th>
                                     <th class="pt-0">Tanggal Konsul</th>
@@ -51,7 +51,7 @@
                                         <td>{{ $psikotes->nomor_peserta }}</td>
                                         <td>{{ $psikotes->member->user->name }}</td>
                                         <td>{{ $psikotes->psikolog->user->name }}</td>
-                                        <td>{{ $psikotes->kebutuhan }}</td>
+                                        {{-- <td>{{ $psikotes->kebutuhan }}</td> --}}
                                         <td>{{ $psikotes->jenis_psikotes->jenis_psikotes }}</td>
                                             <td>{{ Carbon::parse($psikotes->booked_at)->isoFormat('LLL')  }}</td>
                                             <td>{{ Carbon::parse($psikotes->tanggal_psikotes)->isoFormat('LL') }}</td>
@@ -168,7 +168,7 @@
                             </div>
                         @enderror
                     </div>
-                    <div class="mb-3">
+                    {{-- <div class="mb-3">
                         <label for="kebutuhan" class="form-label">kebutuhan</label>
                         <input type="text" name="kebutuhan" class="form-control @error('kebutuhan') is-invalid @enderror" id="kebutuhan" value="{{ old('kebutuhan') }}">
                         @error('kebutuhan')
@@ -176,7 +176,7 @@
                                 {{ $message }}
                             </div>
                         @enderror
-                    </div>
+                    </div> --}}
                     <div class="mb-3">
                         <label for="jenis_psikotes_id" class="form-label">Jenis psikotes</label>
                         <select name="jenis_psikotes_id" class="form-select @error('jenis_psikotes_id') is-invalid @enderror" id="jenis_psikotes_id" value="">
@@ -288,7 +288,7 @@
                             </div>
                         @enderror
                     </div>
-                    <div class="mb-3">
+                    {{-- <div class="mb-3">
                         <label for="kebutuhan" class="form-label">kebutuhan</label>
                         <input type="text" name="kebutuhan" class="form-control @error('kebutuhan') is-invalid @enderror" id="kebutuhan" value="{{ old('kebutuhan') }}">
                         @error('kebutuhan')
@@ -296,7 +296,7 @@
                                 {{ $message }}
                             </div>
                         @enderror
-                    </div>
+                    </div> --}}
                     <div class="mb-3">
                         <label for="jenis_psikotes_id" class="form-label">Jenis psikotes</label>
                         <select name="jenis_psikotes_id" class="form-select @error('jenis_psikotes_id') is-invalid @enderror" id="jenis_psikotes_id" value="">
