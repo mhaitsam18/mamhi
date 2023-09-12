@@ -76,7 +76,7 @@
                                 @endif
                                 <li>Tanggal praktik: {{ Carbon::parse($tanggal)->isoFormat('LL') }}</li>
                                 <li>Pukul : {{ $jadwal->jam_mulai }} - {{ $jadwal->jam_selesai }}</li>
-                                <li>Jumlah Biaya yang harus dibayarkan: Rp.350.000,00</li>
+                                <li>Jumlah Biaya yang harus dibayarkan: @if ($jenis_psikotes_id) Rp.450.000,00 @else Rp.350.000,00 @endif </li>
                             </ul>
                         </p>
                     </div>
