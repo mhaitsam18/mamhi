@@ -86,11 +86,11 @@
                                                     <li>{{ $psikolog->jenis_keahlian }}</li>
                                                 </ul>
                                                 <div class="text-center d-grid ">
-                                                    <a href="/admin/psikolog/{{ $psikolog->id }}/edit" class="btn btn-warning text-bold text-white btn-block">Lihat Profil</a>
+                                                    <a href="/member/psikolog/{{ $psikolog->id }}" class="btn btn-warning text-bold text-white btn-block">Lihat Profil</a>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>                                
+                                    </div>
                                 @endforeach
                             </div>
                         </div>
