@@ -120,9 +120,8 @@
                     <p>
                         Informasi Pembayaran :
                         <ul>
-                            <li>BNI a/n MAMHI PSIKOLOGI 12345670</li>
-                            <li>BCA a/n MAMHI PSIKOLOGI 12345670</li>
-                            <li>MANDIRI a/n MAMHI PSIKOLOGI 12345670</li>
+                            <li>BSI a/n CV MAMHI 8778888875</li>
+                            <li>BRI a/n CV MAMHI 345301053593537</li>
                         </ul>
                     </p>
                     <div class="mb-3">
