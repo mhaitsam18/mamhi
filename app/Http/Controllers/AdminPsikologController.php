@@ -148,7 +148,7 @@ class AdminPsikologController extends Controller
         ]);
         $psikolog->update([
             'kode_psikolog' => $request->kode_psikolog,
-            'keahlian' => $request->keahlian,
+            'jenis_keahlian' => $request->jenis_keahlian,
         ]);
 
         $user = User::find($psikolog->user_id);
