@@ -52,12 +52,12 @@ class AdminPsikologController extends Controller
             'email' => 'required|email:dns|unique:users',
             'username' => 'required|unique:users',
             'tanggal_lahir' => 'required',
-            'no_hp' => 'required',
+            'no_hp' => 'nullable',
             'jenis_kelamin' => 'required',
-            'alamat' => 'required',
+            'alamat' => 'nullable',
             'jenis_keahlian' => 'required',
             'kode_psikolog' => 'required|unique:psikolog',
-            'password' => 'required|confirmed',
+            // 'password' => 'required|confirmed',
         ]);
 
         $user = User::create([
@@ -68,7 +68,7 @@ class AdminPsikologController extends Controller
             'no_hp' => $request->no_hp,
             'jenis_kelamin' => $request->jenis_kelamin,
             'alamat' => $request->alamat,
-            'password' => Hash::make($request->password),
+            // 'password' => Hash::make($request->password),
             'foto' => $request->nama_foto,
             'role' => 'psikolog',
         ]);
@@ -112,6 +112,8 @@ class AdminPsikologController extends Controller
 
     public function updatePhoto(Request $request, User $user)
     {
+        $request->validate([
+            'nama_foto' => 'required',]);
         $user->update([
             'foto' => $request->nama_foto
         ]);
