@@ -83,8 +83,11 @@
                                                 </div>
                                                 <h5 class="card-title text-center">{{ $psikolog->user->name }}</h5>
                                                 <ul>
-                                                    <li>{{ $psikolog->jenis_keahlian }}</li>
+                                                    @foreach(explode(';', $psikolog->jenis_keahlian) as $keahlian)
+                                                        <li>{{ $keahlian }}</li>
+                                                    @endforeach
                                                 </ul>
+
                                                 <div class="text-center d-grid ">
                                                     <a href="/member/psikolog/{{ $psikolog->id }}" class="btn btn-warning text-bold text-white btn-block">Lihat Profil</a>
                                                 </div>
