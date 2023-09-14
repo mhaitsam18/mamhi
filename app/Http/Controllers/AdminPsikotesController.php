@@ -22,11 +22,12 @@ class AdminPsikotesController extends Controller
             'title' => 'List psikotes',
             'page' => 'psikotes',
             'jenis_psikotess' => JenisPsikotes::all(),
-            'psikotess' => Psikotes::all(),
+            'psikotess' => Psikotes::orderBy('booked_at', 'desc')->get(),
             'members' => Member::all(),
             'psikologs' => Psikolog::all(),
             'jadwals' => Jadwal::all(),
         ]);
+
     }
 
     /**
