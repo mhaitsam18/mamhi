@@ -92,6 +92,8 @@
                             <a href="/member/konsultasi/konsultasi-saya" class="btn btn-secondary float-end mt-4 ms-2">Tutup</a>
                             @if (!$pembayaran)
                                 <a href="#" class="btn btn-primary float-end mt-4 ms-2" data-bs-toggle="modal" data-bs-target="#exampleModal"><i data-feather="send" class="me-3 icon-md"></i>Bayar sekarang</a>
+                            @elseif ($konsultasi->status == 'booking')
+                                <span class="btn btn-info float-end mt-4 ms-2">Pembayaran sedang diproses</span>
                             @elseif ($konsultasi->status == 'booking diterima' || $konsultasi->status == 'selesai')
                                 <span class="btn btn-success float-end mt-4 ms-2">Lunas</span>
                             @else
