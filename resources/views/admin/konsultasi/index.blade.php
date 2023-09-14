@@ -66,11 +66,11 @@
                                                 data-jadwal_id="{{ $konsultasi->jadwal_id }}"
                                                 data-status="{{ $konsultasi->status }}"
                                                 >Edit</a>
-                                                <form action="/admin/konsultasi/{{ $konsultasi->id }}" method="post">
+                                                {{-- <form action="/admin/konsultasi/{{ $konsultasi->id }}" method="post">
                                                     @method('delete')
                                                     @csrf
                                                     <button type="submit" class="badge bg-danger d-inline-block ms-2 mb-1 badge-a tombol-hapus">Hapus</button>
-                                                </form>
+                                                </form> --}}
                                             </div>
                                         </td>
                                     </tr>

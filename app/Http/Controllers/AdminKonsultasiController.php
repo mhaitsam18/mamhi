@@ -20,7 +20,7 @@ class AdminKonsultasiController extends Controller
         return view('admin.konsultasi.index', [
             'title' => 'List konsultasi',
             'page' => 'konsultasi',
-            'konsultasis' => Konsultasi::all(),
+            'konsultasis' => Konsultasi::orderBy('booked_at', 'desc')->get(),
             'members' => Member::all(),
             'psikologs' => Psikolog::all(),
             'jadwals' => Jadwal::all(),
