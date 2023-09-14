@@ -36,6 +36,7 @@ return new class extends Migration
                 ->onUpdate('cascade')
                 ->nullOnDelete();
             $table->enum('status', ['booking', 'booking diterima', 'batal', 'selesai'])->nullable();
+            $table->float('tagihan')->default(450000)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -128,6 +128,14 @@ class AdminKonsultasiController extends Controller
         $konsultasi->update([
             'status' => $request->status
         ]);
+
+        if(!Pembayaran::where('konsultasi_id', $konsultasi->id)->exists()){
+            Pembayaran::create([
+                'konsultasi_id' => $konsultasi->id,
+                'nominal' => '350000',
+                'keterangan' => $request->keterangan,
+            ]);
+        }
         // if ($request->status == 'batal') {
         //     Pembayaran::where('konsultasi_id', $konsultasi->id)->delete();
         // }

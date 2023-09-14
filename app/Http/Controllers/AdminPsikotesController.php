@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Jadwal;
 use App\Models\JenisPsikotes;
 use App\Models\Member;
+use App\Models\Pembayaran;
 use App\Models\Psikolog;
 use App\Models\Psikotes;
 use Illuminate\Http\Request;
@@ -194,6 +195,14 @@ class AdminPsikotesController extends Controller
         $psikotes->update([
             'status' => $request->status
         ]);
+
+        if (!Pembayaran::where('psikotes_id', $psikotes->id)->exists()) {
+            Pembayaran::create([
+                'psikotes_id' => $psikotes->id,
+                'nominal' => '450000',
+                'keterangan' => $request->keterangan,
+            ]);
+        }
 
 
         // if ($request->status == 'batal') {

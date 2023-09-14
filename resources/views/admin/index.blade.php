@@ -109,7 +109,7 @@
                                                             <form action="/admin/konsultasi/status/{{ $item->id }}" method="post">
                                                                 @csrf
                                                                 <input type="hidden" name="status" value="batal">
-                                                                <button type="submit" class="badge bg-danger d-inline mx-1 border-0">Tolak</button>
+                                                                <button type="button" class="badge bg-danger d-inline mx-1 border-0"  data-bs-toggle="modal" data-bs-target="#tolakKonsultasi{{ $item->id }}Modal">Tolak</button>
                                                             </form>
                                                             <!-- Button trigger modal -->
                                                             {{-- <button type="button" class="badge bg-info d-inline mx-1 border-0" data-bs-toggle="modal" data-bs-target="#pembayaranKonsultasi{{ $item->id }}Modal">
@@ -166,7 +166,7 @@
                                                             <form action="/admin/psikotes/status/{{ $item->id }}" method="post">
                                                                 @csrf
                                                                 <input type="hidden" name="status" value="batal">
-                                                                <button type="submit" class="badge bg-danger d-inline mx-1 border-0">Tolak</button>
+                                                                <button type="button" class="badge bg-danger d-inline mx-1 border-0" data-bs-toggle="modal" data-bs-target="#tolakPsikotes{{ $item->id }}Modal">Tolak</button>
                                                             </form>
                                                             <!-- Button trigger modal -->
                                                             {{-- <button type="button" class="badge bg-info d-inline mx-1 border-0" data-bs-toggle="modal" data-bs-target="#pembayaranPsikotes{{ $item->id }}Modal">
@@ -317,6 +317,35 @@
 @endsection
 @section('modal')
     @foreach ($booking_konsultasi as $item)
+        <div class="modal fade" id="tolakKonsultasi{{ $item->id }}Modal" tabindex="-1" aria-labelledby="tolakKonsultasi{{ $item->id }}ModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="tolakKonsultasi{{ $item->id }}ModalLabel">Alasan Menolak</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="/admin/konsultasi/status/{{ $item->id }}" method="post">
+                        @csrf
+                        <div class="modal-body">
+                            <input type="hidden" name="status" value="batal">
+                            <div class="mb-3">
+                                <label for="keterangan" class="form-label">Alasan menolak</label>
+                                <textarea class="form-control @error('keterangan') is-invalid @enderror" id="keterangan" name="keterangan">{{ old('keterangan') }}</textarea>
+                                @error('keterangan')
+                                    <div class="text-danger">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                            <button type="submit" class="btn btn-primary">Tolak</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
         <div class="modal fade" id="pembayaranKonsultasi{{ $item->id }}Modal" tabindex="-1" aria-labelledby="pembayaranKonsultasi{{ $item->id }}ModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -339,6 +368,35 @@
         </div>
     @endforeach
     @foreach ($booking_psikotes as $item)
+        <div class="modal fade" id="tolakPsikotes{{ $item->id }}Modal" tabindex="-1" aria-labelledby="tolakPsikotes{{ $item->id }}ModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="tolakPsikotes{{ $item->id }}ModalLabel">Alasan menolak</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="/admin/psikotes/status/{{ $item->id }}" method="post">
+                        @csrf
+                        <div class="modal-body">
+                            <input type="hidden" name="status" value="batal">
+                            <div class="mb-3">
+                                <label for="keterangan" class="form-label">Alasan menolak</label>
+                                <textarea class="form-control @error('keterangan') is-invalid @enderror" id="keterangan" name="keterangan">{{ old('keterangan') }}</textarea>
+                                @error('keterangan')
+                                    <div class="text-danger">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                            <button type="submit" class="btn btn-primary">Tolak</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
         <div class="modal fade" id="pembayaranPsikotes{{ $item->id }}Modal" tabindex="-1" aria-labelledby="pembayaranPsikotes{{ $item->id }}ModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
