@@ -146,6 +146,19 @@ License: For each use you must have a valid license purchased only from above li
     <script src="/assets-nobleui/js/dashboard-light.js"></script>
     <script src="/assets-nobleui/js/datepicker.js"></script>
     <!-- End custom js for this page -->
+
+    <!-- End custom js for this page -->
+
+    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-exif-orientation/dist/filepond-plugin-image-exif-orientation.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-edit/dist/filepond-plugin-image-edit.js"></script>
+    <!-- Misalnya, jika Anda menggunakan adapter untuk tampilan pratinjau -->
+    <script src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.js"></script>
+
+
+    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         const success = $('.flash-data').data('success');
         if (success) {

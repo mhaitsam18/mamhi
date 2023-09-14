@@ -9,6 +9,11 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                {{ $errors->first('bukti') }}
+                            </div>
+                        @endif
                         <div class="container-fluid d-flex justify-content-between">
                             <div class="col-lg-3 ps-0">
                                 <a href="#" class="noble-ui-logo d-block mt-3"><img src="/assets/img/logos/logo-mamhi.png" class="d-block" style="height: 100px;"></a>
@@ -129,8 +134,13 @@
                     </p>
                     <div class="mb-3">
                         <label for="bukti" class="form-label">Upload Bukti</label>
-                        <input type="file" class="form-control" name="bukti" id="bukti">
-                        <small>Tipe File yang direkomendasi: jpeg,png,jpg,gif</small>
+                        <input type="file" class="form-control @error('bukti') is-invalid @enderror" name="bukti" id="bukti">
+                        @error('bukti')
+                            <div class="text-danger">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                        <small>Tipe File yang direkomendasi: jpeg,png,jpg,gif. maks: 2 MB</small>
                     </div>
                 </div>
                 <div class="modal-footer">

@@ -31,8 +31,17 @@ class MemberPembayaranController extends Controller
     {
         // Validasi data input dari form
         $validator = Validator::make($request->all(), [
-            'bukti' => 'nullable|image|mimes:jpeg,png,jpg,gif',
+            'bukti' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:' . 1024*2, // 2048 KB = 2 MB
         ]);
+
+
+
+        // $errorMessages = $validator->errors();
+        // // Mengambil pesan error untuk field 'bukti'
+        // $buktiError = $errorMessages->first('bukti');
+
+        // // Lakukan sesuatu dengan pesan error bukti, seperti mencetaknya
+        // dd($buktiError);
 
         // Jika validasi gagal, kembalikan respon dengan pesan error
         if ($validator->fails()) {

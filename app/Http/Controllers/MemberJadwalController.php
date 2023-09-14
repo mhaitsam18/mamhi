@@ -23,10 +23,10 @@ class MemberJadwalController extends Controller
     {
         $hari = $this->cekhari($request->tanggal);
         $jadwals = Jadwal::where('hari', $hari)
-        ->where('status', 'Tersedia')
-        ->whereDoesntHave('psikotes', function ($query) use ($request) {
-            $query->where('tanggal_psikotes', $request->tanggal);
-        })
+            ->where('status', 'Tersedia')
+            ->whereDoesntHave('psikotes', function ($query) use ($request) {
+                $query->where('tanggal_psikotes', $request->tanggal);
+            })
             ->whereDoesntHave('konsultasi', function ($query) use ($request) {
                 $query->where('tanggal_konsultasi', $request->tanggal);
             })
