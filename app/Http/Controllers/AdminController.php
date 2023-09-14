@@ -23,8 +23,14 @@ class AdminController extends Controller
 
         $konsultasi_selesai_minggu_ini = Konsultasi::whereBetween('tanggal_konsultasi', [$startDate, $endDate])->where('status', 'selesai')->get();
         $psikotes_selesai_minggu_ini = Psikotes::whereBetween('tanggal_psikotes', [$startDate, $endDate])->where('status', 'selesai')->get();
-        $booking_konsultasi = Konsultasi::where('status', 'booking')->get();
-        $booking_psikotes = Psikotes::where('status', 'booking')->get();
+        $booking_konsultasi = Konsultasi::where('status', 'booking')
+        ->orderBy('booked_at', 'desc')
+        ->get();
+
+        $booking_psikotes = Psikotes::where('status', 'booking')
+        ->orderBy('booked_at', 'desc')
+        ->get();
+
 
         return view('admin.index', [
             'title' => 'Dashboard',
