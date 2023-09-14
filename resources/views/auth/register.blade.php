@@ -151,12 +151,44 @@
                                 <div class="p-2 row">
                                     <button type="submit" class="btn btn-primary me-2 mb-2 mb-md-0 text-white">Daftar</button>
                                     <a href="/login" class="d-block mt-3 text-muted">Sudah punya akun? login</a>
-                                </div> 
+                                </div>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
+@endsection
+
+@section('script')
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const tanggalLahirInput = document.getElementById("tanggal_lahir");
+
+            tanggalLahirInput.addEventListener("change", function() {
+                // Mendapatkan tanggal lahir yang dipilih oleh pengguna
+                const tanggalLahir = new Date(this.value);
+
+                // Mendapatkan tanggal saat ini
+                const tanggalSaatIni = new Date();
+
+                // Menghitung usia berdasarkan perbedaan tahun
+                const usia = tanggalSaatIni.getFullYear() - tanggalLahir.getFullYear();
+
+                // Memeriksa apakah usia kurang dari 17 tahun
+                if (usia < 17) {
+                    // Menggunakan SweetAlert2 untuk menampilkan pesan peringatan
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Usia minimal harus 17 tahun.',
+                    });
+
+                    this.value = ""; // Mengosongkan input tanggal lahir
+                }
+            });
+        });
+    </script>
+
 @endsection

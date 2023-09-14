@@ -72,6 +72,8 @@ License: For each use you must have a valid license purchased only from above li
 
     <!-- Custom js for this page -->
     <!-- End custom js for this page -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     @yield('script')
 
 </body>

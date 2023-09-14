@@ -34,14 +34,14 @@ class AuthController extends Controller
             return redirect('/');
         }
     }
-    
+
     public function login()
     {
         return view('auth.login', [
             'title' => 'Mamhi Psikologi | login'
         ]);
     }
-    
+
     public function register()
     {
         return view('auth.register', [
@@ -55,8 +55,8 @@ class AuthController extends Controller
             'name' => 'required',
             'email' => 'required|email:dns|unique:users',
             'username' => 'required|unique:users',
-            'tanggal_lahir' => 'required',
-            'no_hp' => 'required',
+            'tanggal_lahir' => ['required', 'date', 'before_or_equal:' . now()->subYears(17)->format('Y-m-d')],
+            'no_hp' => ['required', 'string', 'unique:users,no_hp,' . $request->id, 'regex:/^(?:\+62|0)[0-9\s-]+$/'],
             'jenis_kelamin' => 'required',
             'alamat' => 'required',
             'foto' => 'image|file',

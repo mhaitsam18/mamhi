@@ -44,12 +44,12 @@ class MemberController extends Controller
             'no_hp' => ['required', 'string', 'unique:users,no_hp,' . $request->id, 'regex:/^(?:\+62|0)[0-9\s-]+$/'],
             'name' => 'required|string',
             'jenis_kelamin' => 'required',
-            'tanggal_lahir' => 'required',
-            'alamat' => 'required',
+            'tanggal_lahir' => ['required', 'date', 'before_or_equal:' . now()->subYears(17)->format('Y-m-d')],
             'alamat' => 'required',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:20480',
             // Atur aturan validasi lainnya di sini sesuai kebutuhan
         ]);
+
 
         // Jika validasi gagal, kembalikan respon dengan pesan error
         if ($validator->fails()) {

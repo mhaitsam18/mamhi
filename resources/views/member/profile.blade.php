@@ -73,7 +73,7 @@
                                     <div class="mb-3 row">
                                         <label for="tanggal_lahir" class="col-sm-2 col-form-label">Tanggal Lahir</label>
                                         <div class="col-sm-10">
-                                            <input type="date" class="form-control  @error('tanggal_lahir') is-invalid @enderror" id="tanggal_lahir" name="tanggal_lahir" value="{{ old('tanggal_lahir', $profile->tanggal_lahir) }}" readonly>
+                                            <input type="date" class="form-control @error('tanggal_lahir') is-invalid @enderror" id="tanggal_lahir" name="tanggal_lahir" value="{{ old('tanggal_lahir', $profile->tanggal_lahir) }}" readonly>
                                             @error('tanggal_lahir')
                                                 <div class="text-danger fs-6">
                                                     {{ $message }}
@@ -81,6 +81,7 @@
                                             @enderror
                                         </div>
                                     </div>
+
                                     <div class="mb-3 row">
                                         <label for="no_hp" class="col-sm-2 col-form-label">Nomor Telepon </label>
                                         <div class="col-sm-10">
@@ -174,6 +175,36 @@
         });
     });
     </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const tanggalLahirInput = document.getElementById("tanggal_lahir");
+
+            tanggalLahirInput.addEventListener("change", function() {
+                // Mendapatkan tanggal lahir yang dipilih oleh pengguna
+                const tanggalLahir = new Date(this.value);
+
+                // Mendapatkan tanggal saat ini
+                const tanggalSaatIni = new Date();
+
+                // Menghitung usia berdasarkan perbedaan tahun
+                const usia = tanggalSaatIni.getFullYear() - tanggalLahir.getFullYear();
+
+                // Memeriksa apakah usia kurang dari 17 tahun
+                if (usia < 17) {
+                    // Menggunakan SweetAlert2 untuk menampilkan pesan peringatan
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Usia minimal harus 17 tahun.',
+                    });
+
+                    this.value = ""; // Mengosongkan input tanggal lahir
+                }
+            });
+        });
+    </script>
+
 
 @endsection
 @endsection
