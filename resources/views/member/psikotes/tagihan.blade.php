@@ -96,13 +96,13 @@
                         <div class="container-fluid w-100">
                             <a href="/member/psikotes/psikotes-saya" class="btn btn-secondary float-end mt-4 ms-2">Tutup</a>
                             @if (!$pembayaran)
-                                <a href="#" class="btn btn-primary float-end mt-4 ms-2" data-bs-toggle="modal" data-bs-target="#exampleModal"><i data-feather="send" class="me-3 icon-md"></i>Bayar sekarang</a>
-                            @elseif ($konsultasi->status == 'booking')
+                                <a href="#" class="btn btn-primary float-end mt-4 ms-2" data-bs-toggle="modal" data-bs-target="#uploadBuktiModal"><i data-feather="send" class="me-3 icon-md"></i>Bayar sekarang</a>
+                            @elseif ($psikotes->status == 'booking')
                                 <span class="btn btn-info float-end mt-4 ms-2">Pembayaran sedang diproses</span>
                             @elseif ($psikotes->status == 'booking diterima' || $psikotes->status == 'selesai')
                                 <span class="btn btn-success float-end mt-4 ms-2">Lunas</span>
                             @else
-                                <span class="btn btn-danger float-end mt-4 ms-2">Batal / Pembayaran ditolak</span>
+                                <span class="btn btn-danger float-end mt-4 ms-2" data-bs-toggle="modal" data-bs-target="#keteranganModal">Batal / Pembayaran ditolak</span>
                             @endif
                         </div>
                     </div>
@@ -112,11 +112,11 @@
     </div>
 </div>
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="uploadBuktiModal" tabindex="-1" aria-labelledby="uploadBuktiModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Upload Bukti Pembayaran</h1>
+                <h1 class="modal-title fs-5" id="uploadBuktiModalLabel">Upload Bukti Pembayaran</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="/member/pembayaran" method="post" enctype="multipart/form-data">
@@ -148,6 +148,26 @@
                     <button type="submit" class="btn btn-primary">Kirim</button>
                 </div>
             </form>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="keteranganModal" tabindex="-1" aria-labelledby="keteranganModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="keteranganModalLabel">Keterangan</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Alasan ditolak: {{ $psikotes->pembayaran->keterangan ?? 'Tanpa Keterangan' }}</p>
+                <p>
+                    Jika ini adalah sebuah kesalahan, silahkan untuk menghubungi admin
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            </div>
         </div>
     </div>
 </div>

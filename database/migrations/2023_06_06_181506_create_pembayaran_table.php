@@ -24,6 +24,7 @@ return new class extends Migration
                 ->nullOnDelete();
             $table->float('nominal')->nullable();
             $table->string('bukti')->nullable();
+            $table->text('keterangan')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
