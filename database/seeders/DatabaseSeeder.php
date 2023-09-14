@@ -429,26 +429,26 @@ class DatabaseSeeder extends Seeder
         Jadwal::create([
             'psikolog_id' => 7,
             'hari' => 'Selasa',
-            'jam_mulai' => '09:30',
-            'jam_selesai' => '10:50',
+            'jam_mulai' => '13:00',
+            'jam_selesai' => '13:55',
         ]);
         Jadwal::create([
             'psikolog_id' => 7,
             'hari' => 'Selasa',
-            'jam_mulai' => '09:30',
-            'jam_selesai' => '10:50',
+            'jam_mulai' => '14:00',
+            'jam_selesai' => '14:55',
         ]);
         Jadwal::create([
             'psikolog_id' => 7,
             'hari' => 'Selasa',
-            'jam_mulai' => '09:30',
-            'jam_selesai' => '10:50',
+            'jam_mulai' => '15:00',
+            'jam_selesai' => '15:55',
         ]);
         Jadwal::create([
             'psikolog_id' => 7,
             'hari' => 'Selasa',
-            'jam_mulai' => '09:30',
-            'jam_selesai' => '10:50',
+            'jam_mulai' => '16:00',
+            'jam_selesai' => '17:00',
         ]);
 
         Jadwal::create([
@@ -695,26 +695,26 @@ class DatabaseSeeder extends Seeder
         Jadwal::create([
             'psikolog_id' => 7,
             'hari' => 'Kamis',
-            'jam_mulai' => '09:30',
-            'jam_selesai' => '10:50',
+            'jam_mulai' => '13:00',
+            'jam_selesai' => '13:50',
         ]);
         Jadwal::create([
             'psikolog_id' => 7,
             'hari' => 'Kamis',
-            'jam_mulai' => '09:30',
-            'jam_selesai' => '10:50',
+            'jam_mulai' => '14:00',
+            'jam_selesai' => '14:50',
         ]);
         Jadwal::create([
             'psikolog_id' => 7,
             'hari' => 'Kamis',
-            'jam_mulai' => '09:30',
-            'jam_selesai' => '10:50',
+            'jam_mulai' => '15:00',
+            'jam_selesai' => '15:50',
         ]);
         Jadwal::create([
             'psikolog_id' => 7,
             'hari' => 'Kamis',
-            'jam_mulai' => '09:30',
-            'jam_selesai' => '10:50',
+            'jam_mulai' => '16:00',
+            'jam_selesai' => '17:00',
         ]);
 
 

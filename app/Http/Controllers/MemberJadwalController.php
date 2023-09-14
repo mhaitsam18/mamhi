@@ -22,18 +22,36 @@ class MemberJadwalController extends Controller
     public function pilihJadwal(Request $request)
     {
         $hari = $this->cekhari($request->tanggal);
-        $jadwals = Jadwal::where('hari', $hari)->where('status', 'Tersedia')->get();
-        $jadwal_tersedia = [];
+        $jadwals = Jadwal::where('hari', $hari)
+        ->where('status', 'Tersedia')
+        ->whereDoesntHave('psikotes', function ($query) use ($request) {
+            $query->where('tanggal_psikotes', $request->tanggal);
+        })
+            ->whereDoesntHave('konsultasi', function ($query) use ($request) {
+                $query->where('tanggal_konsultasi', $request->tanggal);
+            })
+            // ->with(['psikolog.user']) // Eager load psikolog dan user
+            ->get();
 
-        foreach ($jadwals as $jadwal) {
-            $cek_psikotes = Psikotes::where('tanggal_psikotes', $request->tanggal)->where('jadwal_id', $jadwal->id)->exists();
-            $cek_konsultasi = Konsultasi::where('tanggal_konsultasi', $request->tanggal)->where('jadwal_id', $jadwal->id)->exists();
+        // Urutkan jadwal berdasarkan nama lengkap psikolognya dan jam paling pagi
+        $jadwal_tersedia = $jadwals->sortBy([
+            ['psikolog.user.name', 'asc'], // Urutkan berdasarkan nama lengkap psikolog
+            ['jam_mulai', 'asc'], // Kemudian urutkan berdasarkan jam mulai paling pagi
+        ]);
 
-            if (!$cek_psikotes && !$cek_konsultasi) {
-                // Tambahkan data jadwal ke dalam array $jadwal_tersedia
-                $jadwal_tersedia[] = $jadwal;
-            }
-        }
+
+        // $jadwals = Jadwal::where('hari', $hari)->where('status', 'Tersedia')->get();
+        // $jadwal_tersedia = [];
+
+        // foreach ($jadwals as $jadwal) {
+        //     $cek_psikotes = Psikotes::where('tanggal_psikotes', $request->tanggal)->where('jadwal_id', $jadwal->id)->exists();
+        //     $cek_konsultasi = Konsultasi::where('tanggal_konsultasi', $request->tanggal)->where('jadwal_id', $jadwal->id)->exists();
+
+        //     if (!$cek_psikotes && !$cek_konsultasi) {
+        //         // Tambahkan data jadwal ke dalam array $jadwal_tersedia
+        //         $jadwal_tersedia[] = $jadwal;
+        //     }
+        // }
 
         // Ambil konten dari view partial_view.blade.php
         $content = View::make('member.jadwal.pilih-jadwal', [
