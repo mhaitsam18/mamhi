@@ -80,7 +80,7 @@
                                                     <td class="text-end">Rp {{ number_format((300000*12/100),2,',','.') }}</td>
                                                 </tr> --}}
                                                 <tr>
-                                                    <td>TAX & Admin</td>
+                                                    <td>Admin</td>
                                                     <td class="text-end">Rp {{ number_format(50000,2,',','.') }}</td>
                                                 </tr>
                                                 <tr>
