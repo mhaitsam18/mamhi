@@ -160,6 +160,9 @@
             $('.cancel-btn').removeClass('d-none'); // Tampilkan tombol Batal
             $('.save-btn').removeClass('d-none'); // Tampilkan tombol Save
             $('#foto').removeClass('d-none'); // Tampilkan input foto
+            $('#name').prop('readonly', false); // Aktifkan input nomor telepon
+            $('#jenis_kelamin').prop('readonly', false); // Aktifkan input nomor telepon
+            $('#tanggal_lahir').prop('readonly', false); // Aktifkan input nomor telepon
             $('#no_hp').prop('readonly', false); // Aktifkan input nomor telepon
             $('#alamat').prop('readonly', false); // Aktifkan input alamat
         });
@@ -170,6 +173,9 @@
             $('.cancel-btn').addClass('d-none'); // Sembunyikan tombol Batal
             $('.save-btn').addClass('d-none'); // Sembunyikan tombol Save
             $('#foto').addClass('d-none'); // Sembunyikan input foto
+            $('#name').prop('readonly', true); // Nonaktifkan input nomor telepon
+            $('#jenis_kelamin').prop('readonly', true); // Nonaktifkan input nomor telepon
+            $('#tanggal_lahir').prop('readonly', true); // Nonaktifkan input nomor telepon
             $('#no_hp').prop('readonly', true); // Nonaktifkan input nomor telepon
             $('#alamat').prop('readonly', true); // Nonaktifkan input alamat
         });
