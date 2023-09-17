@@ -28,7 +28,7 @@ class MemberPsikotesController extends Controller
         return view('member.psikotes.list', [
             'title' => 'MAMHI | psikotes',
             'page' => 'psikotes',
-            'psikotess' => Psikotes::where('member_id', auth()->user()->member->id)->get(),
+            'psikotess' => Psikotes::where('member_id', auth()->user()->member->id)->latest()->get(),
             'jenis_psikotess' => JenisPsikotes::all(),
         ]);
     }

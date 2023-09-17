@@ -19,16 +19,17 @@ class MemberKonsultasiController extends Controller
             'page' => 'konsultasi',
         ]);
     }
-    
+
     public function list()
     {
         return view('member.konsultasi.list', [
             'title' => 'MAMHI | konsultasi',
             'page' => 'konsultasi',
-            'konsultasis' => Konsultasi::where('member_id', auth()->user()->member->id)->get(),
+            'konsultasis' => Konsultasi::where('member_id', auth()->user()->member->id)->latest()->get(),
         ]);
+
     }
-    
+
     public function pilihTanggal()
     {
         return view('member.konsultasi.pilih-tanggal', [
@@ -84,7 +85,7 @@ class MemberKonsultasiController extends Controller
             return redirect()->back()->with('error', 'Terjadi kesalahan.');
         }
     }
-    
+
     public function tagihan(Konsultasi $konsultasi)
     {
         return view('member.konsultasi.tagihan', [
