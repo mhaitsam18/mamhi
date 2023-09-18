@@ -102,7 +102,7 @@
                             @elseif ($konsultasi->status == 'booking diterima' || $konsultasi->status == 'selesai')
                                 <span class="btn btn-success float-end mt-4 ms-2">Lunas</span>
                             @else
-                                <span class="btn btn-danger float-end mt-4 ms-2">Batal / Pembayaran ditolak</span>
+                                <span class="btn btn-danger float-end mt-4 ms-2" data-bs-toggle="modal" data-bs-target="#keteranganModal">Batal / Pembayaran ditolak</span>
                             @endif
                         </div>
                     </div>
@@ -147,6 +147,26 @@
                     <button type="submit" class="btn btn-primary">Kirim</button>
                 </div>
             </form>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="keteranganModal" tabindex="-1" aria-labelledby="keteranganModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="keteranganModalLabel">Keterangan</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Alasan ditolak: {{ $psikotes->pembayaran->keterangan ?? 'Tanpa Keterangan' }}</p>
+                <p>
+                    Jika ini adalah sebuah kesalahan, silahkan untuk menghubungi admin
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            </div>
         </div>
     </div>
 </div>
