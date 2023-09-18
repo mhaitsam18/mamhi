@@ -203,6 +203,10 @@ class AdminPsikotesController extends Controller
                 'nominal' => '450000',
                 'keterangan' => $request->keterangan,
             ]);
+        } else {
+            Pembayaran::where('psikotes_id', $psikotes->id)->update([
+                'keterangan' => $request->keterangan,
+            ]);
         }
 
 

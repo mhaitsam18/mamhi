@@ -159,7 +159,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>Alasan ditolak: {{ $psikotes->pembayaran->keterangan ?? 'Tanpa Keterangan' }}</p>
+                <p>Alasan ditolak: {{ $konsultasi->pembayaran->keterangan ?? 'Tanpa Keterangan' }}</p>
                 <p>
                     Jika ini adalah sebuah kesalahan, silahkan untuk menghubungi admin
                 </p>

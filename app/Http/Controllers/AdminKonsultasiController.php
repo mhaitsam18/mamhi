@@ -135,6 +135,10 @@ class AdminKonsultasiController extends Controller
                 'nominal' => '350000',
                 'keterangan' => $request->keterangan,
             ]);
+        } else {
+            Pembayaran::where('konsultasi_id', $konsultasi->id)->update([
+                'keterangan' => $request->keterangan,
+            ]);
         }
         // if ($request->status == 'batal') {
         //     Pembayaran::where('konsultasi_id', $konsultasi->id)->delete();
