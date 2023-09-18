@@ -50,10 +50,10 @@
                                 </div>
                                 <div class="col">
                                     <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
-                                    <select class="form-select @error('jenis_kelamin') is-invalid @enderror" name="jenis_kelamin" id="jenis_kelamin" value="{{ old('jenis_kelamin') }}">
+                                    <select class="form-select @error('jenis_kelamin') is-invalid @enderror" name="jenis_kelamin" id="jenis_kelamin">
                                         <option value="" disabled selected>Pilih Jenis Kelamin</option>
-                                        <option value="Laki-laki">Laki-laki</option>
-                                        <option value="Perempuan">Perempuan</option>
+                                        <option value="Laki-laki" @selected(old('jenis_kelamin') == 'Laki-laki')>Laki-laki</option>
+                                        <option value="Perempuan" @selected(old('jenis_kelamin') == 'Perempuan')>Perempuan</option>
                                     </select>
                                     @error('jenis_kelamin')
                                         <div class="text-danger fs-6">
@@ -62,7 +62,7 @@
                                     @enderror
                                 </div>
                             </div>
-    
+
                             <div class="mb-3 row">
                                 <div class="col">
                                     <label for="username" class="form-label">Username</label>
@@ -83,7 +83,7 @@
                                     @enderror
                                 </div>
                             </div>
-    
+
                             <div class="mb-3 row">
                                 <div class="col">
                                     <label for="password" class="form-label">Kata Sandi</label>
@@ -104,7 +104,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            
+
 
                         </div>
                         <div class="col-lg-6">
@@ -141,7 +141,7 @@
                         </div>
                         <div class="col-lg-12">
                             <button type="submit" class="btn btn-primary float-end">Submit</button>
-                        </div>                       
+                        </div>
                     </form>
                 </div>
             </div>
@@ -150,6 +150,34 @@
 @endsection
 
 @section('script')
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const tanggalLahirInput = document.getElementById("tanggal_lahir");
+
+            tanggalLahirInput.addEventListener("change", function() {
+                // Mendapatkan tanggal lahir yang dipilih oleh pengguna
+                const tanggalLahir = new Date(this.value);
+
+                // Mendapatkan tanggal saat ini
+                const tanggalSaatIni = new Date();
+
+                // Menghitung usia berdasarkan perbedaan tahun
+                const usia = tanggalSaatIni.getFullYear() - tanggalLahir.getFullYear();
+
+                // Memeriksa apakah usia kurang dari 17 tahun
+                if (usia < 17) {
+                    // Menggunakan SweetAlert2 untuk menampilkan pesan peringatan
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Usia minimal harus 17 tahun.',
+                    });
+
+                    this.value = ""; // Mengosongkan input tanggal lahir
+                }
+            });
+        });
+    </script>
     <script>
 
 

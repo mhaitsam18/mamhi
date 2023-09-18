@@ -56,7 +56,7 @@ class AuthController extends Controller
             'email' => 'required|email:dns|unique:users',
             'username' => 'required|unique:users',
             'tanggal_lahir' => ['required', 'date', 'before_or_equal:' . now()->subYears(17)->format('Y-m-d')],
-            'no_hp' => ['required', 'string', 'unique:users,no_hp,' . $request->id, 'regex:/^(?:\+62|0)[0-9\s-]+$/'],
+            'no_hp' => ['required', 'string', 'unique:users,no_hp', 'regex:/^(?:\+62|0)[0-9\s-]+$/'],
             'jenis_kelamin' => 'required',
             'alamat' => 'required',
             'foto' => 'image|file',

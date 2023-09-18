@@ -21,7 +21,7 @@ class AdminMemberController extends Controller
         return view('admin.member.index',  [
             'title' => 'Data Member',
             'page' => 'member',
-            'data_member' => Member::all(),
+            'data_member' => Member::latest()->get(),
         ]);
     }
 
@@ -45,8 +45,8 @@ class AdminMemberController extends Controller
             'name' => 'required',
             'email' => 'required|email:dns|unique:users',
             'username' => 'required|unique:users',
-            'tanggal_lahir' => 'required',
-            'no_hp' => 'required',
+            'tanggal_lahir' => ['required', 'date', 'before_or_equal:' . now()->subYears(17)->format('Y-m-d')],
+            'no_hp' => ['required', 'string', 'unique:users,no_hp', 'regex:/^(?:\+62|0)[0-9\s-]+$/'],
             'jenis_kelamin' => 'required',
             'alamat' => 'required',
             'pekerjaan' => 'required',
@@ -125,8 +125,8 @@ class AdminMemberController extends Controller
                 'required',
                 Rule::unique('users')->ignore($member->user_id),
             ],
-            'tanggal_lahir' => 'required',
-            'no_hp' => 'required',
+            'tanggal_lahir' => ['required', 'date', 'before_or_equal:' . now()->subYears(17)->format('Y-m-d')],
+            'no_hp' => ['required', 'string', 'unique:users,no_hp,' . $member->user_id, 'regex:/^(?:\+62|0)[0-9\s-]+$/'],
             'jenis_kelamin' => 'required',
             'alamat' => 'required',
             'pekerjaan' => 'required',
