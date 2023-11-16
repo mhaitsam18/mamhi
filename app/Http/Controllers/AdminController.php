@@ -24,12 +24,12 @@ class AdminController extends Controller
         $konsultasi_selesai_minggu_ini = Konsultasi::whereBetween('tanggal_konsultasi', [$startDate, $endDate])->where('status', 'selesai')->get();
         $psikotes_selesai_minggu_ini = Psikotes::whereBetween('tanggal_psikotes', [$startDate, $endDate])->where('status', 'selesai')->get();
         $booking_konsultasi = Konsultasi::where('status', 'booking')
-        ->orderBy('booked_at', 'desc')
-        ->get();
+            ->orderBy('booked_at', 'desc')
+            ->get();
 
         $booking_psikotes = Psikotes::where('status', 'booking')
-        ->orderBy('booked_at', 'desc')
-        ->get();
+            ->orderBy('booked_at', 'desc')
+            ->get();
 
 
         return view('admin.index', [
@@ -45,7 +45,8 @@ class AdminController extends Controller
         ]);
     }
 
-    public function booking() {
+    public function booking()
+    {
         return view('admin.booking', [
             'title' => 'Booking',
             'page' => 'booking',
@@ -94,7 +95,6 @@ class AdminController extends Controller
             'name' => 'required|string',
             'jenis_kelamin' => 'required',
             'tanggal_lahir' => 'required',
-            'alamat' => 'required',
             'alamat' => 'required',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:20480',
             // Atur aturan validasi lainnya di sini sesuai kebutuhan
