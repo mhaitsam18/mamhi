@@ -1,4 +1,3 @@
-
 @extends('layouts.admin-main')
 
 @section('content')
@@ -21,7 +20,8 @@
                             <div class="mb-3 row">
                                 <div class="col">
                                     <label for="name" class="form-label">Nama Lengkap</label>
-                                    <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" value="{{ old('name') }}">
+                                    <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                        name="name" id="name" value="{{ old('name') }}">
                                     @error('name')
                                         <div class="text-danger fs-6">
                                             {{ $message }}
@@ -30,7 +30,8 @@
                                 </div>
                                 <div class="col">
                                     <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
-                                    <input type="date" class="form-control @error('tanggal_lahir') is-invalid @enderror" name="tanggal_lahir" id="tanggal_lahir" value="{{ old('tanggal_lahir') }}">
+                                    <input type="date" class="form-control @error('tanggal_lahir') is-invalid @enderror"
+                                        name="tanggal_lahir" id="tanggal_lahir" value="{{ old('tanggal_lahir') }}">
                                     @error('tanggal_lahir')
                                         <div class="text-danger fs-6">
                                             {{ $message }}
@@ -41,7 +42,8 @@
                             <div class="mb-3 row">
                                 <div class="col">
                                     <label for="no_hp" class="form-label">Nomor Telepon</label>
-                                    <input type="text" class="form-control @error('no_hp') is-invalid @enderror" name="no_hp" id="no_hp" value="{{ old('no_hp') }}">
+                                    <input type="text" class="form-control @error('no_hp') is-invalid @enderror"
+                                        name="no_hp" id="no_hp" value="{{ old('no_hp') }}">
                                     @error('no_hp')
                                         <div class="text-danger fs-6">
                                             {{ $message }}
@@ -50,7 +52,8 @@
                                 </div>
                                 <div class="col">
                                     <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
-                                    <select class="form-select @error('jenis_kelamin') is-invalid @enderror" name="jenis_kelamin" id="jenis_kelamin">
+                                    <select class="form-select @error('jenis_kelamin') is-invalid @enderror"
+                                        name="jenis_kelamin" id="jenis_kelamin">
                                         <option value="" disabled selected>Pilih Jenis Kelamin</option>
                                         <option value="Laki-laki" @selected(old('jenis_kelamin') == 'Laki-laki')>Laki-laki</option>
                                         <option value="Perempuan" @selected(old('jenis_kelamin') == 'Perempuan')>Perempuan</option>
@@ -66,7 +69,8 @@
                             <div class="mb-3 row">
                                 <div class="col">
                                     <label for="username" class="form-label">Username</label>
-                                    <input type="text" class="form-control @error('username') is-invalid @enderror" name="username" id="username" value="{{ old('username') }}">
+                                    <input type="text" class="form-control @error('username') is-invalid @enderror"
+                                        name="username" id="username" value="{{ old('username') }}">
                                     @error('username')
                                         <div class="text-danger fs-6">
                                             {{ $message }}
@@ -75,7 +79,8 @@
                                 </div>
                                 <div class="col">
                                     <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email" value="{{ old('email') }}">
+                                    <input type="email" class="form-control @error('email') is-invalid @enderror"
+                                        name="email" id="email" value="{{ old('email') }}">
                                     @error('email')
                                         <div class="text-danger fs-6">
                                             {{ $message }}
@@ -87,7 +92,8 @@
                             <div class="mb-3 row">
                                 <div class="col">
                                     <label for="password" class="form-label">Kata Sandi</label>
-                                    <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" value="{{ old('password') }}">
+                                    <input type="password" class="form-control @error('password') is-invalid @enderror"
+                                        name="password" id="password" value="{{ old('password') }}">
                                     @error('password')
                                         <div class="text-danger fs-6">
                                             {{ $message }}
@@ -96,7 +102,10 @@
                                 </div>
                                 <div class="col">
                                     <label for="password_confirmation" class="form-label">Konfirmasi kata Sandi</label>
-                                    <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" id="password_confirmation" value="{{ old('password_confirmation') }}">
+                                    <input type="password"
+                                        class="form-control @error('password_confirmation') is-invalid @enderror"
+                                        name="password_confirmation" id="password_confirmation"
+                                        value="{{ old('password_confirmation') }}">
                                     @error('password_confirmation')
                                         <div class="text-danger fs-6">
                                             {{ $message }}
@@ -120,7 +129,8 @@
                                 </div>
                                 <div class="col">
                                     <label for="pekerjaan" class="form-label">Pekerjaan</label>
-                                    <input type="text" class="form-control @error('pekerjaan') is-invalid @enderror" name="pekerjaan" id="pekerjaan" value="{{ old('pekerjaan') }}">
+                                    <input type="text" class="form-control @error('pekerjaan') is-invalid @enderror"
+                                        name="pekerjaan" id="pekerjaan" value="{{ old('pekerjaan') }}">
                                     @error('pekerjaan')
                                         <div class="text-danger fs-6">
                                             {{ $message }}
@@ -130,7 +140,9 @@
                             </div>
                             <div class="mb-3">
                                 <label for="foto" class="form-label">Foto</label>
-                                <input type="file" class="form-control filepond @error('foto') is-invalid @enderror" name="foto" id="foto" value="{{ old('foto') }}" multiple  data-allow-reorder="true" data-max-file-size="3MB" data-max-files="3">
+                                <input type="file" class="form-control filepond @error('foto') is-invalid @enderror"
+                                    name="foto" id="foto" value="{{ old('foto') }}" multiple
+                                    data-allow-reorder="true" data-max-file-size="3MB" data-max-files="3">
                                 <input type="hidden" name="nama_foto" id="nama_foto" value="">
                                 @error('foto')
                                     <div class="text-danger fs-6">
@@ -179,8 +191,6 @@
         });
     </script>
     <script>
-
-
         FilePond.registerPlugin(
             FilePondPluginImagePreview,
             FilePondPluginImageExifOrientation,
